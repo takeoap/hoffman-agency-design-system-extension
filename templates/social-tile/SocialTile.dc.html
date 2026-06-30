@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Social tiles (square)" description="A set of 10 ready-to-use 1080×1080 social layouts for LinkedIn/IG — Statement, Stat, Pull quote, Carousel cover, Announcement, Listicle, Quote-card with portrait, Event/webinar, Brand cover, and Question/hook. Each owns a different full-bleed brand surface so a carousel rotates through the palette as one voice. Slide type scale (big), imagery by default, one idea per tile. Tweak the handle, chrome, and image placeholders. Duplicate a tile and swap its surface to build a series." -->
+<helmet>
+<script src="./ds-base.js"></script>
+<script src="./deck-stage.js"></script>
+<style>
+  html, body { margin:0; padding:0; background:#0E1C2B; }
+  deck-stage:not(:defined) { visibility:hidden; }
+  .t { position:relative; width:100%; height:100%; box-sizing:border-box; padding:88px; overflow:hidden; font-family:var(--font-sans); display:flex; flex-direction:column; }
+  .em { font-family:var(--font-serif); font-style:italic; font-weight:400; }
+  .eb { font:700 24px/1 var(--font-mono); letter-spacing:.16em; text-transform:uppercase; display:inline-flex; align-items:center; gap:14px; }
+  .eb .dot { width:15px; height:15px; border-radius:50%; flex:none; }
+  .mk { font-weight:700; padding:0 .08em; }
+  .grow { flex:1 1 auto; min-height:0; display:flex; flex-direction:column; justify-content:center; }
+  .foot { display:flex; align-items:flex-end; justify-content:space-between; }
+  .foot img { height:36px; width:auto; }
+  .foot .hd { font:500 22px/1 var(--font-mono); letter-spacing:.04em; }
+</style>
+</helmet>
+
+<deck-stage width="1080" height="1080">
+
+  <!-- 01 · STATEMENT / POV — Navy -->
+  <section class="t" data-screen-label="01 Statement" style="background:var(--tha-navy);">
+    <span class="eb" style="color:var(--tha-navy-200);"><span class="dot" style="background:var(--tha-lime);"></span>Point of view</span>
+    <div class="grow">
+      <h1 style="margin:0; font:800 128px/0.98 var(--font-sans); letter-spacing:-.03em; color:var(--tha-paper); max-width:11ch;">Trust beats <span class="mk" style="background:var(--tha-lime); color:var(--tha-navy);">attention</span>, <em class="em" style="color:var(--tha-lime);">every</em> time.</h1>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-white-lime.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:var(--tha-navy-300);">{{ handle }}</span>
+    </div>
+  </section>
+
+  <!-- 02 · STAT / DATA POINT — Lime (navy type) -->
+  <section class="t" data-screen-label="02 Stat" style="background:var(--tha-lime);">
+    <span class="eb" style="color:var(--tha-purple);"><span class="dot" style="background:var(--tha-purple);"></span>The numbers</span>
+    <div class="grow">
+      <div style="font:800 360px/0.82 var(--font-sans); letter-spacing:-.045em; color:var(--tha-navy);">81<span style="font-size:.5em;">%</span></div>
+      <p style="margin:24px 0 0; font:500 40px/1.25 var(--font-sans); color:var(--tha-navy-700); max-width:20ch;">trust earned media over advertising when deciding who to believe.</p>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-navy.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:var(--tha-navy-700);">{{ handle }}</span>
+    </div>
+  </section>
+
+  <!-- 03 · PULL QUOTE — Teal -->
+  <section class="t" data-screen-label="03 Pull quote" style="background:#145F7B;">
+    <span class="eb" style="color:#86FFF1;"><span class="dot" style="background:#86FFF1;"></span>In their words</span>
+    <div class="grow">
+      <div style="font:400 italic 76px/1.16 var(--font-serif); color:var(--tha-paper); max-width:15ch;">&ldquo;They didn&rsquo;t just get us press. They got us <span style="color:#86FFF1;">believed</span>.&rdquo;</div>
+      <div style="margin-top:44px; font:500 26px/1.4 var(--font-mono); letter-spacing:.03em; color:rgba(250,250,247,.8);">VP COMMUNICATIONS &middot; SERIES-C FINTECH</div>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-white-lime.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:rgba(250,250,247,.55);">{{ handle }}</span>
+    </div>
+  </section>
+
+  <!-- 04 · CAROUSEL COVER — Purple, lime accent + swipe cue -->
+  <section class="t" data-screen-label="04 Carousel cover" style="background:#6103B9;">
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <span class="eb" style="color:var(--tha-lime);"><span class="dot" style="background:var(--tha-lime);"></span>A 5-part series</span>
+      <span style="font:700 24px/1 var(--font-mono); letter-spacing:.1em; color:rgba(255,255,255,.55);">01 / 05</span>
+    </div>
+    <div class="grow">
+      <h1 style="margin:0; font:800 112px/0.98 var(--font-sans); letter-spacing:-.03em; color:var(--tha-paper); max-width:12ch;">How to earn <em class="em" style="color:var(--tha-lime);">belief</em> in the AI era.</h1>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-white-lime.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:var(--tha-lime); display:inline-flex; align-items:center; gap:12px;">Swipe <span style="font-size:1.4em; line-height:0;">&rarr;</span></span>
+    </div>
+  </section>
+
+  <!-- 05 · ANNOUNCEMENT / NEWS — Paper -->
+  <section class="t" data-screen-label="05 Announcement" style="background:var(--tha-paper);">
+    <span style="align-self:flex-start; font:700 22px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--tha-paper); background:var(--tha-purple); padding:12px 20px;">News</span>
+    <div class="grow">
+      <h1 style="margin:0; font:700 96px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy); max-width:14ch;">Hoffman opens a <em class="em" style="color:var(--tha-purple);">Jakarta</em> office.</h1>
+      <p style="margin:32px 0 0; font:400 32px/1.4 var(--font-sans); color:var(--tha-navy-500); max-width:32ch;">Our seventh in Southeast Asia — closer to the markets our clients are building in.</p>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-navy-lime.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:var(--tha-navy-400);">June 2026</span>
+    </div>
+  </section>
+
+  <!-- 06 · LISTICLE / TIPS — White surface, sand cards -->
+  <section class="t tha-theme-white" data-screen-label="06 Listicle" style="background:var(--tha-white);">
+    <span class="eb" style="color:#145F7B;"><span class="dot" style="background:#145F7B;"></span>Three moves</span>
+    <div class="grow" style="gap:22px;">
+      <h2 style="margin:0 0 8px; font:700 64px/1.04 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy); max-width:16ch;">Make your story <em class="em" style="color:#145F7B;">travel</em>.</h2>
+      <div style="display:flex; gap:24px; align-items:baseline; border-top:1.5px solid var(--tha-navy-200); padding-top:18px;"><span style="font:500 28px/1 var(--font-mono); color:#145F7B; flex:none; width:54px;">01</span><span style="font:500 36px/1.2 var(--font-sans); color:var(--tha-navy);">Find the conviction only you own</span></div>
+      <div style="display:flex; gap:24px; align-items:baseline; border-top:1.5px solid var(--tha-navy-200); padding-top:18px;"><span style="font:500 28px/1 var(--font-mono); color:#145F7B; flex:none; width:54px;">02</span><span style="font:500 36px/1.2 var(--font-sans); color:var(--tha-navy);">Earn proof you didn&rsquo;t buy</span></div>
+      <div style="display:flex; gap:24px; align-items:baseline; border-top:1.5px solid var(--tha-navy-200); padding-top:18px;"><span style="font:500 28px/1 var(--font-mono); color:#145F7B; flex:none; width:54px;">03</span><span style="font:500 36px/1.2 var(--font-sans); color:var(--tha-navy);">Make it travel every channel</span></div>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-navy-lime.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:var(--tha-navy-400);">{{ handle }}</span>
+    </div>
+  </section>
+
+  <!-- 07 · QUOTE-CARD WITH PORTRAIT — Navy, portrait + quote -->
+  <section class="t" data-screen-label="07 Quote + portrait" style="background:var(--tha-navy); padding:0; flex-direction:row;">
+    <sc-if value="{{ imagery }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 44%; position:relative;">
+        <div class="tha-placeholder on-dark tha-placeholder--bleed" data-slot="tile-07" style="position:absolute; inset:0;">
+          <div class="tha-placeholder__label">Portrait &middot; 4:5 &middot; generate 1080&times;1350px</div>
+          <div class="tha-placeholder__hint">Warm, credible headshot of the person quoted. Eye-level, soft daylight, slight smile, business-casual.</div>
+          <div class="tha-placeholder__prompt">Natural environmental portrait of a communications leader with a warm, confident expression in a softly lit modern office, gentle window light, warm colour grade, shallow depth of field, authentic and unposed. Vertical 4:5, 1080&times;1350px.</div>
+        </div>
+      </div>
+    </sc-if>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:80px;">
+      <span class="eb" style="color:var(--tha-lime); margin-bottom:28px;"><span class="dot" style="background:var(--tha-lime);"></span>Voices</span>
+      <div style="font:400 italic 56px/1.18 var(--font-serif); color:var(--tha-paper); max-width:16ch;">&ldquo;The best comms work feels less like noise and more like <span style="color:var(--tha-lime);">truth</span>.&rdquo;</div>
+      <div style="margin-top:36px;"><div style="font:600 30px/1.1 var(--font-sans); color:var(--tha-paper);">Maureen Tseng</div><div style="margin-top:8px; font:500 22px/1.3 var(--font-mono); color:var(--tha-navy-300);">MANAGING DIRECTOR, SEA</div></div>
+    </div>
+  </section>
+
+  <!-- 08 · EVENT / WEBINAR — Lavender (navy type) -->
+  <section class="t" data-screen-label="08 Event" style="background:#CB65FF;">
+    <span class="eb" style="color:var(--tha-navy);"><span class="dot" style="background:var(--tha-navy);"></span>Webinar</span>
+    <div class="grow">
+      <h1 style="margin:0; font:700 88px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy); max-width:14ch;">The new rules of <em class="em">earned</em> influence.</h1>
+      <div style="margin-top:36px; display:flex; gap:48px; font:500 30px/1.3 var(--font-mono); color:var(--tha-navy);">
+        <span>15 JUL 2026</span><span>3:00PM SGT</span>
+      </div>
+    </div>
+    <div class="foot">
+      <span style="font:700 28px/1 var(--font-sans); letter-spacing:-.01em; color:var(--tha-paper); background:var(--tha-navy); padding:20px 32px;">Register free &rarr;</span>
+      <span class="hd" style="color:var(--tha-navy-700);">{{ handle }}</span>
+    </div>
+  </section>
+
+  <!-- 09 · BRAND COVER — Navy + storyline -->
+  <section class="t" data-screen-label="09 Brand cover" style="background:var(--tha-navy); justify-content:space-between;">
+    <img src="../../assets/storyline-line-lime.svg" alt="" style="position:absolute; top:80px; right:60px; width:420px; opacity:.85;"/>
+    <img src="../../assets/logo-horizontal-white-lime.svg" alt="The Hoffman Agency" style="height:42px; align-self:flex-start; position:relative;"/>
+    <div>
+      <span class="eb" style="color:var(--tha-lime);"><span class="dot" style="background:var(--tha-lime);"></span>Who we are</span>
+      <h1 style="margin:24px 0 0; font:800 112px/0.96 var(--font-sans); letter-spacing:-.035em; color:var(--tha-paper); max-width:12ch;">Counsel with <em class="em" style="color:var(--tha-lime);">conviction</em>.</h1>
+    </div>
+    <div class="foot">
+      <span class="hd" style="color:var(--tha-navy-300);">Integrated comms for tech</span>
+      <span class="hd" style="color:var(--tha-navy-300);">{{ handle }}</span>
+    </div>
+  </section>
+
+  <!-- 10 · QUESTION / HOOK — Cyan (navy type) -->
+  <section class="t" data-screen-label="10 Question" style="background:#86FFF1;">
+    <span class="eb" style="color:#6103B9;"><span class="dot" style="background:#6103B9;"></span>Ask yourself</span>
+    <div class="grow">
+      <h1 style="margin:0; font:800 124px/0.98 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy); max-width:11ch;">Are you seen, or are you <em class="em" style="color:#6103B9;">believed</em>?</h1>
+      <p style="margin:32px 0 0; font:500 32px/1.35 var(--font-sans); color:var(--tha-navy-700); max-width:28ch;">There&rsquo;s a difference &mdash; and it decides who wins the market.</p>
+    </div>
+    <div class="foot">
+      <img src="../../assets/logo-horizontal-navy.svg" alt="The Hoffman Agency"/>
+      <span class="hd" style="color:var(--tha-navy-700);">{{ handle }}</span>
+    </div>
+  </section>
+
+</deck-stage>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1080, &quot;height&quot;: 1080}, &quot;handle&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;@thehoffmanagency&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;imagery&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      handle: this.props.handle ?? '@thehoffmanagency',
+      imagery: this.props.imagery ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
+
