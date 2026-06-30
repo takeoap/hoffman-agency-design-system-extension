@@ -1,0 +1,87 @@
+<!-- @dsCard group="Brand" name="Fluent emoji — picker" subtitle="Microsoft Fluent emoji (static + animated) for visual storytelling — click a tile to copy its tag" viewport="980x1500" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_card.css">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; background:var(--tha-paper); color:var(--tha-navy); font-family:var(--font-sans); padding:40px 44px; }
+  h1 { font:800 40px/1.04 var(--font-sans); letter-spacing:-.02em; margin:0; }
+  .lede { font:400 19px/1.5 var(--font-sans); color:var(--fg-2); margin:12px 0 0; max-width:70ch; }
+  .lede code { font:600 15px/1 var(--font-mono); background:var(--bg-3); padding:2px 6px; border-radius:4px; }
+  .toolbar { display:flex; gap:10px; align-items:center; margin:24px 0 6px; flex-wrap:wrap; }
+  .seg { display:inline-flex; border:1.5px solid var(--tha-navy-200); border-radius:999px; overflow:hidden; }
+  .seg button { appearance:none; border:0; background:transparent; font:600 15px/1 var(--font-sans); color:var(--fg-2); padding:11px 20px; cursor:pointer; }
+  .seg button.on { background:var(--tha-navy); color:var(--tha-paper); }
+  .count { font:600 14px/1 var(--font-mono); color:var(--fg-3); margin-left:auto; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:14px; margin-top:18px; }
+  .tile { display:flex; flex-direction:column; align-items:center; gap:10px; padding:20px 12px 14px; background:var(--tha-white);
+    border:1px solid var(--tha-stone-200); border-radius:14px; cursor:copy; transition:border-color .12s, transform .12s; text-align:center; }
+  .tile:hover { border-color:var(--tha-lime-600); transform:translateY(-2px); }
+  .tile fluent-emoji { width:64px; height:64px; }
+  .tile .k { font:600 13px/1.25 var(--font-mono); color:var(--tha-navy); word-break:break-word; }
+  .tile .g { font:400 12px/1 var(--font-sans); color:var(--fg-3); }
+  .tile.copied { border-color:var(--tha-lime-600); background:var(--tha-lime-050); }
+  .tile.copied .k::after { content:' ✓ copied'; color:var(--tha-lime-600); }
+  .note { margin-top:28px; padding-top:16px; border-top:1px solid var(--border-2); font:400 14px/1.6 var(--font-sans); color:var(--fg-2); max-width:80ch; }
+  .note code { font:600 13px/1.4 var(--font-mono); background:var(--bg-3); padding:2px 6px; border-radius:4px; }
+  .note b { color:var(--tha-navy); }
+</style>
+</head>
+<body>
+  <h1>Fluent emoji</h1>
+  <p class="lede">Microsoft <b>Fluent</b> emoji — our house set for visual storytelling. Drop one in with <code>&lt;fluent-emoji name="rocket"&gt;&lt;/fluent-emoji&gt;</code>. Add <code>variant="animated"</code> for motion, or <code>size="120"</code> to use it as a graphic. Curated set below — <b>click any tile to copy its tag.</b></p>
+
+  <div class="toolbar">
+    <div class="seg" id="seg">
+      <button data-v="color" class="on">Color</button>
+      <button data-v="flat">Flat</button>
+      <button data-v="3d">3D</button>
+      <button data-v="animated">Animated</button>
+    </div>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="note">
+    <b>How it works.</b> The <code>&lt;fluent-emoji&gt;</code> element resolves a <b>local copy first</b> (the curated set is in <code>assets/emoji/</code>, so it works offline) and falls back to the jsDelivr CDN for anything not localised — the full Fluent library is reachable by name. A bad animated path degrades gracefully to the colour version. Static art is from <b>microsoft/fluentui-emoji</b>; animated from <b>Tarikul-Islam-Anik/Animated-Fluent-Emojis</b> (both MIT). Decks built from the deck/keynote templates load the injector automatically.
+  </div>
+
+  <script src="../assets/emoji/fluent-emoji.js" data-base="../assets/emoji"></script>
+  <script>
+    var grid = document.getElementById('grid');
+    var countEl = document.getElementById('count');
+    var variant = 'color';
+    function build() {
+      var map = (window.FluentEmoji && window.FluentEmoji.map) || {};
+      var keys = Object.keys(map);
+      countEl.textContent = keys.length + ' emoji';
+      grid.innerHTML = '';
+      keys.forEach(function (k) {
+        var t = document.createElement('div');
+        t.className = 'tile';
+        t.innerHTML = '<fluent-emoji name="' + k + '" variant="' + variant + '" size="64"></fluent-emoji>' +
+                      '<span class="k">' + k + '</span><span class="g">' + map[k].g + '</span>';
+        t.addEventListener('click', function () {
+          var tag = '<fluent-emoji name="' + k + '"' + (variant !== 'color' ? ' variant="' + variant + '"' : '') + '></fluent-emoji>';
+          navigator.clipboard && navigator.clipboard.writeText(tag);
+          document.querySelectorAll('.tile.copied').forEach(function (x){ x.classList.remove('copied'); });
+          t.classList.add('copied');
+        });
+        grid.appendChild(t);
+      });
+    }
+    document.getElementById('seg').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      variant = b.dataset.v;
+      [].forEach.call(this.children, function (c){ c.classList.toggle('on', c === b); });
+      build();
+    });
+    function start(){ if (window.FluentEmoji) build(); else setTimeout(start, 60); }
+    start();
+  </script>
+</body>
+</html>
+
