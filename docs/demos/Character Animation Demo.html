@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Character Animation — proof of concept</title>
+<style>
+  @font-face { font-family:'Poppins'; src:url('../../fonts/Poppins-Regular.ttf');  font-weight:400; font-display:swap; }
+  @font-face { font-family:'Poppins'; src:url('../../fonts/Poppins-Medium.ttf');   font-weight:500; font-display:swap; }
+  @font-face { font-family:'Poppins'; src:url('../../fonts/Poppins-SemiBold.ttf'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Poppins'; src:url('../../fonts/Poppins-Bold.ttf');     font-weight:700; font-display:swap; }
+  @font-face { font-family:'Poppins'; src:url('../../fonts/Poppins-ExtraBold.ttf');font-weight:800; font-display:swap; }
+  @font-face { font-family:'Poppins'; src:url('../../fonts/Poppins-Black.ttf');    font-weight:900; font-display:swap; }
+  @font-face { font-family:'Libre Baskerville'; src:url('../../fonts/LibreBaskerville-Italic-VariableFont_wght.ttf'); font-style:italic; font-weight:400 700; font-display:swap; }
+  :root{ --navy:#0E1C2B; --navy-200:#A9BBC9; --paper:#F7F5EF; --lime:#D2EB00; --aqua:#86FFF1; --teal:#145F7B; --purple:#7A2FD4; --violet:#B05FE6; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;background:#05101a;font-family:'Poppins',sans-serif;}
+  em{font-family:'Libre Baskerville',serif;font-style:italic;font-weight:400;}
+  #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  #canvas{width:1920px;height:1080px;position:relative;transform-origin:center;flex:none;}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;}
+  .slide.active{display:flex;}
+  .tag{position:absolute;top:54px;left:64px;font:600 22px/1 'Poppins';letter-spacing:.04em;text-transform:uppercase;z-index:5;}
+  .tag .n{opacity:.5;}
+  .cap{position:absolute;bottom:54px;left:64px;right:64px;font:400 26px/1.4 'Poppins';z-index:5;max-width:64ch;}
+  .cap b{font-weight:700;}
+
+  /* nav */
+  .nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;z-index:50;
+    background:rgba(8,20,30,.7);backdrop-filter:blur(8px);padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);}
+  .nav button{appearance:none;border:0;background:transparent;color:#fff;font:600 14px/1 'Poppins';cursor:pointer;padding:7px 12px;border-radius:999px;}
+  .nav button:hover{background:rgba(255,255,255,.12);}
+  #dots{display:flex;gap:8px;align-items:center;}
+
+  /* slide grounds */
+  #s1{background:var(--navy);}            #s1 .tag,#s1 .cap{color:var(--navy-200);}
+  #s2{background:var(--paper);}           #s2 .tag{color:var(--teal);} #s2 .cap{color:var(--navy);}
+  #s3{background:radial-gradient(120% 120% at 70% 25%,#173a2a,#08160f);} #s3 .tag,#s3 .cap{color:var(--lime);}
+  .title{position:absolute;top:120px;left:64px;right:64px;z-index:4;}
+  .title h2{font:800 84px/0.98 'Poppins';letter-spacing:-.03em;margin:0;}
+  #s1 .title h2{color:var(--paper);} #s2 .title h2{color:var(--navy);} #s3 .title h2{color:var(--paper);}
+  svg{position:absolute;inset:0;width:100%;height:100%;}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;}}
+</style>
+</head>
+<body>
+  <div id="stage"><div id="canvas">
+
+    <!-- 1 — stickman walk cycle -->
+    <section class="slide" id="s1" data-screen-label="01 Stickman walk cycle">
+      <div class="tag"><span class="n">01 / </span>Rigged walk cycle</div>
+      <div class="title"><h2>Make the complex <em>walk.</em></h2></div>
+      <svg id="rig1" viewBox="0 0 1920 1080">
+        <line id="ground1" x1="0" y1="820" x2="1920" y2="820" stroke="#28425a" stroke-width="3"/>
+        <!-- limbs drawn behind body -->
+        <g stroke="var(--lime)" stroke-width="13" stroke-linecap="round" fill="none">
+          <line id="armB" x1="960" y1="560" x2="960" y2="660"/>
+          <line id="legB" x1="960" y1="690" x2="960" y2="810"/>
+          <line id="legBl" x1="960" y1="690" x2="960" y2="810"/>
+          <line id="armF" x1="960" y1="560" x2="960" y2="660"/>
+          <line id="legF" x1="960" y1="690" x2="960" y2="810"/>
+          <line id="legFl" x1="960" y1="690" x2="960" y2="810"/>
+          <line id="spine" x1="960" y1="560" x2="960" y2="690"/>
+        </g>
+        <circle id="head" cx="960" cy="520" r="46" fill="var(--lime)"/>
+      </svg>
+      <div class="cap"><b>One SVG figure, six joints.</b> Each limb angle is a sine wave offset in phase — that's a walk. No frames, no video: the pose is recomputed every tick from <em>time</em>.</div>
+    </section>
+
+    <!-- 2 — cat: breathe, blink, tail wag -->
+    <section class="slide" id="s2" data-screen-label="02 Idle cat">
+      <div class="tag"><span class="n">02 / </span>Idle character</div>
+      <div class="title"><h2>Even a <em>cat</em> is just code.</h2></div>
+      <svg id="rig2" viewBox="0 0 1920 1080">
+        <ellipse cx="960" cy="900" rx="240" ry="26" fill="#e7e2d6"/>
+        <g id="catBody">
+          <!-- tail -->
+          <path id="tail" d="M1140 760 q 120 -10 120 -150" fill="none" stroke="var(--navy)" stroke-width="34" stroke-linecap="round"/>
+          <!-- body -->
+          <ellipse cx="960" cy="760" rx="210" ry="150" fill="var(--navy)"/>
+          <!-- head -->
+          <g id="catHead">
+            <circle cx="960" cy="540" r="120" fill="var(--navy)"/>
+            <polygon points="880,470 850,360 950,440" fill="var(--navy)"/>
+            <polygon points="1040,470 1070,360 970,440" fill="var(--navy)"/>
+            <polygon points="878,466 858,388 938,440" fill="var(--purple)"/>
+            <polygon points="1042,466 1062,388 982,440" fill="var(--purple)"/>
+            <!-- eyes -->
+            <ellipse id="eyeL" cx="918" cy="540" rx="20" ry="26" fill="var(--lime)"/>
+            <ellipse id="eyeR" cx="1002" cy="540" rx="20" ry="26" fill="var(--lime)"/>
+            <circle cx="918" cy="544" r="8" fill="var(--navy)"/>
+            <circle cx="1002" cy="544" r="8" fill="var(--navy)"/>
+            <!-- nose + whiskers -->
+            <path d="M952 578 l16 0 -8 12 z" fill="var(--lime)"/>
+            <g stroke="var(--navy-200)" stroke-width="3" stroke-linecap="round">
+              <line x1="860" y1="584" x2="760" y2="572"/><line x1="860" y1="596" x2="762" y2="600"/>
+              <line x1="1060" y1="584" x2="1160" y2="572"/><line x1="1060" y1="596" x2="1158" y2="600"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div class="cap"><b>Shapes + three loops.</b> The body scales a hair to "breathe," the eyes squash to blink on a timer, the tail sways on a sine. Same maths as the walk — different rig.</div>
+    </section>
+
+    <!-- 3 — stickman jump for joy -->
+    <section class="slide" id="s3" data-screen-label="03 Jumping figure">
+      <div class="tag"><span class="n">03 / </span>Keyed action</div>
+      <div class="title"><h2>Give the win a <em>jump.</em></h2></div>
+      <svg id="rig3" viewBox="0 0 1920 1080">
+        <line x1="0" y1="860" x2="1920" y2="860" stroke="#1d4a37" stroke-width="3"/>
+        <ellipse id="shadow3" cx="960" cy="868" rx="120" ry="20" fill="rgba(0,0,0,.35)"/>
+        <g id="figure3">
+          <g stroke="var(--lime)" stroke-width="13" stroke-linecap="round" fill="none">
+            <line id="j_armL" x1="960" y1="600" x2="900" y2="690"/>
+            <line id="j_armR" x1="960" y1="600" x2="1020" y2="690"/>
+            <line id="j_legL" x1="960" y1="730" x2="920" y2="840"/>
+            <line id="j_legR" x1="960" y1="730" x2="1000" y2="840"/>
+            <line x1="960" y1="600" x2="960" y2="730"/>
+          </g>
+          <circle cx="960" cy="560" r="46" fill="var(--lime)"/>
+        </g>
+      </svg>
+      <div class="cap"><b>A keyframed leap.</b> Vertical position follows an ease curve while the limbs tuck and extend — a parabola plus four angles. This is exactly how hand-drawn animation works, written as functions.</div>
+    </section>
+
+  </div></div>
+
+  <div class="nav" id="nav">
+    <button id="prev">‹ Prev</button><span id="dots"></span><button id="next">Next ›</button>
+  </div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let i=0, raf=null;
+function fit(){ const c=document.getElementById('canvas'); const s=Math.min(innerWidth/1920,innerHeight/1080); c.style.transform='scale('+s+')'; }
+addEventListener('resize',fit); fit();
+
+const dots=document.getElementById('dots');
+slides.forEach((_,k)=>{const d=document.createElement('span');d.style.cssText='width:8px;height:8px;border-radius:999px;cursor:pointer;background:'+(k?'rgba(255,255,255,.3)':'#D2EB00');d.onclick=()=>go(k);dots.appendChild(d);});
+
+function go(n){ if(n<0)n=slides.length-1; if(n>=slides.length)n=0;
+  slides[i].classList.remove('active'); i=n; slides[i].classList.add('active');
+  [...dots.children].forEach((d,k)=>d.style.background=k===i?'#D2EB00':'rgba(255,255,255,.3)');
+  location.hash=i; }
+document.getElementById('next').onclick=()=>go(i+1);
+document.getElementById('prev').onclick=()=>go(i-1);
+addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key===' ')go(i+1); if(e.key==='ArrowLeft')go(i-1); });
+
+const MOTION = matchMedia('(prefers-reduced-motion: no-preference)').matches;
+const set=(id,a)=>{const el=document.getElementById(id);for(const k in a)el.setAttribute(k,a[k]);};
+
+// ---- one shared clock drives whichever rig is on screen ----
+function pose(t){
+  // SLIDE 1 — walk cycle: hips fixed, limbs swing as phase-offset sines
+  (function walk(){
+    const hipX=960, hipY=690, shX=960, shY=560, w=2.4*t, bob=Math.sin(w*2)*8;
+    const sh=shY+bob, hp=hipY+bob;
+    set('spine',{x1:shX,y1:sh,x2:hipX,y2:hp});
+    set('head',{cx:960,cy:520+bob});
+    const leg=(ph,id)=>{ const a=Math.sin(w+ph)*0.55; const kx=hipX+Math.sin(a)*60, ky=hp+Math.cos(a)*70;
+      const fx=kx+Math.sin(a*0.6)*55, fy=ky+90; set(id,{x1:hipX,y1:hp,x2:kx,y2:ky}); return [kx,ky,fx,fy]; };
+    const ll=leg(0,'legF'); set('legFl',{x1:ll[0],y1:ll[1],x2:ll[2],y2:ll[3]});
+    const lr=leg(Math.PI,'legB'); set('legBl',{x1:lr[0],y1:lr[1],x2:lr[2],y2:lr[3]});
+    const arm=(ph,id)=>{ const a=Math.sin(w+ph)*0.5; set(id,{x1:shX,y1:sh,x2:shX+Math.sin(a)*55,y2:sh+Math.cos(a)*95}); };
+    arm(Math.PI,'armF'); arm(0,'armB');
+  })();
+  // SLIDE 2 — cat idle: breathe (scale), tail sway, periodic blink
+  (function cat(){
+    const breathe=1+Math.sin(t*1.6)*0.02;
+    const body=document.getElementById('catBody'); body.setAttribute('transform','translate(960,840) scale('+breathe+') translate(-960,-840)');
+    const sway=Math.sin(t*1.1)*26;
+    set('tail',{d:'M1140 760 q '+(120+sway)+' -10 '+(120+sway*1.4)+' -150'});
+    const head=document.getElementById('catHead'); head.setAttribute('transform','rotate('+(Math.sin(t*0.8)*2.2)+' 960 540)');
+    const blink=(Math.sin(t*0.9)>0.985)?0.12:1;  // quick squash now and then
+    document.getElementById('eyeL').setAttribute('ry',26*blink);
+    document.getElementById('eyeR').setAttribute('ry',26*blink);
+  })();
+  // SLIDE 3 — jump loop: parabola + limb tuck/extend
+  (function jump(){
+    const T=1.7, p=(t% T)/T;               // 0..1 loop
+    const h=Math.sin(p*Math.PI);            // up then down
+    const y=-Math.pow(h,0.85)*230;          // vertical offset (px, up = negative)
+    document.getElementById('figure3').setAttribute('transform','translate(0,'+y+')');
+    const sc=1-h*0.18; document.getElementById('shadow3').setAttribute('rx',120*sc);
+    document.getElementById('shadow3').setAttribute('opacity',0.35-h*0.18);
+    const tuck=h;  // limbs tuck at apex
+    set('j_armL',{x2:900-tuck*40,y2:690-tuck*120}); set('j_armR',{x2:1020+tuck*40,y2:690-tuck*120});
+    set('j_legL',{x2:920+tuck*20,y2:840-tuck*90}); set('j_legR',{x2:1000-tuck*20,y2:840-tuck*90});
+  })();
+}
+
+function loop(now){ pose(now/1000); raf=requestAnimationFrame(loop); }
+
+// base = a valid resting pose, set synchronously (visible even if rAF never runs)
+pose(0);
+if(MOTION) raf=requestAnimationFrame(loop);
+
+const start=parseInt(location.hash.slice(1)); if(start>=0&&start<slides.length)i=start;
+slides[i].classList.add('active');
+[...dots.children].forEach((d,k)=>d.style.background=k===i?'#D2EB00':'rgba(255,255,255,.3)');
+</script>
+</body>
+</html>
+

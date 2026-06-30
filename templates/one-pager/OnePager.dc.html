@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="One-pagers (print, Letter)" description="Three printable Letter-size one-pagers — Case study (results + spokesperson), Capabilities leave-behind (what we do + secret sauces), and POV / thought-leadership (a single argument with proof). Print rules: ≥12pt body, generous but full pages, one accent per sheet. Print to PDF straight out of the box (one page each). Tweak the accent color and image placeholders." -->
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="./ds-base.js"></script>
+<style>
+  html, body { margin:0; padding:0; background:var(--tha-stone-100); }
+  body { display:flex; flex-direction:column; align-items:center; gap:40px; padding:40px 0; }
+  .page { position:relative; width:816px; min-height:1056px; box-sizing:border-box; background:var(--tha-paper); padding:64px 64px 52px; font-family:var(--font-sans); color:var(--tha-navy); box-shadow:var(--shadow-3); }
+  .page .em { font-family:var(--font-serif); font-style:italic; font-weight:400; }
+  .eyebrow { font:700 15px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase; display:inline-flex; align-items:center; gap:11px; }
+  .eyebrow .dot { width:11px; height:11px; border-radius:50%; flex:none; }
+  .foot { position:absolute; left:64px; right:64px; bottom:38px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--tha-navy-200); padding-top:15px; font:500 14px/1 var(--font-mono); color:var(--tha-navy-400); }
+  @media print {
+    html, body { background:#fff; padding:0; gap:0; }
+    .page { box-shadow:none; width:100%; min-height:100vh; padding:0.55in 0.6in; page-break-after:always; }
+    @page { size:letter; margin:0; }
+  }
+</style>
+</helmet>
+
+<!-- ============ PAGE 1 · CASE STUDY ============ -->
+<div class="page">
+  <div style="display:flex; align-items:center; justify-content:space-between;">
+    <span class="eyebrow" style="color:var(--tha-navy-500);"><span class="dot" style="background:var(--op-accent, var(--tha-purple));"></span>Case study &middot; 2026</span>
+    <img src="../../assets/logo-horizontal-navy-lime.svg" alt="The Hoffman Agency" style="height:26px; width:auto;"/>
+  </div>
+
+  <h1 style="font:700 60px/1.03 var(--font-sans); letter-spacing:-.025em; margin:30px 0 0; max-width:15ch;">From datasheet to <em class="em" style="color:var(--op-accent, var(--tha-purple));">narrative</em>.</h1>
+  <p style="font:400 20px/1.5 var(--font-sans); color:var(--tha-navy-500); margin:18px 0 0; max-width:52ch;">How we turned a technical infrastructure launch into the story a board actually repeated &mdash; and tripled tier-1 share of voice in one quarter.</p>
+
+  <div style="display:flex; border-top:2px solid var(--tha-navy); border-bottom:1px solid var(--tha-navy-200); margin-top:34px;">
+    <div style="flex:1; padding:24px 28px 24px 0; border-right:1px solid var(--tha-navy-200);">
+      <div style="font:800 60px/1 var(--font-sans); letter-spacing:-.03em;">312</div>
+      <div style="font:500 14px/1.3 var(--font-mono); color:var(--op-accent, var(--tha-purple)); margin-top:9px;">TIER-1 STORIES</div>
+    </div>
+    <div style="flex:1; padding:24px 28px; border-right:1px solid var(--tha-navy-200);">
+      <div style="font:800 60px/1 var(--font-sans); letter-spacing:-.03em;">2.3&times;</div>
+      <div style="font:500 14px/1.3 var(--font-mono); color:var(--op-accent, var(--tha-purple)); margin-top:9px;">SHARE OF VOICE</div>
+    </div>
+    <div style="flex:1; padding:24px 0 24px 28px;">
+      <div style="font:800 60px/1 var(--font-sans); letter-spacing:-.03em;">90d</div>
+      <div style="font:500 14px/1.3 var(--font-mono); color:var(--op-accent, var(--tha-purple)); margin-top:9px;">TO FIRST KEYNOTE</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1.25fr 1fr; gap:38px; margin-top:34px; align-items:start;">
+    <div>
+      <h2 style="font:600 24px/1.25 var(--font-sans); margin:0 0 14px;">The approach</h2>
+      <p style="font:400 16px/1.6 var(--font-sans); color:var(--tha-navy-700); margin:0 0 14px;">We found the one conviction the client could credibly own, then built the proof around it: a flagship data report, three executive bylines, and a tier-1 media push timed to the launch.</p>
+      <p style="font:400 16px/1.6 var(--font-sans); color:var(--tha-navy-700); margin:0;">The result wasn&rsquo;t more coverage &mdash; it was the <em>right</em> coverage, repeated by the people who mattered. Outcomes, not outputs.</p>
+    </div>
+    <div class="tha-placeholder" data-slot="onepager-img" style="aspect-ratio:4/5; padding:24px; gap:9px;">
+      <div class="tha-placeholder__label" style="font-size:16px;">Spokesperson &middot; 4:5 &middot; generate 1080&times;1350px</div>
+      <div class="tha-placeholder__hint" style="font-size:13px; max-width:28ch;">Shoulders-up portrait of the client spokesperson, warm grade, eye contact, soft natural light.</div>
+      <div class="tha-placeholder__prompt" style="font-size:12px; max-width:34ch;">Environmental portrait of a tech executive, shoulders up, direct eye contact, soft natural window light, warm colour grade, shallow depth of field, business-casual. Vertical 4:5, 1080&times;1350px.</div>
+    </div>
+  </div>
+
+  <blockquote style="margin:34px 0 0; border:0;">
+    <p style="font:400 italic 32px/1.25 var(--font-serif); color:var(--tha-navy); margin:0; max-width:26ch;">&ldquo;They made us <span style="background:var(--op-accent, var(--tha-purple)); padding:0 .1em;">worth quoting</span>.&rdquo;</p>
+    <div style="font:500 14px/1.3 var(--font-mono); color:var(--tha-navy-400); margin-top:15px;">MIRA CHEN &middot; CTO, SERIES-C INFRASTRUCTURE</div>
+  </blockquote>
+
+  <div class="foot"><span>hello@hoffman.agency</span><span>thehoffmanagency.com</span></div>
+</div>
+
+<!-- ============ PAGE 2 · CAPABILITIES LEAVE-BEHIND ============ -->
+<div class="page">
+  <div style="display:flex; align-items:center; justify-content:space-between;">
+    <span class="eyebrow" style="color:var(--tha-navy-500);"><span class="dot" style="background:var(--op-accent, var(--tha-purple));"></span>Capabilities &middot; What we do</span>
+    <img src="../../assets/logo-horizontal-navy-lime.svg" alt="The Hoffman Agency" style="height:26px; width:auto;"/>
+  </div>
+
+  <h1 style="font:700 56px/1.04 var(--font-sans); letter-spacing:-.025em; margin:30px 0 0; max-width:18ch;">Counsel without conviction is just <em class="em" style="color:var(--op-accent, var(--tha-purple));">consulting</em>.</h1>
+  <p style="font:400 18px/1.5 var(--font-sans); color:var(--tha-navy-500); margin:16px 0 0; max-width:56ch;">We help tech leaders turn opinion into influence that moves markets &mdash; across earned, digital, social, content and creative.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:34px;">
+    <div style="border-top:1.5px solid var(--tha-navy); padding-top:16px;"><div style="font:600 21px/1.2 var(--font-sans);">Media &amp; narrative strategy</div><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-500); margin:8px 0 0;">The conviction you own and the case that proves it.</p></div>
+    <div style="border-top:1.5px solid var(--tha-navy); padding-top:16px;"><div style="font:600 21px/1.2 var(--font-sans);">Executive thought leadership</div><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-500); margin:8px 0 0;">Bylines, keynotes, and points of view that travel.</p></div>
+    <div style="border-top:1.5px solid var(--tha-navy); padding-top:16px;"><div style="font:600 21px/1.2 var(--font-sans);">Content &amp; social</div><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-500); margin:8px 0 0;">Earned-first storytelling, every channel that matters.</p></div>
+    <div style="border-top:1.5px solid var(--tha-navy); padding-top:16px;"><div style="font:600 21px/1.2 var(--font-sans);">Launch &amp; campaign</div><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-500); margin:8px 0 0;">Moments engineered to be picked up and repeated.</p></div>
+  </div>
+
+  <div style="margin-top:34px; background:var(--tha-navy); padding:36px 40px;">
+    <div style="font:700 14px/1 var(--font-mono); letter-spacing:.12em; color:var(--op-accent, var(--tha-purple)); text-transform:uppercase;">Our secret sauces</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:22px;">
+      <div><div style="font:600 22px/1.15 var(--font-sans); color:var(--tha-paper);">VIBE</div><p style="font:400 14px/1.5 var(--font-sans); color:var(--tha-navy-200); margin:8px 0 0;">Brand experience &mdash; felt, not just seen.</p></div>
+      <div><div style="font:600 22px/1.15 var(--font-sans); color:var(--tha-paper);">Creative Codex</div><p style="font:400 14px/1.5 var(--font-sans); color:var(--tha-navy-200); margin:8px 0 0;">A formula for great ideas, repeatably.</p></div>
+      <div><div style="font:600 22px/1.15 var(--font-sans); color:var(--tha-paper);">Periodic Table</div><p style="font:400 14px/1.5 var(--font-sans); color:var(--tha-navy-200); margin:8px 0 0;">The science behind stories that move markets.</p></div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:48px; margin-top:32px; border-top:1px solid var(--tha-navy-200); padding-top:22px;">
+    <div><div style="font:800 44px/1 var(--font-sans); letter-spacing:-.03em;">14</div><div style="font:500 13px/1.3 var(--font-mono); color:var(--tha-navy-400); margin-top:7px;">GLOBAL OFFICES</div></div>
+    <div><div style="font:800 44px/1 var(--font-sans); letter-spacing:-.03em;">30y</div><div style="font:500 13px/1.3 var(--font-mono); color:var(--tha-navy-400); margin-top:7px;">IN TECH COMMS</div></div>
+    <div><div style="font:800 44px/1 var(--font-sans); letter-spacing:-.03em;">1</div><div style="font:500 13px/1.3 var(--font-mono); color:var(--tha-navy-400); margin-top:7px;">TEAM, NO SILOS</div></div>
+  </div>
+
+  <div class="foot"><span>hello@hoffman.agency</span><span>thehoffmanagency.com</span></div>
+</div>
+
+<!-- ============ PAGE 3 · POV / THOUGHT LEADERSHIP ============ -->
+<div class="page" style="background:var(--tha-navy); color:var(--tha-paper);">
+  <div style="display:flex; align-items:center; justify-content:space-between;">
+    <span class="eyebrow" style="color:var(--tha-navy-200);"><span class="dot" style="background:var(--tha-lime);"></span>Point of view</span>
+    <img src="../../assets/logo-horizontal-white-lime.svg" alt="The Hoffman Agency" style="height:26px; width:auto;"/>
+  </div>
+
+  <h1 style="font:700 64px/1.02 var(--font-sans); letter-spacing:-.03em; margin:34px 0 0; max-width:15ch; color:var(--tha-paper);">Attention is cheap. <em class="em" style="color:var(--tha-lime);">Trust</em> is the scarce asset.</h1>
+  <p style="font:400 19px/1.55 var(--font-sans); color:var(--tha-navy-200); margin:20px 0 0; max-width:56ch;">Anyone can be seen now. Almost no one is believed. The brands that win the next decade won&rsquo;t be the loudest &mdash; they&rsquo;ll be the most credible, and credibility is earned in public, over time, by people willing to hold a real opinion.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px; margin-top:44px; border-top:1.5px solid var(--tha-navy-500); padding-top:28px;">
+    <div><div style="font:600 18px/1 var(--font-mono); color:var(--tha-lime);">01</div><h3 style="font:600 22px/1.15 var(--font-sans); color:var(--tha-paper); margin:14px 0 8px;">Conviction first</h3><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-200); margin:0;">Start with the opinion only you can credibly own.</p></div>
+    <div><div style="font:600 18px/1 var(--font-mono); color:var(--tha-lime);">02</div><h3 style="font:600 22px/1.15 var(--font-sans); color:var(--tha-paper); margin:14px 0 8px;">Proof you didn&rsquo;t buy</h3><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-200); margin:0;">Third-party belief beats any paid impression.</p></div>
+    <div><div style="font:600 18px/1 var(--font-mono); color:var(--tha-lime);">03</div><h3 style="font:600 22px/1.15 var(--font-sans); color:var(--tha-paper); margin:14px 0 8px;">Make it travel</h3><p style="font:400 15px/1.55 var(--font-sans); color:var(--tha-navy-200); margin:0;">One story, repeated by the right voices everywhere.</p></div>
+  </div>
+
+  <blockquote style="margin:48px 0 0; border:0;">
+    <p style="font:400 italic 36px/1.22 var(--font-serif); color:var(--tha-paper); margin:0; max-width:24ch;">Stop chasing attention. Start building the case for <span style="color:var(--tha-lime);">belief</span>.</p>
+    <div style="font:500 14px/1.3 var(--font-mono); color:var(--tha-navy-300); margin-top:18px;">THE HOFFMAN POV &middot; 2026</div>
+  </blockquote>
+
+  <div class="foot" style="border-top-color:var(--tha-navy-500); color:var(--tha-navy-300);"><span>hello@hoffman.agency</span><span>thehoffmanagency.com</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 816, &quot;height&quot;: 1056}, &quot;accent&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;var(--tha-purple)&quot;, &quot;options&quot;: [&quot;var(--tha-purple)&quot;, &quot;var(--tha-lime-600)&quot;, &quot;#145F7B&quot;, &quot;#6103B9&quot;, &quot;#CB65FF&quot;], &quot;tsType&quot;: &quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { this._apply(); }
+  componentDidUpdate() { this._apply(); }
+  _apply() {
+    document.documentElement.style.setProperty('--op-accent', this.props.accent || 'var(--tha-purple)');
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
+
