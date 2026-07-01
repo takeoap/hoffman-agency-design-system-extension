@@ -1,0 +1,2143 @@
+<!doctype html>
+<!-- @dsCard group="Slides" name="Hoffman Brand Guidelines deck (CI/VI)" subtitle="52 slides — the rules AND the demonstration. v2 adds surface demos, pairing roles, image layouts + droppable prompt placeholders." viewport="1920x1080" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Hoffman Agency — Brand Guidelines</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="icon" href="../assets/mark-square-lime.png">
+<style>
+  :root { --slide-pad: 120px; }
+  html, body { margin: 0; padding: 0; background: #0E1C2B; }
+  * { box-sizing: border-box; }
+  deck-stage > section {
+    width: 1920px; height: 1080px;
+    background: var(--bg-1);
+    color: var(--fg-1);
+    font-family: var(--font-sans);
+    padding: var(--slide-pad);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .bg-navy   { background: var(--tha-navy);   color: var(--fg-on-dark); }
+  .bg-lime   { background: var(--tha-lime);   color: var(--tha-navy); }
+  .bg-purple { background: var(--tha-purple); color: var(--tha-paper); }
+  .bg-teal   { background: var(--tha-teal);   color: var(--tha-paper); }
+  .bg-paper  { background: var(--bg-1);       color: var(--fg-1); }
+  .bg-violet { background: var(--tha-violet); color: var(--tha-navy); }
+  .bg-aqua   { background: var(--tha-aqua);   color: var(--tha-navy); }
+
+  .eyebrow {
+    font: 700 22px/1 var(--font-sans);
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--fg-2);
+  }
+  .eyebrow.on-dark { color: var(--tha-lime); }
+  .eyebrow .dot {
+    display: inline-block; width: 14px; height: 14px;
+    background: var(--tha-lime); border-radius: 999px;
+    vertical-align: middle; margin-right: 14px;
+  }
+
+  .display    { font: 800 220px/.92 var(--font-sans); letter-spacing:-.035em; color: var(--tha-navy); margin: 0; }
+  .display.on-dark { color: var(--tha-paper); }
+  .h-section  { font: 700 200px/.96 var(--font-sans); letter-spacing:-.03em; color: var(--tha-navy); margin: 0; }
+  .h-section.on-dark { color: var(--tha-paper); }
+  .h-medium   { font: 700 80px/1.02 var(--font-sans); letter-spacing:-.025em; color: var(--tha-navy); margin: 0; }
+  .h-medium.on-dark { color: var(--tha-paper); }
+  .h-small    { font: 600 52px/1.1 var(--font-sans); letter-spacing:-.02em; color: var(--tha-navy); margin: 0; }
+  .h-small.on-dark { color: var(--tha-paper); }
+  .body-lg    { font: 400 32px/1.45 var(--font-sans); color: var(--fg-1); max-width: 22em; }
+  .body-lg.on-dark { color: var(--tha-navy-200); }
+  .body-md    { font: 400 26px/1.5 var(--font-sans); color: var(--fg-2); max-width: 24em; }
+  .body-md.on-dark { color: var(--tha-navy-200); }
+  .body-sm    { font: 500 20px/1.4 var(--font-sans); color: var(--fg-2); }
+  .mono       { font: 500 18px/1 var(--font-mono); letter-spacing:.04em; }
+  em, .em     { font-family: var(--font-serif); font-weight: 400; font-style: italic; }
+  .em-lime    { color: var(--tha-lime); }
+  .em-violet  { color: var(--tha-violet); }
+  .em-purple  { color: var(--tha-purple); }
+  .em-aqua    { color: var(--tha-aqua); }
+  .em-teal    { color: var(--tha-teal); }
+
+  .chrome-logo {
+    position: absolute; left: var(--slide-pad); bottom: 60px;
+    height: 36px; opacity: .9;
+  }
+  .chrome-page {
+    position: absolute; right: var(--slide-pad); bottom: 60px;
+    font: 500 16px/1 var(--font-mono); letter-spacing: .12em;
+    color: var(--fg-3); text-transform: uppercase;
+  }
+  .chrome-page.on-dark { color: var(--tha-navy-300); }
+  .chrome-page.on-lime { color: var(--tha-navy); }
+
+  .scribble-wrap   { position: relative; display: inline-block; }
+  .scribble-under  {
+    position: absolute; left: -2%; bottom: -.12em;
+    width: 104%; height: .32em; overflow: visible; pointer-events: none;
+  }
+
+  .stretch { flex: 1 1 auto; }
+  .row     { display: flex; align-items: center; }
+
+  /* Card-like swatch */
+  .swatch { display: flex; flex-direction: column; justify-content: space-between; padding: 36px; }
+  .swatch .name { font: 800 64px/1 var(--font-sans); letter-spacing:-.02em; }
+  .swatch .hex  { font: 500 22px/1.3 var(--font-mono); }
+  .swatch .tok  { font: 500 16px/1.3 var(--font-mono); opacity:.7; margin-top:8px; }
+  .swatch .tag  { font: 700 14px/1 var(--font-sans); letter-spacing:.18em; text-transform:uppercase; }
+
+  /* Do/Don't cols */
+  .col-do, .col-dont { display:flex; flex-direction:column; gap:18px; padding:36px 40px; }
+  .col-do   { border-left: 6px solid var(--tha-lime); }
+  .col-dont { border-left: 6px solid var(--tha-violet); }
+  .col-label { font: 700 16px/1 var(--font-sans); letter-spacing:.18em; text-transform:uppercase; }
+
+  /* Pills */
+  .pill { display: inline-flex; align-items: center; gap: 12px; font: 700 16px/1 var(--font-sans);
+          letter-spacing:.14em; text-transform:uppercase; padding: 12px 20px; border-radius: 999px;
+          background: transparent; color: var(--tha-navy); border: 1.5px solid var(--tha-navy); }
+  .pill.filled { background: var(--tha-lime); border-color: var(--tha-lime); }
+
+  /* Type scale row */
+  .type-row { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: baseline;
+              padding: 14px 0; border-bottom: 1px solid var(--border-2); }
+  .type-row .label { font: 500 18px/1.3 var(--font-mono); color: var(--fg-2); }
+
+  /* Proportion-bar swatch (slide 17) */
+  .prop-cell { display:flex; flex-direction:column; justify-content:space-between; padding:32px 28px; min-height:0; overflow:hidden; }
+  .prop-cell .meta { font:500 24px/1.4 var(--font-sans); letter-spacing:-.01em; }
+  .prop-cell .meta .hex { font:600 28px/1.5 var(--font-sans); display:block; margin-bottom:8px; }
+  .prop-cell .pct { font:800 96px/1 var(--font-sans); letter-spacing:-.03em; }
+  .prop-cell.small .pct { font-size:56px; }
+  .prop-cell.small .meta { font-size:16px; }
+  .prop-cell.small .meta .hex { font-size:20px; margin-bottom:6px; }
+  .prop-cell.small { padding:24px 18px; }
+
+  /* Demo stat */
+  .stat-num { font:800 180px/.92 var(--font-sans); letter-spacing:-.04em; color:var(--tha-navy); }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+<!-- ============================================================
+     COVER & CONTENTS
+     ============================================================ -->
+
+<!-- 01 — COVER -->
+<section class="bg-navy" data-screen-label="01 Cover">
+  <!-- Use 2: the line is the background layer of this dark field — edge-locked to all four edges (the SVG artboard is 1920×1080, so the sharp ends sit exactly on the slide edges), behind content -->
+  <img src="../assets/storyline-line-lime.svg" alt="" style="position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none;"/>
+
+  <div class="row" style="gap:18px; position:relative; z-index:1;">
+    <span class="eyebrow on-dark"><span class="dot"></span>Brand guidelines &middot; v2 &middot; 2026</span>
+  </div>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; position:relative; z-index:1; max-width:700px;">
+    <div class="display on-dark" style="font-size:120px; line-height:.95;">
+      How <em class="em-lime">we</em><br/>look, sound,<br/>&amp;
+      <span class="scribble-wrap">
+        <span style="color:var(--tha-lime)">show up.</span>
+        <svg class="scribble-under" viewBox="0 0 400 30" preserveAspectRatio="none">
+          <path d="M 8 22 Q 100 4, 200 16 T 392 12" stroke="#D2EB00" stroke-width="9" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+    <p class="body-lg on-dark" style="margin-top:40px; font-size:24px; max-width:32em;">
+      The rules &mdash; and the demonstration. One document that both spells out our CI/VI and shows how it lives in slides.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt="" style="z-index:2;"/>
+  <div class="chrome-page on-dark" style="z-index:2;">01 &middot; cover</div>
+</section>
+
+
+<!-- 02 — CONTENTS -->
+<section class="bg-paper" data-screen-label="02 Contents">
+  <span class="eyebrow">In this document</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">
+    Six <em class="em-purple">parts.</em> Rules + demonstration.
+  </h2>
+  <div class="stretch" style="margin-top:56px; display:grid; grid-template-columns: repeat(6, 1fr); gap:0; align-items:start; border-top:1.5px solid var(--tha-navy);">
+    <div style="padding:32px 22px; border-right:1px solid var(--border-2);">
+      <span class="mono" style="color:var(--tha-violet)">PART 01</span>
+      <h3 class="h-small" style="margin-top:16px; font-size:34px;">Foundations</h3>
+      <p class="body-md" style="margin-top:12px; font-size:18px;">Purpose, voice, signature lines.</p>
+      <span class="mono" style="display:block; margin-top:24px; color:var(--fg-3);">03 – 07</span>
+    </div>
+    <div style="padding:32px 22px; border-right:1px solid var(--border-2);">
+      <span class="mono" style="color:var(--tha-purple)">PART 02</span>
+      <h3 class="h-small" style="margin-top:16px; font-size:34px;">Logo</h3>
+      <p class="body-md" style="margin-top:12px; font-size:18px;">Variants, clearspace, misuse, the Storyline.</p>
+      <span class="mono" style="display:block; margin-top:24px; color:var(--fg-3);">08 – 13</span>
+    </div>
+    <div style="padding:32px 22px; border-right:1px solid var(--border-2);">
+      <span class="mono" style="color:var(--fg-accent)">PART 03</span>
+      <h3 class="h-small" style="margin-top:16px; font-size:34px;">Color</h3>
+      <p class="body-md" style="margin-top:12px; font-size:18px;">Palette, surfaces, pairings, contrast.</p>
+      <span class="mono" style="display:block; margin-top:24px; color:var(--fg-3);">14 – 19</span>
+    </div>
+    <div style="padding:32px 22px; border-right:1px solid var(--border-2);">
+      <span class="mono" style="color:var(--tha-teal)">PART 04</span>
+      <h3 class="h-small" style="margin-top:16px; font-size:34px;">Type</h3>
+      <p class="body-md" style="margin-top:12px; font-size:18px;">Poppins + Baskerville italic. The signature move.</p>
+      <span class="mono" style="display:block; margin-top:24px; color:var(--fg-3);">20 – 25</span>
+    </div>
+    <div style="padding:32px 22px; border-right:1px solid var(--border-2);">
+      <span class="mono" style="color:var(--tha-violet)">PART 05</span>
+      <h3 class="h-small" style="margin-top:16px; font-size:34px;">System</h3>
+      <p class="body-md" style="margin-top:12px; font-size:18px;">Annotations, UI, imagery, placeholders &amp; image layouts.</p>
+      <span class="mono" style="display:block; margin-top:24px; color:var(--fg-3);">26 – 31</span>
+    </div>
+    <div style="padding:32px 22px;">
+      <span class="mono" style="color:var(--tha-purple)">PART 06</span>
+      <h3 class="h-small" style="margin-top:16px; font-size:34px;">In practice</h3>
+      <p class="body-md" style="margin-top:12px; font-size:18px;">Slides that put it all together.</p>
+      <span class="mono" style="display:block; margin-top:24px; color:var(--fg-3);">32 – 36</span>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">02 &middot; contents</div>
+</section>
+
+
+<!-- ============================================================
+     PART 1 · FOUNDATIONS
+     ============================================================ -->
+
+<!-- 03 — SECTION 1 -->
+<section class="bg-paper" data-screen-label="03 Part 01">
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <span class="mono" style="color:var(--tha-violet); font-size:24px; margin-bottom:32px;">PART 01</span>
+    <h1 class="h-section"><em class="em-purple">Foundations.</em></h1>
+    <p class="body-lg" style="margin-top:48px; font-size:32px; color:var(--fg-2); max-width:28em;">
+      Purpose, positioning, voice. What we believe before we draw a single line.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">03 &middot; section</div>
+</section>
+
+
+<!-- 04 — OUR WHY -->
+<section class="bg-paper" data-screen-label="04 Our why">
+  <span class="eyebrow">Our why</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; max-width:1500px;">
+    <p class="h-medium" style="font-size:96px;">
+      We exist to help leaders<br/>
+      and brands turn opinion<br/>
+      into <em class="em-purple">Techfluence.</em>
+    </p>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:48px; margin-top:64px; padding-top:32px; border-top:1.5px solid var(--tha-navy);">
+      <div>
+        <span class="mono" style="color:var(--tha-violet)">PURPOSE &middot; WHY</span>
+        <p class="body-md" style="margin-top:12px; font-size:22px;">We help leaders turn opinion into influence.</p>
+      </div>
+      <div>
+        <span class="mono" style="color:var(--tha-purple)">POSITIONING &middot; HOW</span>
+        <p class="body-md" style="margin-top:12px; font-size:22px;">Being Techfluent is our edge for turning complex ideas into opinions that shape markets.</p>
+      </div>
+      <div>
+        <span class="mono" style="color:var(--tha-teal)">PRODUCT &middot; WHAT</span>
+        <p class="body-md" style="margin-top:12px; font-size:22px;">The integrated comms agency of Techfluence.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">04 &middot; why</div>
+</section>
+
+
+<!-- 05 — VOICE DO/DON'T -->
+<section class="bg-paper" data-screen-label="05 Voice">
+  <span class="eyebrow">Our voice</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:22ch;">
+    Smart. Human. Energetic. Distilled. Bold. <em class="em-purple">Creative.</em> Authentic.
+  </h2>
+  <div class="stretch" style="margin-top:56px; display:grid; grid-template-columns: 1fr 1fr; gap:48px;">
+    <div class="col-do">
+      <span class="col-label" style="color:var(--fg-accent)">Do</span>
+      <p style="font:600 36px/1.3 var(--font-sans); margin:0;"><em class="em-purple">Clarity</em> in. Complexity out.</p>
+      <p style="font:600 36px/1.3 var(--font-sans); margin:0;">Built for tech. Human at heart.</p>
+      <p style="font:600 36px/1.3 var(--font-sans); margin:0;">Less noise. Sharper signal.</p>
+      <p style="font:500 22px/1.4 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">Short sentences. Then longer ones to breathe. Lead with the punchline. Active voice. No hedging. No emoji.</p>
+    </div>
+    <div class="col-dont">
+      <span class="col-label" style="color:var(--tha-purple)">Don't</span>
+      <p style="font:600 32px/1.3 var(--font-sans); color:var(--fg-2); margin:0; text-decoration:line-through; text-decoration-color:var(--tha-violet);">Unlocking next-gen comms.</p>
+      <p style="font:600 32px/1.3 var(--font-sans); color:var(--fg-2); margin:0; text-decoration:line-through; text-decoration-color:var(--tha-violet);">End-to-end storytelling solutions.</p>
+      <p style="font:600 32px/1.3 var(--font-sans); color:var(--fg-2); margin:0; text-decoration:line-through; text-decoration-color:var(--tha-violet);">Let's synergize your narrative.</p>
+      <p style="font:500 22px/1.4 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">No <em>leverage</em>, <em>best-in-class</em>, <em>revolutionary</em>, <em>at the intersection of</em>. Never <em>Learn more</em> on a CTA.</p>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">05 &middot; voice</div>
+</section>
+
+
+<!-- 06 — DEMO: Aspirational statement -->
+<section class="bg-paper" data-screen-label="06 Demo aspirational">
+  <span class="eyebrow">Demonstration &middot; voice in headline form</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; max-width:1500px;">
+    <p class="h-medium" style="font-size:104px;">
+      To be recognized as<br/>
+      <em class="em-purple">the</em> premium agency<br/>
+      that helps tech brands<br/>
+      solve hard <em class="em-purple">business</em> problems.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">06 &middot; demo</div>
+</section>
+
+
+<!-- 07 — DEMO: Pull quote -->
+<section class="bg-teal" data-screen-label="07 Demo pull quote">
+  <span class="eyebrow on-dark" style="color:var(--tha-aqua)">Demonstration &middot; pull quote</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <blockquote style="font:600 96px/1.12 var(--font-sans); letter-spacing:-.02em; color:var(--tha-paper); margin:0; max-width:18ch;">
+      &ldquo;<em class="em-lime">Influence</em> is the real currency of business. Clients pay <em class="em-lime">premium for influence</em>&nbsp;— it moves markets, not just products.&rdquo;
+    </blockquote>
+    <div class="row" style="margin-top:48px; gap:20px;">
+      <div style="width:64px; height:4px; background:var(--tha-aqua);"></div>
+      <span class="body-md" style="color:var(--tha-aqua); font-size:24px;">Hoffman point of view &middot; 2026</span>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page on-dark" style="color:var(--tha-aqua)">07 &middot; demo</div>
+</section>
+
+
+<!-- ============================================================
+     PART 2 · LOGO
+     ============================================================ -->
+
+<!-- 08 — SECTION 2 -->
+<section class="bg-paper" data-screen-label="08 Part 02">
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <span class="mono" style="color:var(--tha-purple); font-size:24px; margin-bottom:32px;">PART 02</span>
+    <h1 class="h-section">The <em class="em-purple">logo.</em></h1>
+    <p class="body-lg" style="margin-top:48px; font-size:32px; color:var(--fg-2); max-width:28em;">
+      A wordmark, a stacked mark, and a square. Plus the Storyline squiggle — our most distinctive asset.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">08 &middot; section</div>
+</section>
+
+
+<!-- 09 — LOGO VARIANTS -->
+<section class="bg-paper" data-screen-label="09 Logo variants">
+  <span class="eyebrow">Logo variants</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Three <em class="em-purple">forms.</em><br/>One identity.</h2>
+  <div class="stretch" style="margin-top:56px; display:grid; grid-template-columns: 1.6fr 1fr 0.8fr; gap:32px;">
+    <div style="background:#fff; border:1px solid var(--border-2); padding:56px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1;">
+        <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:80%; max-height:220px;"/>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--tha-violet);">HORIZONTAL &middot; PRIMARY</div>
+        <p class="body-md" style="margin-top:8px; font-size:20px;">Default sign-off. Use everywhere there's room.</p>
+      </div>
+    </div>
+    <div style="background:#fff; border:1px solid var(--border-2); padding:56px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1;">
+        <img src="../assets/logo-stacked-navy-lime.svg" alt="" style="max-width:80%; max-height:260px;"/>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--tha-purple);">STACKED</div>
+        <p class="body-md" style="margin-top:8px; font-size:20px;">Square formats. Posters, social.</p>
+      </div>
+    </div>
+    <div style="background:var(--tha-lime); padding:56px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1;">
+        <img src="../assets/storyline-navy-lime.svg" alt="" style="max-width:80%; max-height:260px;"/>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--tha-navy);">SQUARE &middot; AVATAR</div>
+        <p class="body-md" style="margin-top:8px; font-size:20px; color:var(--tha-navy);">Favicon. App icon. Profile.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">09 &middot; variants</div>
+</section>
+
+
+<!-- 10 — ON BACKGROUNDS -->
+<section class="bg-paper" data-screen-label="10 Logo on backgrounds">
+  <span class="eyebrow">On backgrounds</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Match the <em class="em-purple">background.</em></h2>
+  <p class="body-lg" style="margin-top:18px; font-size:22px; max-width:48em; color:var(--fg-2);">
+    Paper or light: full 2-color (navy + lime) lockup. Lime: 1-color solid navy. Navy <em class="em-purple">and</em> any secondary-color background (Lavender, Purple, Cyan, Teal): 1-color pure white. Never the white-and-lime mix.
+  </p>
+  <div class="stretch" style="margin-top:36px; display:grid; grid-template-columns: repeat(4, 1fr); gap:24px;">
+    <!-- Paper -->
+    <div style="background:var(--tha-paper); border:1px solid var(--border-2); display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1; padding:48px;">
+        <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:90%; max-height:120px;"/>
+      </div>
+      <div style="padding:18px 24px; border-top:1px solid var(--border-2);">
+        <div class="mono">PAPER &middot; #FAFAF7</div>
+        <div style="font:500 16px/1.35 var(--font-sans); color:var(--fg-2); margin-top:6px;">2-color navy + lime.</div>
+      </div>
+    </div>
+    <!-- Lime -->
+    <div style="background:var(--tha-lime); display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1; padding:48px;">
+        <img src="../assets/logo-horizontal-navy.svg" alt="" style="max-width:90%; max-height:120px;"/>
+      </div>
+      <div style="padding:18px 24px; border-top:1px solid rgba(24,45,67,.12);">
+        <div class="mono" style="color:var(--tha-navy);">LIME &middot; #D2EB00</div>
+        <div style="font:500 16px/1.35 var(--font-sans); color:var(--tha-navy); opacity:.75; margin-top:6px;">1-color solid navy.</div>
+      </div>
+    </div>
+    <!-- Navy -->
+    <div style="background:var(--tha-navy); display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1; padding:48px;">
+        <img src="../assets/logo-horizontal-white.svg" alt="" style="max-width:90%; max-height:120px;"/>
+      </div>
+      <div style="padding:18px 24px; border-top:1px solid rgba(255,255,255,.12);">
+        <div class="mono" style="color:var(--tha-lime);">NAVY &middot; #182D43</div>
+        <div style="font:500 16px/1.35 var(--font-sans); color:var(--tha-navy-200); margin-top:6px;">1-color pure white.</div>
+      </div>
+    </div>
+    <!-- Secondary (Purple) — 1-color pure white -->
+    <div style="background:var(--tha-purple); display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; justify-content:center; flex:1; padding:48px;">
+        <img src="../assets/logo-horizontal-white.svg" alt="" style="max-width:90%; max-height:120px;"/>
+      </div>
+      <div style="padding:18px 24px; border-top:1px solid rgba(255,255,255,.12);">
+        <div class="mono" style="color:var(--tha-aqua);">SECONDARY &middot; e.g. PURPLE</div>
+        <div style="font:500 16px/1.35 var(--font-sans); color:var(--tha-aqua); margin-top:6px;">1-color pure white. Same as navy.</div>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">10 &middot; backgrounds</div>
+</section>
+
+
+<!-- 11 — CLEARSPACE & MIN SIZE -->
+<section class="bg-paper" data-screen-label="11 Clearspace">
+  <span class="eyebrow">Clearspace &amp; minimum size</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Give it <em class="em-purple">room.</em></h2>
+  <div class="stretch" style="margin-top:56px; display:grid; grid-template-columns: 1.4fr 1fr; gap:80px; align-items:center;">
+    <div style="position:relative; background:#fff; border:1px solid var(--border-2); padding:120px; display:flex; align-items:center; justify-content:center; aspect-ratio: 5/3;">
+      <div style="position:absolute; inset:60px; border:2px dashed var(--tha-violet); pointer-events:none;"></div>
+      <div style="position:absolute; left:8px; top:50%; transform:translateY(-50%); font:500 22px/1 var(--font-mono); color:var(--tha-violet);">x</div>
+      <div style="position:absolute; right:8px; top:50%; transform:translateY(-50%); font:500 22px/1 var(--font-mono); color:var(--tha-violet);">x</div>
+      <div style="position:absolute; top:8px; left:50%; transform:translateX(-50%); font:500 22px/1 var(--font-mono); color:var(--tha-violet);">x</div>
+      <div style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font:500 22px/1 var(--font-mono); color:var(--tha-violet);">x</div>
+      <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:70%; max-height:160px;"/>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:32px;">
+      <div>
+        <div class="mono" style="color:var(--tha-violet);">CLEARSPACE</div>
+        <p style="font:500 26px/1.4 var(--font-sans); margin-top:12px;">Minimum padding around the logo equals the cap-height of <em class="em-violet">"H"</em> on all four sides.</p>
+      </div>
+      <div style="height:1px; background:var(--border-2);"></div>
+      <div>
+        <div class="mono" style="color:var(--tha-violet);">MIN SIZE &middot; HORIZONTAL</div>
+        <p style="font:500 26px/1.4 var(--font-sans); margin-top:12px;"><span class="mono" style="font-size:32px; color:var(--tha-navy);">24 px</span> tall on screen. <span class="mono" style="font-size:32px; color:var(--tha-navy);">8 mm</span> tall in print.</p>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--tha-violet);">MIN SIZE &middot; STACKED</div>
+        <p style="font:500 26px/1.4 var(--font-sans); margin-top:12px;"><span class="mono" style="font-size:32px; color:var(--tha-navy);">32 px</span> tall on screen. <span class="mono" style="font-size:32px; color:var(--tha-navy);">12 mm</span> tall in print.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">11 &middot; clearspace</div>
+</section>
+
+
+<!-- 12 — LOGO MISUSE -->
+<section class="bg-paper" data-screen-label="12 Misuse">
+  <span class="eyebrow">Logo misuse</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:20ch;">Six ways to <em class="em-purple">break</em> the brand.</h2>
+  <div class="stretch" style="margin-top:40px; display:grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap:28px;">
+    <div style="position:relative; background:#fff; border:1px solid var(--border-2); padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:70%; transform:rotate(-8deg);"/>
+      <span class="mono" style="color:var(--tha-purple);">DON'T ROTATE</span>
+      <svg style="position:absolute; right:18px; top:18px; width:48px; height:48px;" viewBox="0 0 24 24"><path d="M 4 4 L 20 20 M 20 4 L 4 20" stroke="#CB65FF" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+    <div style="position:relative; background:#fff; border:1px solid var(--border-2); padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:80%; transform:scaleX(1.6); transform-origin:center;"/>
+      <span class="mono" style="color:var(--tha-purple);">DON'T STRETCH</span>
+      <svg style="position:absolute; right:18px; top:18px; width:48px; height:48px;" viewBox="0 0 24 24"><path d="M 4 4 L 20 20 M 20 4 L 4 20" stroke="#CB65FF" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+    <div style="position:relative; background:#fff; border:1px solid var(--border-2); padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; filter:hue-rotate(60deg) saturate(2);">
+      <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:70%;"/>
+      <span class="mono" style="color:var(--tha-purple); filter:none;">DON'T RECOLOR</span>
+      <svg style="position:absolute; right:18px; top:18px; width:48px; height:48px; filter:none;" viewBox="0 0 24 24"><path d="M 4 4 L 20 20 M 20 4 L 4 20" stroke="#CB65FF" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+    <div style="position:relative; background: radial-gradient(circle at 22% 28%, #CB65FF 0%, transparent 42%), radial-gradient(circle at 72% 62%, #86FFF1 0%, transparent 40%), radial-gradient(circle at 55% 86%, #D2EB00 0%, transparent 38%), radial-gradient(circle at 84% 20%, #6103B9 0%, transparent 48%), radial-gradient(circle at 12% 78%, #145F7B 0%, transparent 45%), #2A4258; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <img src="../assets/logo-horizontal-white.svg" alt="" style="max-width:70%;"/>
+      <span class="mono" style="color:var(--tha-paper); background:rgba(24,45,67,.8); padding:6px 12px;">DON'T PUT ON BUSY IMAGE</span>
+      <svg style="position:absolute; right:18px; top:18px; width:48px; height:48px;" viewBox="0 0 24 24"><path d="M 4 4 L 20 20 M 20 4 L 4 20" stroke="#CB65FF" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+    <div style="position:relative; background:#fff; border:1px solid var(--border-2); padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:70%; filter:drop-shadow(0 8px 16px rgba(0,0,0,.3));"/>
+      <span class="mono" style="color:var(--tha-purple);">DON'T ADD EFFECTS</span>
+      <svg style="position:absolute; right:18px; top:18px; width:48px; height:48px;" viewBox="0 0 24 24"><path d="M 4 4 L 20 20 M 20 4 L 4 20" stroke="#CB65FF" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+    <div style="position:relative; background:#fff; border:1px solid var(--border-2); padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+      <img src="../assets/logo-horizontal-navy-lime.svg" alt="" style="max-width:18%;"/>
+      <span class="mono" style="color:var(--tha-purple);">DON'T USE BELOW MIN</span>
+      <svg style="position:absolute; right:18px; top:18px; width:48px; height:48px;" viewBox="0 0 24 24"><path d="M 4 4 L 20 20 M 20 4 L 4 20" stroke="#CB65FF" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">12 &middot; misuse</div>
+</section>
+
+
+<!-- 13 — STORYLINE SQUIGGLE -->
+<section class="bg-navy" data-screen-label="13 Storyline">
+  <span class="eyebrow on-dark">The signature motif</span>
+  <h2 class="h-medium on-dark" style="margin-top:20px; max-width:24ch;">The <em class="em-lime">Storyline</em> squiggle. The background decides the version.</h2>
+  <p class="body-lg on-dark" style="margin-top:14px; font-size:22px; max-width:46em; color:var(--tha-navy-200);">
+    A hand-drawn waveform that peaks up to the right. A <em class="em-lime">story arc</em>, not a chart. Hoffman's most distinctive asset after the wordmark.
+  </p>
+
+  <div class="stretch" style="margin-top:28px; display:grid; grid-template-columns: 1fr 1.6fr; gap:28px; min-height:0;">
+
+    <!-- Use 1 · Corner monogram (boxed square) -->
+    <div style="display:flex; flex-direction:column;">
+      <div style="flex:1; position:relative; min-height:280px; background:var(--tha-paper);">
+        <img src="../assets/storyline-navy-lime.svg" alt="" style="position:absolute; top:28px; right:28px; width:96px; height:96px; display:block;"/>
+        <div style="position:absolute; left:28px; bottom:28px; color:var(--tha-navy);">
+          <div style="font:700 11px/1 var(--font-sans); letter-spacing:.14em; text-transform:uppercase; color:var(--tha-purple); margin-bottom:10px;">on white / paper</div>
+          <div style="font:700 32px/1.05 var(--font-sans); letter-spacing:-.02em; max-width:11ch; color:var(--tha-navy);">Built for <em class="em-purple">tech.</em></div>
+        </div>
+      </div>
+      <div style="padding:18px 22px 0;">
+        <div class="mono" style="color:var(--tha-lime); font-size:14px;">USE 01 &middot; CORNER MONOGRAM &middot; ON LIGHT BACKGROUNDS</div>
+        <div style="font:500 12px/1 var(--font-mono); color:var(--tha-navy-300); margin-top:4px;">storyline-navy-lime.svg</div>
+        <p style="font:500 16px/1.45 var(--font-sans); color:var(--tha-paper); margin:10px 0 0; max-width:36em;">
+          The <em class="em-lime">boxed square</em>: lime square, navy squiggle. Self-contained &mdash; so it locks to a corner like a logo on <em class="em-lime">white, paper or any light surface</em>. The version you reach for when the background <em class="em-lime">isn't</em> navy.
+        </p>
+      </div>
+    </div>
+
+    <!-- Use 2 · Hero background (line variant) — three example backgrounds -->
+    <div style="display:flex; flex-direction:column;">
+      <div style="flex:1; min-height:280px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:0;">
+        <!-- on navy -->
+        <div style="background:var(--tha-navy); position:relative; overflow:hidden; border-right:1px solid rgba(210,235,0,.18);">
+          <img src="../assets/storyline-line-lime.svg" alt=""
+               style="position:absolute; top:0; right:0; bottom:0; height:100%; width:auto; max-width:none; display:block; pointer-events:none;"/>
+          <div style="position:absolute; left:20px; top:20px; right:20px; bottom:20px; display:flex; flex-direction:column; justify-content:center; color:var(--tha-paper);">
+            <div style="font:700 9px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--tha-lime); margin-bottom:8px;">on navy</div>
+            <div style="font:700 22px/1 var(--font-sans); letter-spacing:-.025em; max-width:10ch;">The story is <em class="em-lime">always</em> there.</div>
+          </div>
+        </div>
+        <!-- on lavender -->
+        <div style="background:var(--tha-violet); position:relative; overflow:hidden; border-right:1px solid rgba(24,45,67,.15);">
+          <img src="../assets/storyline-line-lime.svg" alt=""
+               style="position:absolute; top:0; right:0; bottom:0; height:100%; width:auto; max-width:none; display:block; pointer-events:none;"/>
+          <div style="position:absolute; left:20px; top:20px; right:20px; bottom:20px; display:flex; flex-direction:column; justify-content:center; color:var(--tha-navy);">
+            <div style="font:700 9px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--tha-navy); margin-bottom:8px;">on lavender</div>
+            <div style="font:700 22px/1 var(--font-sans); letter-spacing:-.025em; max-width:11ch;"><em>Clarity</em> at scale.</div>
+          </div>
+        </div>
+        <!-- on teal -->
+        <div style="background:var(--tha-teal); position:relative; overflow:hidden;">
+          <img src="../assets/storyline-line-lime.svg" alt=""
+               style="position:absolute; top:0; right:0; bottom:0; height:100%; width:auto; max-width:none; display:block; pointer-events:none;"/>
+          <div style="position:absolute; left:20px; top:20px; right:20px; bottom:20px; display:flex; flex-direction:column; justify-content:center; color:var(--tha-paper);">
+            <div style="font:700 9px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--tha-aqua); margin-bottom:8px;">on teal</div>
+            <div style="font:700 22px/1 var(--font-sans); letter-spacing:-.025em; max-width:11ch;">Less noise. <em class="em-aqua">sharper</em> signal.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:18px 22px 0;">
+        <div class="mono" style="color:var(--tha-lime); font-size:14px;">USE 02 &middot; LINE AS BACKGROUND LAYER &middot; ON DARK FIELDS</div>
+        <div style="font:500 12px/1 var(--font-mono); color:var(--tha-navy-300); margin-top:4px;">storyline-line-lime.svg</div>
+        <p style="font:500 16px/1.45 var(--font-sans); color:var(--tha-paper); margin:10px 0 0; max-width:48em;">
+          Just the line &mdash; <em class="em-lime">part of the dark field</em>, not a floating object. It sits as the bottom layer above the fill, behind your content, always lime. <em class="em-lime">Edge-locked</em>: full frame height, flush to the top, right &amp; bottom (no bleed) so the sharp ends meet the frame. Any brand color except lime.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,.12); display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+    <span class="mono" style="color:var(--tha-violet); padding-top:2px; font-size:14px;">NEVER</span>
+    <span style="font:500 15px/1.4 var(--font-sans); color:var(--tha-navy-200); flex:1;">Boxed monogram floating adrift on a navy field &middot; line floated as an object with its cut-ends showing &middot; line shrunk into a corner &middot; boxed square as a hero &middot; line on a lime background &middot; recolored away from lime &middot; inline with body text &middot; as a divider &middot; tiled or rotated.</span>
+  </div>
+
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page on-dark">13 &middot; storyline</div>
+</section>
+
+
+<!-- ============================================================
+     PART 3 · COLOR
+     ============================================================ -->
+
+<!-- 14 — SECTION 3 -->
+<section class="bg-lime" data-screen-label="14 Part 03">
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <span class="mono" style="color:var(--tha-navy); font-size:24px; margin-bottom:32px;">PART 03</span>
+    <h1 class="h-section" style="color:var(--tha-navy);"><em class="em-purple">Color.</em></h1>
+    <p class="body-lg" style="margin-top:48px; font-size:32px; color:var(--tha-navy); max-width:28em;">
+      Navy and lime do the work. Four secondaries each play a small role. No gradients. No exceptions.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page on-lime">14 &middot; section</div>
+</section>
+
+
+<!-- 15 — PRIMARY PALETTE -->
+<section class="bg-paper" data-screen-label="15 Primary palette" style="padding:0;">
+  <div style="padding: var(--slide-pad) var(--slide-pad) 0;">
+    <span class="eyebrow">Primary palette</span>
+    <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">The two that do the <em class="em-purple">work.</em></h2>
+  </div>
+  <div class="stretch" style="display:grid; grid-template-columns: 1fr 1fr; margin-top:48px;">
+    <div class="swatch bg-navy" style="color:var(--tha-paper);">
+      <span class="tag" style="color:var(--tha-lime);">Primary &middot; 30%</span>
+      <div>
+        <div class="name">Navy</div>
+        <div class="hex" style="margin-top:16px; color:var(--tha-paper);">#182D43 &middot; R24 G45 B67</div>
+        <div class="tok" style="color:var(--tha-navy-200);">--tha-navy</div>
+        <p class="body-md on-dark" style="margin-top:18px; font-size:20px; max-width:24em;">Backgrounds, body type, hairline rules. The structural color.</p>
+      </div>
+    </div>
+    <div class="swatch bg-lime" style="color:var(--tha-navy);">
+      <span class="tag">Accent &middot; 30%</span>
+      <div>
+        <div class="name">Lime</div>
+        <div class="hex" style="margin-top:16px;">#D2EB00 &middot; R210 G235 B0</div>
+        <div class="tok">--tha-lime</div>
+        <p class="body-md" style="margin-top:18px; font-size:20px; max-width:24em; color:var(--tha-navy);">Hero accent. Underlines, scribbles, single CTAs. Lime fails WCAG as text on white — use lime-600 (#A7BC00) instead.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">15 &middot; primary</div>
+</section>
+
+
+<!-- 16 — SECONDARY PALETTE -->
+<section class="bg-paper" data-screen-label="16 Secondary palette" style="padding:0 0 120px;">
+  <div style="padding: var(--slide-pad) var(--slide-pad) 0;">
+    <span class="eyebrow">Secondary palette</span>
+    <h2 class="h-medium" style="margin-top:24px; max-width:20ch;">Two <em class="em-purple">pairs.</em> Warm + cool.</h2>
+    <p class="body-lg" style="margin-top:18px; font-size:22px; max-width:58em; color:var(--fg-2);">
+      Two natural pairs &mdash; Lavender + Purple (warm), Cyan + Teal (cool). But they're no longer fenced off: <em class="em-purple">any two brand colors may combine, across the pairs included</em>, wherever the combination clears WCAG. Contrast is the gate, not pairing.
+    </p>
+  </div>
+  <div class="stretch" style="display:grid; grid-template-columns: repeat(4, 1fr); margin-top:36px;">
+    <div class="swatch bg-violet">
+      <span class="tag" style="color:var(--tha-navy);">Warm pair &middot; 10%</span>
+      <div>
+        <div class="name" style="font-size:54px;">Lavender</div>
+        <div class="hex" style="margin-top:12px; color:var(--tha-navy);">#CB65FF<br/>R203 G101 B255</div>
+        <div class="tok" style="color:var(--tha-navy);">--tha-violet</div>
+      </div>
+    </div>
+    <div class="swatch bg-purple" style="color:var(--tha-paper);">
+      <span class="tag" style="color:var(--tha-violet);">Warm pair &middot; 10%</span>
+      <div>
+        <div class="name" style="font-size:54px; color:var(--tha-paper);">Purple</div>
+        <div class="hex" style="margin-top:12px; color:var(--tha-paper);">#6103B9<br/>R97 G3 B185</div>
+        <div class="tok" style="color:var(--tha-violet);">--tha-purple</div>
+      </div>
+    </div>
+    <div class="swatch bg-aqua">
+      <span class="tag" style="color:var(--tha-navy);">Cool pair &middot; 10%</span>
+      <div>
+        <div class="name" style="font-size:54px;">Cyan</div>
+        <div class="hex" style="margin-top:12px; color:var(--tha-navy);">#86FFF1<br/>R135 G255 B241</div>
+        <div class="tok" style="color:var(--tha-navy);">--tha-aqua</div>
+      </div>
+    </div>
+    <div class="swatch bg-teal" style="color:var(--tha-paper);">
+      <span class="tag" style="color:var(--tha-aqua);">Cool pair &middot; 10%</span>
+      <div>
+        <div class="name" style="font-size:54px; color:var(--tha-paper);">Teal</div>
+        <div class="hex" style="margin-top:12px; color:var(--tha-paper);">#145F7B<br/>R20 G95 B123</div>
+        <div class="tok" style="color:var(--tha-aqua);">--tha-teal</div>
+      </div>
+    </div>
+  </div>
+  <!-- Pairing demo strip — cross-pollination, gated by contrast -->
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
+    <div style="padding:28px 36px; background:var(--tha-purple); color:var(--tha-aqua);">
+      <div class="mono" style="color:var(--tha-aqua); opacity:.9;">PURPLE BG · CYAN TYPE</div>
+      <div style="font:700 32px/1.05 var(--font-sans); letter-spacing:-.02em; margin-top:10px;">Cross-pair. <em class="em-aqua" style="font-size:21px;">Passes AA.</em></div>
+    </div>
+    <div style="padding:28px 36px; background:var(--tha-aqua); color:var(--tha-purple);">
+      <div class="mono" style="color:var(--tha-purple); opacity:.85;">CYAN BG · PURPLE TYPE</div>
+      <div style="font:700 32px/1.05 var(--font-sans); letter-spacing:-.02em; margin-top:10px;">Cross-pair. <em class="em-purple" style="font-size:21px;">Passes AA.</em></div>
+    </div>
+    <div style="padding:28px 36px; background:var(--tha-teal); color:var(--tha-aqua);">
+      <div class="mono" style="color:var(--tha-aqua); opacity:.85;">TEAL BG · CYAN TYPE</div>
+      <div style="font:700 32px/1.05 var(--font-sans); letter-spacing:-.02em; margin-top:10px;">Within pair. <em class="em-aqua" style="font-size:21px;">Passes.</em></div>
+    </div>
+    <div style="padding:28px 36px; background:var(--tha-violet); color:var(--tha-navy);">
+      <div class="mono" style="color:var(--tha-navy); opacity:.7;">LAVENDER BG · TEAL TYPE</div>
+      <div style="font:700 32px/1.05 var(--font-sans); letter-spacing:-.02em; margin-top:10px; text-decoration:line-through; text-decoration-color:var(--tha-purple);">Fails. 2.7:1.</div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">16 &middot; secondary</div>
+</section>
+
+<!-- 16b — COLOR AS SURFACE -->
+<section class="bg-paper" data-screen-label="16b Color as surface">
+  <span class="eyebrow">Color as surface</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:20ch;">Every color is a <em class="em-purple">surface.</em></h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:62em; color:var(--fg-2);">
+    Decks default to paper and navy &mdash; but the whole palette can carry a section as a <em class="em-purple">bold color block</em>. Set a brand color as the background, then a WCAG-passing brand color as the type. White and navy do the heavy lifting; cross-pollinated accents add the spark.
+  </p>
+  <div class="stretch" style="margin-top:36px; display:grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap:0; min-height:0;">
+    <div style="background:var(--tha-navy); padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="font:700 46px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-paper);">We <em class="em-lime">speak</em> tech.</div>
+      <div class="mono" style="font-size:14px; color:var(--tha-lime);">NAVY SURFACE &middot; WHITE + LIME TYPE</div>
+    </div>
+    <div style="background:var(--tha-teal); padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="font:700 46px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-paper);">Clarity at <em class="em-aqua">scale.</em></div>
+      <div class="mono" style="font-size:14px; color:var(--tha-aqua);">TEAL SURFACE &middot; WHITE + CYAN TYPE</div>
+    </div>
+    <div style="background:var(--tha-purple); padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="font:700 46px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-paper);">Real <em class="em-aqua">opinions.</em></div>
+      <div class="mono" style="font-size:14px; color:var(--tha-aqua);">PURPLE SURFACE &middot; WHITE + CYAN TYPE</div>
+    </div>
+    <div style="background:var(--tha-violet); padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="font:700 46px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy);">Bold by <em class="em-purple">default.</em></div>
+      <div class="mono" style="font-size:14px; color:var(--tha-purple);">LAVENDER SURFACE &middot; NAVY TYPE</div>
+    </div>
+    <div style="background:var(--tha-aqua); padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="font:700 46px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy);">Sharper <em class="em-teal">signal.</em></div>
+      <div class="mono" style="font-size:14px; color:var(--tha-teal);">CYAN SURFACE &middot; NAVY TYPE</div>
+    </div>
+    <div style="background:var(--tha-lime); padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="font:700 46px/1.02 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy);">Always <em class="em-purple">there.</em></div>
+      <div class="mono" style="font-size:14px; color:var(--tha-navy);">LIME SURFACE &middot; NAVY TYPE</div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">16b &middot; surface</div>
+</section>
+
+<!-- 16c — DEMO: a working slide on a lavender surface -->
+<section class="bg-violet" data-screen-label="16c Demo lavender surface">
+  <span class="eyebrow" style="color:var(--tha-purple);">Demonstration &middot; color as surface &middot; lavender</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch; color:var(--tha-navy);">The brief is never the <em class="em-purple">story.</em></h2>
+  <div class="stretch" style="margin-top:64px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; align-items:start; border-top:1.5px solid var(--tha-navy);">
+    <div style="padding:40px 44px 0 0; border-right:1px solid rgba(24,45,67,.35);">
+      <span class="mono" style="color:var(--tha-purple); font-size:18px;">01 &middot; LISTEN</span>
+      <p style="font:600 30px/1.3 var(--font-sans); color:var(--tha-navy); margin:20px 0 0; max-width:14em;">Sit with the business problem until it stops sounding like one.</p>
+    </div>
+    <div style="padding:40px 44px 0; border-right:1px solid rgba(24,45,67,.35);">
+      <span class="mono" style="color:var(--tha-purple); font-size:18px;">02 &middot; DISTILL</span>
+      <p style="font:600 30px/1.3 var(--font-sans); color:var(--tha-navy); margin:20px 0 0; max-width:14em;">Cut until one sentence survives. That sentence is the story.</p>
+    </div>
+    <div style="padding:40px 0 0 44px;">
+      <span class="mono" style="color:var(--tha-purple); font-size:18px;">03 &middot; AMPLIFY</span>
+      <p style="font:600 30px/1.3 var(--font-sans); color:var(--tha-navy); margin:20px 0 0; max-width:14em;">Put it where the market is already looking.</p>
+    </div>
+  </div>
+  <div class="mono" style="font-size:15px; color:var(--tha-purple); margin-bottom:8px;">LAVENDER SURFACE &middot; NAVY BODY (6.8:1) &middot; PURPLE AS LARGE/MONO ACCENT (3.2:1)</div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page" style="color:var(--tha-navy);">16c &middot; demo surface</div>
+</section>
+
+<!-- 16d — DEMO: a working slide on a cyan surface -->
+<section class="bg-aqua" data-screen-label="16d Demo cyan surface">
+  <span class="eyebrow" style="color:var(--tha-teal);">Demonstration &middot; color as surface &middot; cyan</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <h2 style="font:700 110px/1.02 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy); margin:0; max-width:14ch;">Less noise. Sharper <em class="em-teal">signal.</em></h2>
+    <div style="margin-top:72px; display:flex; gap:0; border-top:1.5px solid var(--tha-navy); max-width:1400px;">
+      <div style="padding:36px 56px 0 0; border-right:1px solid rgba(24,45,67,.35);">
+        <div style="font:800 96px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy);">-40%</div>
+        <div class="mono" style="font-size:17px; color:var(--tha-teal); margin-top:14px;">PRESS RELEASES SHIPPED</div>
+      </div>
+      <div style="padding:36px 56px 0; border-right:1px solid rgba(24,45,67,.35);">
+        <div style="font:800 96px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy);">2.3&times;</div>
+        <div class="mono" style="font-size:17px; color:var(--tha-teal); margin-top:14px;">TIER-1 PICKUP</div>
+      </div>
+      <div style="padding:36px 0 0 56px;">
+        <div style="font:800 96px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy);">1</div>
+        <div class="mono" style="font-size:17px; color:var(--tha-teal); margin-top:14px;">STORY THAT MATTERED</div>
+      </div>
+    </div>
+  </div>
+  <div class="mono" style="font-size:15px; color:var(--tha-teal); margin-bottom:8px;">CYAN SURFACE &middot; NAVY BODY (10.4:1) &middot; TEAL AS LARGE/MONO ACCENT (6.0:1) &middot; A COOL&times;COOL PAIR</div>
+  <img src="../assets/logo-horizontal-navy.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page" style="color:var(--tha-navy);">16d &middot; demo surface</div>
+</section>
+
+
+
+<!-- 17 — PROPORTIONS · 30/30/10/10/10/10 with hex+RGB -->
+<section class="bg-paper" data-screen-label="17 Proportions" style="padding:0;">
+  <div style="padding: 80px var(--slide-pad) 0;">
+    <span class="eyebrow">Color proportions</span>
+    <h2 class="h-medium" style="margin-top:18px; max-width:22ch; font-size:64px;">
+      30 / 30 / 10 / 10 / 10 / <em class="em-purple">10.</em>
+    </h2>
+    <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:54em;">
+      Navy and lime each take ~30% of any layout. The four secondaries each take ~10%. Pick one as the layout's mood, or rotate across cards in a 4–6 item grid.
+    </p>
+  </div>
+  <!-- the proportion bar -->
+  <div class="stretch" style="display:grid; grid-template-columns: 30fr 30fr 10fr 10fr 10fr 10fr; margin-top:36px; min-height:0; margin-bottom:120px;">
+    <div class="prop-cell" style="background:#182D43; color:#FFFFFF;">
+      <div class="meta">
+        <span class="hex">#182d43</span>
+        R 24<br/>G 45<br/>B 67
+      </div>
+      <div class="pct">30%</div>
+    </div>
+    <div class="prop-cell" style="background:#D2EB00; color:#182D43;">
+      <div class="meta">
+        <span class="hex">#d2EB00</span>
+        R 210<br/>G 235<br/>B 0
+      </div>
+      <div class="pct">30%</div>
+    </div>
+    <div class="prop-cell small" style="background:#CB65FF; color:#FFFFFF;">
+      <div class="meta">
+        <span class="hex">#cb65ff</span>
+        R 203<br/>G 101<br/>B 255
+      </div>
+      <div class="pct">10%</div>
+    </div>
+    <div class="prop-cell small" style="background:#6103B9; color:#FFFFFF;">
+      <div class="meta">
+        <span class="hex">#6103b9</span>
+        R 97<br/>G 3<br/>B 185
+      </div>
+      <div class="pct">10%</div>
+    </div>
+    <div class="prop-cell small" style="background:#86FFF1; color:#182D43;">
+      <div class="meta">
+        <span class="hex">#86fff1</span>
+        R 135<br/>G 255<br/>B 241
+      </div>
+      <div class="pct">10%</div>
+    </div>
+    <div class="prop-cell small" style="background:#145F7B; color:#FFFFFF;">
+      <div class="meta">
+        <span class="hex">#145f7b</span>
+        R 20<br/>G 95<br/>B 123
+      </div>
+      <div class="pct">10%</div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt="" style="bottom:30px;"/>
+  <div class="chrome-page" style="bottom:30px;">17 &middot; proportions</div>
+</section>
+
+<!-- 17b — CONTRAST & WCAG -->
+<section class="bg-paper" data-screen-label="17b Contrast">
+  <span class="eyebrow">Contrast &amp; accessibility</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:20ch;">Contrast is the <em class="em-purple">gate.</em></h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:64em; color:var(--fg-2);">
+    Any two brand colors may meet &mdash; <em class="em-purple">if the pair clears WCAG</em>. Body text needs <strong>4.5:1</strong>. Large (&ge;&nbsp;24px) or bold (&ge;&nbsp;19px) type and UI need <strong>3:1</strong>. Below 3:1, colors may only sit block-beside-block, never as type.
+  </p>
+  <div class="stretch" id="wcag-chips" style="margin-top:32px; display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; align-content:start; min-height:0;"></div>
+  <div style="margin-top:14px; font:500 16px/1.4 var(--font-mono); color:var(--fg-3);">The full pair-by-pair matrix lives in the design system &middot; brand-contrast-matrix.html</div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">17b &middot; contrast</div>
+</section>
+<script>
+(function(){
+  function lum(hex){var c=hex.replace('#','');var r=parseInt(c.substr(0,2),16)/255,g=parseInt(c.substr(2,2),16)/255,b=parseInt(c.substr(4,2),16)/255;var f=function(x){return x<=0.03928?x/12.92:Math.pow((x+0.055)/1.055,2.4);};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b);}
+  function ratio(a,b){var L1=lum(a),L2=lum(b),hi=Math.max(L1,L2),lo=Math.min(L1,L2);return (hi+0.05)/(lo+0.05);}
+  function badge(r){ if(r>=7) return ['AAA','#147A4B']; if(r>=4.5) return ['AA','#2E9E5B']; if(r>=3) return ['AA Large','#E08A00']; return ['Fail','#C43D3D']; }
+  var PAIRS=[
+    ['Navy','#182D43','Lime','#D2EB00'],['Navy','#182D43','Cyan','#86FFF1'],['Navy','#182D43','White','#FFFFFF'],
+    ['Teal','#145F7B','White','#FFFFFF'],['Purple','#6103B9','Cyan','#86FFF1'],['Lavender','#CB65FF','Navy','#182D43'],
+    ['Lime','#D2EB00','Navy','#182D43'],['White','#FFFFFF','Cyan','#86FFF1'],['White','#FFFFFF','Lime','#D2EB00']
+  ];
+  var out=PAIRS.map(function(p){
+    var bg=p[1], fg=p[3], r=ratio(bg,fg), b=badge(r);
+    return '<div style="display:flex; flex-direction:column; border:1px solid var(--border-2); min-height:0;">'+
+      '<div style="flex:1; background:'+bg+'; padding:20px 24px; display:flex; flex-direction:column; justify-content:center; gap:4px;">'+
+        '<div style="font:800 38px/1 var(--font-sans); color:'+fg+';">Aa</div>'+
+        '<div style="font:700 19px/1.1 var(--font-sans); color:'+fg+';">'+p[0]+' + '+p[2]+'</div>'+
+      '</div>'+
+      '<div style="background:#fff; padding:13px 24px; display:flex; align-items:center; gap:12px; border-top:1px solid var(--border-2);">'+
+        '<span style="font:800 26px/1 var(--font-mono); color:var(--tha-navy);">'+r.toFixed(1)+':1</span>'+
+        '<span style="margin-left:auto; font:700 13px/1 var(--font-mono); letter-spacing:.05em; text-transform:uppercase; color:#fff; background:'+b[1]+'; padding:7px 11px;">'+b[0]+'</span>'+
+      '</div></div>';
+  }).join('');
+  var el=document.getElementById('wcag-chips'); if(el) el.innerHTML=out;
+})();
+</script>
+
+<!-- 17c — BOLD PAIRINGS: per-surface roles (body vs large+bold) -->
+<section class="bg-paper" data-screen-label="17c Pairing roles">
+  <span class="eyebrow">Bold pairings &middot; who sits on whom</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:22ch;">Every pairing has a <em class="em-purple">size.</em></h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:66em; color:var(--fg-2);">
+    Pick the surface first. Then read its column: <strong>Body</strong> colors (&ge; 4.5:1) are safe at any size; <strong>Lg+Bold</strong> colors (3&ndash;4.5:1) carry headlines &ge; 24px, bold &ge; 19px, and UI &mdash; never body copy. Everything else stays block-beside-block.
+  </p>
+  <div class="stretch" id="pairing-cols" style="margin-top:32px; display:grid; grid-template-columns:repeat(6,1fr); gap:14px; min-height:0;"></div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">17c &middot; pairings</div>
+</section>
+<script>
+(function(){
+  function lum(hex){var c=hex.replace('#','');var r=parseInt(c.substr(0,2),16)/255,g=parseInt(c.substr(2,2),16)/255,b=parseInt(c.substr(4,2),16)/255;var f=function(x){return x<=0.03928?x/12.92:Math.pow((x+0.055)/1.055,2.4);};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b);}
+  function ratio(a,b){var L1=lum(a),L2=lum(b),hi=Math.max(L1,L2),lo=Math.min(L1,L2);return (hi+0.05)/(lo+0.05);}
+  var SURFACES=[['Navy','#182D43'],['Teal','#145F7B'],['Purple','#6103B9'],['Lavender','#CB65FF'],['Cyan','#86FFF1'],['Lime','#D2EB00']];
+  var TEXT=[['Navy','#182D43'],['Teal','#145F7B'],['Purple','#6103B9'],['Lavender','#CB65FF'],['Cyan','#86FFF1'],['Lime','#D2EB00'],['Lime 600','#A7BC00'],['White','#FFFFFF'],['Paper','#FAFAF7']];
+  var out=SURFACES.map(function(s){
+    var roles=[];
+    TEXT.forEach(function(t){
+      if(t[1]===s[1]) return;
+      var r=ratio(s[1],t[1]);
+      if(r>=4.5) roles.push({nm:t[0],hex:t[1],r:r,role:'BODY',c:'#147A4B'});
+      else if(r>=3) roles.push({nm:t[0],hex:t[1],r:r,role:'LG+BOLD',c:'#B36E00'});
+    });
+    roles.sort(function(a,b){return b.r-a.r;});
+    var best=roles[0];
+    var chips=roles.map(function(x){
+      return '<div style="display:flex; align-items:center; gap:9px; padding:9px 12px; border-bottom:1px solid var(--border-2);">'+
+        '<span style="width:16px;height:16px;background:'+x.hex+';border:1px solid var(--border-2);flex:none;"></span>'+
+        '<span style="font:600 15px/1 var(--font-sans); color:var(--tha-navy);">'+x.nm+'</span>'+
+        '<span style="margin-left:auto; font:700 10px/1 var(--font-mono); letter-spacing:.05em; color:#fff; background:'+x.c+'; padding:4px 6px;">'+x.role+'</span>'+
+      '</div>';
+    }).join('');
+    return '<div style="display:flex; flex-direction:column; border:1px solid var(--border-2); min-height:0; background:#fff;">'+
+      '<div style="background:'+s[1]+'; padding:18px 16px; display:flex; flex-direction:column; gap:6px;">'+
+        '<div style="font:800 44px/1 var(--font-sans); color:'+(best?best.hex:'#fff')+';">Aa</div>'+
+        '<div style="font:700 17px/1.1 var(--font-sans); color:'+(best?best.hex:'#fff')+';">'+s[0]+'</div>'+
+      '</div>'+
+      '<div style="overflow:hidden;">'+chips+'</div>'+
+    '</div>';
+  }).join('');
+  var el=document.getElementById('pairing-cols'); if(el) el.innerHTML=out;
+})();
+</script>
+
+
+
+<!-- 18 — COLOR DO/DON'T -->
+<section class="bg-paper" data-screen-label="18 Color rules">
+  <span class="eyebrow">Color rules</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Restraint, always.</h2>
+  <div class="stretch" style="margin-top:56px; display:grid; grid-template-columns: 1fr 1fr; gap:48px;">
+    <div class="col-do">
+      <span class="col-label" style="color:var(--fg-accent);">Do</span>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">Lead with <em class="em-purple">one</em> secondary as the mood, then add a second as accent or type.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">Combine <em class="em-purple">any</em> two colors &mdash; across the pairs &mdash; if they clear WCAG (&ge;&nbsp;4.5 body, &ge;&nbsp;3 large).</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">Use any color as a <em class="em-purple">surface</em>, not just navy &amp; paper.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">Use lime-600 (#A7BC00) for lime-toned text on white.</p>
+    </div>
+    <div class="col-dont">
+      <span class="col-label" style="color:var(--tha-purple);">Don't</span>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Gradients, three-color washes, glows.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Any color pair below 3:1 used as type.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Lime or cyan as text on white.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">All six colors competing at once.</p>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">18 &middot; rules</div>
+</section>
+
+<!-- 18b — SURFACES: two light models -->
+<section class="bg-paper" data-screen-label="18b Surfaces">
+  <span class="eyebrow">Surfaces</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:22ch;">Two ways to do <em class="em-purple">light.</em></h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:64em; color:var(--fg-2);">
+    Pick a page, then step the cards <em class="em-purple">one</em> notch &mdash; either a warm <strong>paper page with white cards</strong>, or a <strong>white page with warm sand cards</strong>. Never paper-on-paper or white-on-white; the step is what reads as elevation.
+  </p>
+  <div class="stretch" style="margin-top:36px; display:grid; grid-template-columns: 1fr 1fr; gap:40px; min-height:0;">
+    <div style="background:var(--tha-paper); border:1px solid var(--border-2); padding:44px; display:flex; flex-direction:column;">
+      <div class="mono" style="font-size:16px; color:var(--tha-purple);">MODEL A &middot; DEFAULT</div>
+      <div style="font:700 42px/1.04 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:10px;">Paper page, white cards</div>
+      <div style="margin-top:auto; display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-top:40px;">
+        <div style="background:#FFFFFF; border:1px solid var(--border-2); box-shadow:var(--shadow-2); padding:26px;">
+          <div class="mono" style="font-size:14px; color:var(--fg-3);">REACH</div>
+          <div style="font:800 54px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:8px;">38.2M</div>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid var(--border-2); box-shadow:var(--shadow-2); padding:26px;">
+          <div class="mono" style="font-size:14px; color:var(--fg-3);">EARNED</div>
+          <div style="font:800 54px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:8px;">21.4M</div>
+        </div>
+      </div>
+      <div style="margin-top:22px; display:flex; gap:16px; align-items:center; font:600 15px/1 var(--font-mono); color:var(--fg-2);">
+        <span>page #FAFAF7</span><span style="color:var(--fg-3);">&rarr;</span><span>card #FFFFFF</span>
+      </div>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid var(--border-2); padding:44px; display:flex; flex-direction:column;">
+      <div class="mono" style="font-size:16px; color:var(--tha-purple);">MODEL B &middot; WHITE THEME</div>
+      <div style="font:700 42px/1.04 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:10px;">White page, sand cards</div>
+      <div style="margin-top:auto; display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-top:40px;">
+        <div style="background:#F1EFE7; border:1px solid var(--tha-stone-200); padding:26px;">
+          <div class="mono" style="font-size:14px; color:var(--fg-3);">REACH</div>
+          <div style="font:800 54px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:8px;">38.2M</div>
+        </div>
+        <div style="background:#F1EFE7; border:1px solid var(--tha-stone-200); padding:26px;">
+          <div class="mono" style="font-size:14px; color:var(--fg-3);">EARNED</div>
+          <div style="font:800 54px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:8px;">21.4M</div>
+        </div>
+      </div>
+      <div style="margin-top:22px; display:flex; gap:16px; align-items:center; font:600 15px/1 var(--font-mono); color:var(--fg-2);">
+        <span>page #FFFFFF</span><span style="color:var(--fg-3);">&rarr;</span><span>card #F1EFE7</span>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">18b &middot; surfaces</div>
+</section>
+
+<!-- 18c — DEMO: Model B in practice (white page, sand cards) -->
+<section data-screen-label="18c Demo model B" style="background:#FFFFFF;">
+  <span class="eyebrow">Demonstration &middot; Model B in practice</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:20ch;">White page. <em class="em-purple">Sand</em> cards.</h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:60em; color:var(--fg-2);">
+    The same slide vocabulary, in the second light model. Nothing else changes &mdash; type, rules and accents carry over untouched.
+  </p>
+  <div class="stretch" style="margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; align-items:stretch; min-height:0;">
+    <div style="background:var(--tha-sand); border:1px solid var(--tha-stone-200); padding:40px; display:flex; flex-direction:column;">
+      <span class="mono" style="font-size:15px; color:var(--tha-purple);">CASE &middot; AI INFRASTRUCTURE</span>
+      <p style="font:600 30px/1.25 var(--font-sans); color:var(--tha-navy); margin:18px 0 0;">From datasheet to <em class="em-purple">narrative</em> in one quarter.</p>
+      <div style="margin-top:auto; padding-top:32px;">
+        <div style="font:800 64px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">312</div>
+        <div class="mono" style="font-size:14px; color:var(--fg-3); margin-top:8px;">TIER-1 STORIES</div>
+      </div>
+    </div>
+    <div style="background:var(--tha-sand); border:1px solid var(--tha-stone-200); padding:40px; display:flex; flex-direction:column;">
+      <span class="mono" style="font-size:15px; color:var(--tha-purple);">CASE &middot; CLIMATE TECH</span>
+      <p style="font:600 30px/1.25 var(--font-sans); color:var(--tha-navy); margin:18px 0 0;">A founder nobody quoted. Until the <em class="em-purple">thesis</em> landed.</p>
+      <div style="margin-top:auto; padding-top:32px;">
+        <div style="font:800 64px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">9</div>
+        <div class="mono" style="font-size:14px; color:var(--fg-3); margin-top:8px;">KEYNOTE INVITATIONS</div>
+      </div>
+    </div>
+    <div style="background:var(--tha-sand); border:1px solid var(--tha-stone-200); padding:40px; display:flex; flex-direction:column;">
+      <span class="mono" style="font-size:15px; color:var(--tha-purple);">CASE &middot; SEMICONDUCTORS</span>
+      <p style="font:600 30px/1.25 var(--font-sans); color:var(--tha-navy); margin:18px 0 0;">The category was boring. The <em class="em-purple">stakes</em> weren't.</p>
+      <div style="margin-top:auto; padding-top:32px;">
+        <div style="font:800 64px/1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">4.2B</div>
+        <div class="mono" style="font-size:14px; color:var(--fg-3); margin-top:8px;">EARNED REACH</div>
+      </div>
+    </div>
+  </div>
+  <div class="mono" style="font-size:15px; color:var(--fg-3); margin:28px 0 8px;">MODEL B &middot; PAGE #FFFFFF &rarr; CARDS #F1EFE7 &middot; ADD class="tha-theme-white" AND THE REMAP IS AUTOMATIC</div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">18c &middot; demo model B</div>
+</section>
+
+
+
+<!-- 19 — DEMO: STATS STRIP (all 6 colors in action) -->
+<section class="bg-paper" data-screen-label="19 Demo stats">
+  <span class="eyebrow">Demonstration &middot; the palette in use</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Built to <em class="em-purple">be</em> Techfluent.</h2>
+  <div class="stretch" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:0; margin-top:80px; align-items:start;">
+    <div style="padding-right:48px; border-right:1px solid var(--border-2); display:flex; flex-direction:column; gap:20px;">
+      <div style="width:48px; height:6px; background:var(--tha-violet);"></div>
+      <div class="stat-num">39</div>
+      <div class="mono" style="color:var(--tha-violet); font-size:18px;">YEARS &middot; TECH COMMS</div>
+      <p class="body-md" style="font-size:22px; max-width:14em;">Specialists, not generalists. From the start.</p>
+    </div>
+    <div style="padding:0 48px; border-right:1px solid var(--border-2); display:flex; flex-direction:column; gap:20px;">
+      <div style="width:48px; height:6px; background:var(--tha-aqua);"></div>
+      <div class="stat-num">7</div>
+      <div class="mono" style="color:var(--tha-teal); font-size:18px;">OFFICES &middot; GLOBAL</div>
+      <p class="body-md" style="font-size:22px; max-width:14em;">SJ &middot; LDN &middot; SG &middot; TPE &middot; TKY &middot; BJ &middot; SEL.</p>
+    </div>
+    <div style="padding:0 48px; border-right:1px solid var(--border-2); display:flex; flex-direction:column; gap:20px;">
+      <div style="width:48px; height:6px; background:var(--tha-lime);"></div>
+      <div class="stat-num">10</div>
+      <div class="mono" style="color:var(--fg-accent); font-size:18px;">TECH VERTICALS</div>
+      <p class="body-md" style="font-size:22px; max-width:14em;">From AI to AutoTech to Climate.</p>
+    </div>
+    <div style="padding-left:48px; display:flex; flex-direction:column; gap:20px;">
+      <div style="width:48px; height:6px; background:var(--tha-purple);"></div>
+      <div class="stat-num">4.2<span style="font-size:84px;">B</span></div>
+      <div class="mono" style="color:var(--tha-purple); font-size:18px;">EARNED REACH &middot; 2025</div>
+      <p class="body-md" style="font-size:22px; max-width:14em;">Impressions that moved markets, not just metrics.</p>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">19 &middot; demo</div>
+</section>
+
+
+<!-- ============================================================
+     PART 4 · TYPE
+     ============================================================ -->
+
+<!-- 20 — SECTION 4 -->
+<section class="bg-paper" data-screen-label="20 Part 04">
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <span class="mono" style="color:var(--tha-teal); font-size:24px; margin-bottom:32px;">PART 04</span>
+    <h1 class="h-section"><em class="em-purple">Type.</em></h1>
+    <p class="body-lg" style="margin-top:48px; font-size:32px; color:var(--fg-2); max-width:28em;">
+      Two families. One signature move. The italic word is where Hoffman gets expressive.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">20 &middot; section</div>
+</section>
+
+
+<!-- 21 — TWO FAMILIES -->
+<section class="bg-paper" data-screen-label="21 Type families">
+  <span class="eyebrow">Type families</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Two <em class="em-purple">families.</em> That's it.</h2>
+  <div class="stretch" style="margin-top:64px; display:grid; grid-template-columns: 1fr 1fr; gap:0; border-top:1.5px solid var(--tha-navy); align-items:stretch;">
+    <div style="padding:48px 48px 48px 0; border-right:1px solid var(--border-2); display:flex; flex-direction:column; gap:32px;">
+      <div>
+        <div class="mono" style="color:var(--tha-violet);">SANS &middot; WORKHORSE</div>
+        <div style="font:800 200px/.85 var(--font-sans); letter-spacing:-.04em; color:var(--tha-navy); margin-top:24px;">Aa</div>
+      </div>
+      <div>
+        <div style="font:700 40px/1 var(--font-sans); letter-spacing:-.02em;">Poppins</div>
+        <p class="body-md" style="margin-top:14px; font-size:22px; max-width:24em;">Every headline, body, UI label. Weights 300–800. Tight letter-spacing at display sizes.</p>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:baseline; font-family:var(--font-sans); font-size:24px;">
+        <span style="font-weight:300;">300</span>
+        <span style="font-weight:400;">&middot; 400</span>
+        <span style="font-weight:500;">&middot; 500</span>
+        <span style="font-weight:600;">&middot; 600</span>
+        <span style="font-weight:700;">&middot; 700</span>
+        <span style="font-weight:800;">&middot; 800</span>
+      </div>
+    </div>
+    <div style="padding:48px 0 48px 48px; display:flex; flex-direction:column; gap:32px;">
+      <div>
+        <div class="mono" style="color:var(--tha-purple);">SERIF &middot; ITALIC ONLY</div>
+        <div style="font:400 italic 200px/.85 var(--font-serif); color:var(--tha-navy); margin-top:24px;">Aa</div>
+      </div>
+      <div>
+        <div style="font:400 italic 40px/1 var(--font-serif);">Libre Baskerville</div>
+        <p class="body-md" style="margin-top:14px; font-size:22px; max-width:24em;">Used in italic only. One word inside a Poppins headline, or full pull-quotes. Never set upright as body or display.</p>
+      </div>
+      <div style="font:400 italic 26px/1 var(--font-serif); color:var(--fg-2);">italic &middot; regular &middot; is reserved</div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">21 &middot; families</div>
+</section>
+
+
+<!-- 21b — MULTILINGUAL FONTS -->
+<section class="bg-paper" data-screen-label="21b Multilingual">
+  <span class="eyebrow">Type &middot; multilingual</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:22ch;">Beyond English. <em class="em-purple">Globally</em> fluent.</h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:50em;">
+    Same hierarchy, same rules — different scripts. Japanese copy uses <strong>M PLUS 2</strong>. Korean, Chinese, and other CJK uses <strong>Noto Sans</strong>. Use the CSS vars <code style="font:500 18px/1 var(--font-mono); background:var(--tha-navy-050); padding:2px 8px;">--font-jp</code> and <code style="font:500 18px/1 var(--font-mono); background:var(--tha-navy-050); padding:2px 8px;">--font-cjk</code> so the stack falls back gracefully.
+  </p>
+
+  <div class="stretch" style="margin-top:48px; display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:24px;">
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font-family:'M PLUS 2', sans-serif; font-weight:700; font-size:96px; line-height:1.1; letter-spacing:-.02em; color:var(--tha-navy);">ホフマン</div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--tha-violet); font-size:14px;">JAPANESE</div>
+        <div style="font:700 24px/1 var(--font-sans); letter-spacing:-.01em; margin-top:6px; color:var(--tha-navy);">M PLUS 2</div>
+        <div style="font:400 14px/1.4 var(--font-sans); color:var(--fg-2); margin-top:6px;">Weights 400–800. Geometric, friendly.</div>
+      </div>
+    </div>
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font-family:'Noto Sans KR', 'Noto Sans', sans-serif; font-weight:700; font-size:96px; line-height:1.1; letter-spacing:-.02em; color:var(--tha-navy);">호프만</div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--tha-purple); font-size:14px;">KOREAN</div>
+        <div style="font:700 24px/1 var(--font-sans); letter-spacing:-.01em; margin-top:6px; color:var(--tha-navy);">Noto Sans KR</div>
+        <div style="font:400 14px/1.4 var(--font-sans); color:var(--fg-2); margin-top:6px;">Weights 400–700. Pairs cleanly with Poppins.</div>
+      </div>
+    </div>
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font-family:'Noto Sans SC', 'Noto Sans', sans-serif; font-weight:700; font-size:96px; line-height:1.1; letter-spacing:-.02em; color:var(--tha-navy);">霍夫曼</div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--tha-teal); font-size:14px;">SIMPLIFIED CHINESE</div>
+        <div style="font:700 24px/1 var(--font-sans); letter-spacing:-.01em; margin-top:6px; color:var(--tha-navy);">Noto Sans SC</div>
+        <div style="font:400 14px/1.4 var(--font-sans); color:var(--fg-2); margin-top:6px;">For mainland China and Singapore.</div>
+      </div>
+    </div>
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font-family:'Noto Sans TC', 'Noto Sans', sans-serif; font-weight:700; font-size:96px; line-height:1.1; letter-spacing:-.02em; color:var(--tha-navy);">霍夫曼</div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--tha-violet); font-size:14px;">TRADITIONAL CHINESE</div>
+        <div style="font:700 24px/1 var(--font-sans); letter-spacing:-.01em; margin-top:6px; color:var(--tha-navy);">Noto Sans TC</div>
+        <div style="font:400 14px/1.4 var(--font-sans); color:var(--fg-2); margin-top:6px;">For Taiwan and Hong Kong.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px; padding-top:14px; border-top:1px solid var(--border-2); font:500 16px/1.4 var(--font-sans); color:var(--fg-2);">
+    <span class="mono" style="color:var(--tha-purple); margin-right:14px;">RULES</span>
+    All multilingual faces are on Google Fonts &middot; use the same Poppins weight scale (400/600/700/800) for hierarchy &middot; Libre Baskerville italic is reserved for English emphasis only &middot; never mix two languages in the same headline unless intentional.
+  </div>
+
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">21b &middot; multilingual</div>
+</section>
+
+
+<!-- 22 — THE SIGNATURE MOVE -->
+<section class="bg-paper" data-screen-label="22 Signature move">
+  <span class="eyebrow">The signature move</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; gap:40px;">
+    <p style="font:700 144px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy); margin:0; max-width:14ch;">
+      Clarity in.<br/><em class="em-purple" style="font-size:144px;">Complexity</em> out.
+    </p>
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap:32px; align-items:start; max-width:1200px;">
+      <span class="mono" style="color:var(--tha-violet); padding-top:6px;">RULE</span>
+      <p style="font:400 26px/1.5 var(--font-sans); color:var(--fg-1); margin:0; max-width:32em;">
+        Bold Poppins headline. <em>One word</em> italicized in Libre Baskerville. Choose the word for sound, not for grammar — pick the one with the most consonant texture, or the one that carries the line's emotion.
+      </p>
+    </div>
+    <div style="display:grid; grid-template-columns: 80px 1fr; gap:32px; align-items:start; max-width:1200px;">
+      <span class="mono" style="color:var(--tha-violet);">CODE</span>
+      <code style="font:500 22px/1.5 var(--font-mono); background:var(--tha-navy-050); padding:14px 20px; color:var(--tha-navy); border-left:3px solid var(--tha-lime); display:block; max-width:48em;">&lt;h1&gt;Clarity in. &lt;em&gt;Complexity&lt;/em&gt; out.&lt;/h1&gt;</code>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">22 &middot; the italic</div>
+</section>
+
+
+<!-- 23 — TYPE SCALE -->
+<section class="bg-paper" data-screen-label="23 Type scale">
+  <span class="eyebrow">Type scale</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">One hero <em class="em-purple">idea</em> per screen.</h2>
+  <div class="stretch" style="margin-top:48px; display:flex; flex-direction:column;">
+    <div class="type-row"><span class="label">Display &middot; 96 &middot; 800</span><span style="font:800 96px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy);">Hero idea</span></div>
+    <div class="type-row"><span class="label">H1 &middot; 64 &middot; 700</span><span style="font:700 64px/1.02 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">Section opener</span></div>
+    <div class="type-row"><span class="label">H2 &middot; 48 &middot; 700</span><span style="font:700 48px/1.04 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">Sub-section</span></div>
+    <div class="type-row"><span class="label">H3 &middot; 32 &middot; 600</span><span style="font:600 32px/1.15 var(--font-sans); letter-spacing:-.01em; color:var(--tha-navy);">Card title</span></div>
+    <div class="type-row"><span class="label">Body LG &middot; 20 &middot; 400</span><span style="font:400 20px/1.5 var(--font-sans); color:var(--fg-1);">Lead paragraph or hero subhead — plain-spoken, active voice, no hedging.</span></div>
+    <div class="type-row"><span class="label">Body &middot; 16 &middot; 400</span><span style="font:400 16px/1.55 var(--font-sans); color:var(--fg-1);">Default body copy. Short sentences. Then longer ones to breathe.</span></div>
+    <div class="type-row" style="border-bottom:none;"><span class="label">Eyebrow &middot; 12 &middot; 700</span><span style="font:700 12px/1 var(--font-sans); letter-spacing:.14em; text-transform:uppercase; color:var(--fg-2);">Category label &middot; tracking .14em</span></div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">23 &middot; scale</div>
+</section>
+
+
+<!-- 24 — TYPE DO/DON'T -->
+<section class="bg-paper" data-screen-label="24 Type rules">
+  <span class="eyebrow">Type rules</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Big &amp; <em class="em-purple">disciplined.</em></h2>
+  <div class="stretch" style="margin-top:56px; display:grid; grid-template-columns: 1fr 1fr; gap:48px;">
+    <div class="col-do">
+      <span class="col-label" style="color:var(--fg-accent);">Do</span>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">Set hero type huge — <em class="em-purple">up to 120px.</em></p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">Sentence case for headings and UI.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">UPPERCASE only on eyebrows, tracked at .14em.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0;">One italic word per headline. Max.</p>
+    </div>
+    <div class="col-dont">
+      <span class="col-label" style="color:var(--tha-purple);">Don't</span>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Set Baskerville upright as body.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Title Case Every Other Word.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">SHOUT IN ALL CAPS PARAGRAPHS.</p>
+      <p style="font:500 26px/1.4 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Use Inter, Roboto, Arial as fallback.</p>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">24 &middot; rules</div>
+</section>
+
+
+<!-- 25 — DEMO: Refrain -->
+<section class="bg-paper" data-screen-label="25 Demo refrain">
+  <span class="eyebrow">Demonstration &middot; type as rhythm</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; gap:14px;">
+    <h2 style="font:800 124px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy-200); margin:0;">
+      Tech &nbsp;&nbsp; is &nbsp;&nbsp; our &nbsp;&nbsp; language.
+    </h2>
+    <h2 style="font:800 124px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy-400); margin:0;">
+      Tech &nbsp;&nbsp; is &nbsp;&nbsp; our &nbsp;&nbsp; language.
+    </h2>
+    <h2 style="font:800 124px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-navy); margin:0;">
+      <span class="scribble-wrap">
+        Tech &nbsp;&nbsp; is &nbsp;&nbsp; our &nbsp;&nbsp; language.
+        <svg class="scribble-under" viewBox="0 0 400 30" preserveAspectRatio="none">
+          <path d="M 8 22 Q 100 4, 200 16 T 392 12" stroke="#D2EB00" stroke-width="9" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </h2>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">25 &middot; demo</div>
+</section>
+
+
+<!-- ============================================================
+     PART 5 · SYSTEM
+     ============================================================ -->
+
+<!-- 26 — SECTION 5 -->
+<section class="bg-purple" data-screen-label="26 Part 05">
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <span class="mono" style="color:var(--tha-aqua); font-size:24px; margin-bottom:32px;">PART 05</span>
+    <h1 class="h-section on-dark">The <em class="em-lime">system.</em></h1>
+    <p class="body-lg on-dark" style="margin-top:48px; font-size:32px; max-width:28em; color:var(--tha-aqua);">
+      Hand-drawn annotations, square buttons, hairline borders, generous whitespace. Editorial confidence — not corporate noise.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page on-dark">26 &middot; section</div>
+</section>
+
+
+<!-- 27 — HAND-DRAWN ANNOTATIONS -->
+<!-- 27 — HAND-DRAWN ANNOTATIONS -->
+<section class="bg-paper" data-screen-label="27 Annotations">
+  <span class="eyebrow">Hand-drawn annotations</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:24ch;">Editorial <em class="em-purple">punctuation.</em> 76 SVG marks.</h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:48em;">
+    All SVGs in <code style="font:500 18px/1 var(--font-mono); background:var(--tha-navy-050); padding:2px 8px;">assets/annotations/</code> use <em class="em-purple">currentColor</em> &mdash; pick the brand color that <em class="em-purple">contrasts best</em> with the surface they sit on. Lime, lavender, purple, cyan, teal, navy or paper, depending on context.
+  </p>
+
+  <style>
+    .mark-cell { background:#fff; border:1px solid var(--border-2); display:flex; align-items:center; justify-content:center; padding:14px 18px; }
+    .mark-cell .m {
+      width:100%; height:100%; background-color: currentColor;
+      -webkit-mask-position:center; mask-position:center;
+      -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+      -webkit-mask-size:contain; mask-size:contain;
+    }
+    .ann-row { display:grid; grid-template-columns: 200px 1fr; gap:24px; align-items:stretch; margin-top:10px; }
+    .ann-row .label { display:flex; flex-direction:column; justify-content:center; gap:6px; padding:0 8px 0 0; }
+    .ann-row .label .name { font:700 18px/1 var(--font-sans); letter-spacing:-.01em; color:var(--tha-navy); }
+    .ann-row .label .count { font:500 13px/1 var(--font-mono); color:var(--fg-2); }
+    .ann-row .label .chip { font:700 11px/1 var(--font-sans); letter-spacing:.14em; text-transform:uppercase; padding:4px 10px; border-radius:999px; align-self:flex-start; }
+    .ann-row .strip { display:grid; grid-template-columns: repeat(6, 1fr); gap:14px; }
+    .ann-row .mark-cell { height:74px; }
+  </style>
+
+  <div class="stretch" style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
+
+    <!-- Lines -->
+    <div class="ann-row" style="color:var(--tha-lime-600);">
+      <div class="label" style="color:var(--tha-navy);">
+        <span class="chip" style="background:var(--tha-navy-050); color:var(--tha-navy);">Contextual color</span>
+        <span class="name">Lines &amp; underlines</span>
+        <span class="count">13 marks</span>
+      </div>
+      <div class="strip">
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/underline-01.svg');mask-image:url('../assets/annotations/underline-01.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/underline-05.svg');mask-image:url('../assets/annotations/underline-05.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/underline-06.svg');mask-image:url('../assets/annotations/underline-06.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/underline-08.svg');mask-image:url('../assets/annotations/underline-08.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/underline-09.svg');mask-image:url('../assets/annotations/underline-09.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/underline-12.svg');mask-image:url('../assets/annotations/underline-12.svg')"></div></div>
+      </div>
+    </div>
+
+    <!-- Circles -->
+    <div class="ann-row" style="color:var(--tha-lime-600);">
+      <div class="label" style="color:var(--tha-navy);">
+        <span class="chip" style="background:var(--tha-navy-050); color:var(--tha-navy); border:1px solid var(--border-2);">Contextual color</span>
+        <span class="name">Circles</span>
+        <span class="count">15 marks</span>
+      </div>
+      <div class="strip">
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/circle-02.svg');mask-image:url('../assets/annotations/circle-02.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/circle-08.svg');mask-image:url('../assets/annotations/circle-08.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/circle-09.svg');mask-image:url('../assets/annotations/circle-09.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/circle-10.svg');mask-image:url('../assets/annotations/circle-10.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/circle-11.svg');mask-image:url('../assets/annotations/circle-11.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/circle-14.svg');mask-image:url('../assets/annotations/circle-14.svg')"></div></div>
+      </div>
+    </div>
+
+    <!-- Arrows -->
+    <div class="ann-row" style="color:var(--tha-purple);">
+      <div class="label" style="color:var(--tha-navy);">
+        <span class="chip" style="background:var(--tha-navy-050); color:var(--tha-navy);">Contextual color</span>
+        <span class="name">Arrows</span>
+        <span class="count">14 marks</span>
+      </div>
+      <div class="strip">
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/arrow-01.svg');mask-image:url('../assets/annotations/arrow-01.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/arrow-04.svg');mask-image:url('../assets/annotations/arrow-04.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/arrow-05.svg');mask-image:url('../assets/annotations/arrow-05.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/arrow-09.svg');mask-image:url('../assets/annotations/arrow-09.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/arrow-12.svg');mask-image:url('../assets/annotations/arrow-12.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/arrow-14.svg');mask-image:url('../assets/annotations/arrow-14.svg')"></div></div>
+      </div>
+    </div>
+
+    <!-- Ticks -->
+    <div class="ann-row" style="color:var(--tha-lime-600);">
+      <div class="label" style="color:var(--tha-navy);">
+        <span class="chip" style="background:var(--tha-navy-050); color:var(--tha-navy);">Contextual · approval</span>
+        <span class="name">Ticks</span>
+        <span class="count">11 marks</span>
+      </div>
+      <div class="strip">
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/tick-01.svg');mask-image:url('../assets/annotations/tick-01.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/tick-03.svg');mask-image:url('../assets/annotations/tick-03.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/tick-05.svg');mask-image:url('../assets/annotations/tick-05.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/tick-07.svg');mask-image:url('../assets/annotations/tick-07.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/tick-08.svg');mask-image:url('../assets/annotations/tick-08.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/tick-09.svg');mask-image:url('../assets/annotations/tick-09.svg')"></div></div>
+      </div>
+    </div>
+
+    <!-- Crosses -->
+    <div class="ann-row" style="color:var(--tha-purple);">
+      <div class="label" style="color:var(--tha-navy);">
+        <span class="chip" style="background:var(--tha-navy-050); color:var(--tha-navy);">Contextual · negation</span>
+        <span class="name">Crosses</span>
+        <span class="count">11 marks</span>
+      </div>
+      <div class="strip">
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/cross-02.svg');mask-image:url('../assets/annotations/cross-02.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/cross-03.svg');mask-image:url('../assets/annotations/cross-03.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/cross-04.svg');mask-image:url('../assets/annotations/cross-04.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/cross-06.svg');mask-image:url('../assets/annotations/cross-06.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/cross-09.svg');mask-image:url('../assets/annotations/cross-09.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/cross-10.svg');mask-image:url('../assets/annotations/cross-10.svg')"></div></div>
+      </div>
+    </div>
+
+    <!-- Accents -->
+    <div class="ann-row" style="color:var(--tha-lime-600);">
+      <div class="label" style="color:var(--tha-navy);">
+        <span class="chip" style="background:var(--tha-navy-050); color:var(--tha-navy);">Contextual · flourish</span>
+        <span class="name">Accents</span>
+        <span class="count">12 marks</span>
+      </div>
+      <div class="strip">
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/accent-01.svg');mask-image:url('../assets/annotations/accent-01.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/accent-02.svg');mask-image:url('../assets/annotations/accent-02.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/accent-04.svg');mask-image:url('../assets/annotations/accent-04.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/accent-06.svg');mask-image:url('../assets/annotations/accent-06.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/accent-07.svg');mask-image:url('../assets/annotations/accent-07.svg')"></div></div>
+        <div class="mark-cell"><div class="m" style="-webkit-mask-image:url('../assets/annotations/accent-12.svg');mask-image:url('../assets/annotations/accent-12.svg')"></div></div>
+      </div>
+    </div>
+
+    <!-- Highlights row removed — see slide 27b for Highlights examples -->
+
+  </div>
+
+  <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border-2); font:500 16px/1.4 var(--font-sans); color:var(--fg-2);">
+    <span class="mono" style="color:var(--tha-purple); margin-right:14px;">RULES</span>
+    1&ndash;2 marks per surface &middot; color is <em class="em-purple">contextual</em> &mdash; opposite/contrasting the surface for legibility &middot; stay within the brand palette &middot; the Storyline squiggle has its own two-uses rule and is not part of this set.
+  </div>
+
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">27 &middot; annotations</div>
+</section>
+
+
+<!-- 27b — HIGHLIGHTS (7th annotation technique) -->
+<section class="bg-paper" data-screen-label="27b Highlights">
+  <span class="eyebrow">Hand-drawn annotations &middot; 7th technique</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:22ch;"><em class="em-purple">Highlights.</em> The marker pen.</h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:50em;">
+    A CSS overlay applied <em class="em-purple">over</em> body text — a brand-color background behind a word, the way a marker pen would. Not an SVG asset; a styling technique. The highlight color comes from the brand palette and must form a WCAG-safe contrast pair with the text color.
+  </p>
+
+  <div class="stretch" style="margin-top:32px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:24px;">
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font:700 44px/1.1 var(--font-sans); color:var(--tha-navy); letter-spacing:-.02em;">
+        The story is <mark style="background:var(--tha-lime); color:var(--tha-navy); padding:0 .15em;">always</mark> there.
+      </div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--fg-accent); font-size:14px;">LIME &middot; NAVY TEXT</div>
+        <p style="font:500 14px/1.4 var(--font-sans); color:var(--fg-2); margin:6px 0 0;">Highest-frequency pair. Use for primary emphasis.</p>
+      </div>
+    </div>
+
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font:700 44px/1.1 var(--font-sans); color:var(--tha-navy); letter-spacing:-.02em;">
+        Built for <mark style="background:var(--tha-violet); color:var(--tha-navy); padding:0 .15em;">tech.</mark>
+      </div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--tha-purple); font-size:14px;">LAVENDER &middot; NAVY TEXT</div>
+        <p style="font:500 14px/1.4 var(--font-sans); color:var(--fg-2); margin:6px 0 0;">Secondary mood. Use for warmth and energy.</p>
+      </div>
+    </div>
+
+    <div style="background:#fff; border:1px solid var(--border-2); padding:36px; display:flex; flex-direction:column; justify-content:space-between; min-height:0;">
+      <div style="font:700 44px/1.1 var(--font-sans); color:var(--tha-navy); letter-spacing:-.02em;">
+        <mark style="background:var(--tha-teal); color:var(--tha-paper); padding:0 .15em;">Clarity</mark> at scale.
+      </div>
+      <div style="margin-top:auto; padding-top:24px; border-top:1px solid var(--border-2);">
+        <div class="mono" style="color:var(--tha-teal); font-size:14px;">TEAL &middot; PAPER TEXT</div>
+        <p style="font:500 14px/1.4 var(--font-sans); color:var(--fg-2); margin:6px 0 0;">Cool, editorial mood. Reverse text required.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px; padding-top:14px; border-top:1px solid var(--border-2); font:500 16px/1.4 var(--font-sans); color:var(--fg-2);">
+    <span class="mono" style="color:var(--tha-purple); margin-right:14px;">RULES</span>
+    Highlight a <em class="em-purple">word or short phrase</em>, never a whole sentence &middot; the text/highlight pair must pass WCAG AA (≥4.5:1 for body, ≥3:1 for large text) &middot; counts within the 1–2 marks per surface budget &middot; never combine with another annotation on the same word.
+  </div>
+
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">27b &middot; highlights</div>
+</section>
+
+
+<!-- 27c — EMOJI + TEXT VISUAL STORYTELLING -->
+<section class="bg-paper" data-screen-label="27c Emoji storytelling">
+  <span class="eyebrow">Voice as visual</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:22ch;">Emojis as <em class="em-purple">punctuation.</em> Max three per page.</h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:54em;">
+    Emojis are part of the brand. Used <em class="em-purple">sparingly</em>, paired with copy, for visual storytelling. Cross-platform variance (Apple, Google, Microsoft, Samsung) is expected and fine — the meaning carries across systems even if the glyph shifts slightly.
+  </p>
+
+  <div class="stretch" style="margin-top:40px; display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
+    <!-- DO panel -->
+    <div style="border-left: 6px solid var(--tha-lime); padding: 24px 32px; display:flex; flex-direction:column; gap:18px;">
+      <span style="font:700 16px/1 var(--font-sans); letter-spacing:.18em; text-transform:uppercase; color:var(--fg-accent);">Do</span>
+      <p style="font:600 30px/1.25 var(--font-sans); margin:0; letter-spacing:-.01em; color:var(--tha-navy);">Goodbye client rosters. Hello ecosystems&nbsp;<span class="tha-emoji" role="img" aria-label="ringed planet">🪐</span></p>
+      <p style="font:600 30px/1.25 var(--font-sans); margin:0; letter-spacing:-.01em; color:var(--tha-navy);"><span class="tha-emoji" role="img" aria-label="folder">📂</span> Available to download here.</p>
+      <p style="font:600 30px/1.25 var(--font-sans); margin:0; letter-spacing:-.01em; color:var(--tha-navy);">We're tripling down on video&nbsp;<span class="tha-emoji" role="img" aria-label="film projector">📽️</span></p>
+      <p style="font:500 18px/1.45 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">Emoji <em class="em-purple">replaces</em> or <em class="em-purple">extends</em> a word — it does work, not decoration. Max 3 per surface. Counts within the 1–2 annotations per surface budget.</p>
+    </div>
+
+    <!-- DON'T panel -->
+    <div style="border-left: 6px solid var(--tha-violet); padding: 24px 32px; display:flex; flex-direction:column; gap:18px;">
+      <span style="font:700 16px/1 var(--font-sans); letter-spacing:.18em; text-transform:uppercase; color:var(--tha-purple);">Don't</span>
+      <p style="font:600 26px/1.3 var(--font-sans); margin:0; color:var(--fg-2);">🚀 💡 🎯 🔥 💪 &mdash; emoji stacks as decoration.</p>
+      <p style="font:600 26px/1.3 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">🚀 Revolutionary disruption 🚀</p>
+      <p style="font:600 26px/1.3 var(--font-sans); margin:0; color:var(--fg-2); text-decoration:line-through; text-decoration-color:var(--tha-violet);">Click here 👇 to learn more 👇</p>
+      <p style="font:500 18px/1.45 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">No stacks, no bookends, no "click here" affordances. Don't pair with agency clichés. Don't lean on emoji to carry meaning the copy hasn't earned.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:24px; padding-top:14px; border-top:1px solid var(--border-2); font:500 15px/1.4 var(--font-sans); color:var(--fg-2);">
+    <span class="mono" style="color:var(--tha-purple); margin-right:14px;">VS. PICTOGRAMS</span>
+    Unicode pictograms (<span style="color:var(--tha-navy); font-weight:700;">→ ✓ ★ · —</span>) are <em class="em-purple">text glyphs</em>, not images — they inherit text color and weight. Use them as typographic affordances inside copy (a link arrow, a checkmark in a sentence). Distinct from emojis: pictograms always look the same; emojis vary by platform.
+  </div>
+
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">27c &middot; emoji</div>
+</section>
+
+
+<!-- 27d — VOICE PATTERNS: phrases, refrains, opinionated copy -->
+<section class="bg-paper" data-screen-label="27d Voice patterns">
+  <span class="eyebrow">Voice as a system</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:22ch;">How we <em class="em-purple">sound.</em> Phrases we lean on.</h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:54em;">
+    The brand voice has signature moves. Use them to keep copy distinctively Hoffman &mdash; short, opinionated, a little playful, never corporate.
+  </p>
+
+  <div class="stretch" style="margin-top:32px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:24px; min-height:0;">
+
+    <!-- Pattern 1 · Repeated letters -->
+    <div style="background:#fff; border:1px solid var(--border-2); padding:28px; display:flex; flex-direction:column; gap:14px; min-height:0;">
+      <div class="mono" style="color:var(--tha-violet); font-size:14px;">PATTERN 01 &middot; STRETCHED LETTERS</div>
+      <div style="font:800 64px/.95 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy);">hellllllo 2026</div>
+      <div style="font:800 44px/.95 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy);">gooooodbye 2025</div>
+      <div style="font:800 36px/.95 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy);">HAvvvvve you met<br/>HAcademy?</div>
+      <p style="font:500 14px/1.4 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">Stretch a letter for hello / goodbye / surprise. Cover and section slides only &mdash; never in body copy.</p>
+    </div>
+
+    <!-- Pattern 2 · Refrain ladder -->
+    <div style="background:#fff; border:1px solid var(--border-2); padding:28px; display:flex; flex-direction:column; gap:8px; min-height:0;">
+      <div class="mono" style="color:var(--tha-violet); font-size:14px;">PATTERN 02 &middot; THE LADDER</div>
+      <div style="font:700 30px/1.1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy); margin-top:4px;">In 2026 we're<br/>leaning in</div>
+      <div style="font:400 italic 22px/1.05 var(--font-serif); color:var(--tha-purple);">more</div>
+      <div style="font:400 italic 28px/1.05 var(--font-serif); color:var(--tha-purple);">more</div>
+      <div style="font:400 italic 36px/1.05 var(--font-serif); color:var(--tha-purple);">more</div>
+      <div style="font:700 22px/1.1 var(--font-sans); color:var(--tha-navy);">into our influence in tech.</div>
+      <p style="font:500 14px/1.4 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">Step a word up or down in scale to make commitment visible. The repetition is the point.</p>
+    </div>
+
+    <!-- Pattern 3 · Strikethrough humor -->
+    <div style="background:#fff; border:1px solid var(--border-2); padding:28px; display:flex; flex-direction:column; gap:14px; min-height:0;">
+      <div class="mono" style="color:var(--tha-violet); font-size:14px;">PATTERN 03 &middot; STRIKETHROUGH HUMOR</div>
+      <div style="font:700 32px/1.1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">
+        We're <span style="text-decoration:line-through; text-decoration-color:var(--tha-purple); color:var(--fg-3);">doubling</span> tripling down on video.
+      </div>
+      <div style="font:700 28px/1.1 var(--font-sans); letter-spacing:-.02em; color:var(--tha-navy);">
+        <span style="text-decoration:line-through; text-decoration-color:var(--tha-purple); color:var(--fg-3);">Goodbye</span> Hello, ecosystems&nbsp;&#129872;
+      </div>
+      <p style="font:500 14px/1.4 var(--font-sans); color:var(--fg-2); margin:0; margin-top:auto;">Cross out the safer word; replace with the bolder one. Treats the slide like a draft, mid-edit. Honest, energetic.</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:18px; padding-top:12px; border-top:1px solid var(--border-2); display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+    <!-- Do -->
+    <div style="border-left:6px solid var(--tha-lime); padding:14px 20px;">
+      <div class="mono" style="color:var(--fg-accent); font-size:14px;">DO</div>
+      <p style="font:500 16px/1.45 var(--font-sans); color:var(--fg-1); margin:8px 0 0;">
+        Short. Opinionated. Lowercase first words for casual signals (<em>hellllllo</em>, <em>hoffman has always been a challenger brand</em>). Drop pronouns to sharpen (<em>Built for tech. Human at heart.</em>). Use a question to open (<em>Why Techfluence?</em>). Lead with a verb (<em>Bringing calm and order to Jensanity</em>).
+      </p>
+    </div>
+    <!-- Don't -->
+    <div style="border-left:6px solid var(--tha-violet); padding:14px 20px;">
+      <div class="mono" style="color:var(--tha-purple); font-size:14px;">DON'T</div>
+      <p style="font:500 16px/1.45 var(--font-sans); color:var(--fg-2); margin:8px 0 0;">
+        Stretched letters in body copy. The ladder pattern more than once per deck. Strikethrough on every page (it loses punch). Title Case Every Word. Agency clich&eacute;s &mdash; <em>leverage, end-to-end, at the intersection of, best-in-class</em>.
+      </p>
+    </div>
+  </div>
+
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">27d &middot; voice patterns</div>
+</section>
+
+
+<!-- 28 — BUTTONS & UI -->
+<section class="bg-paper" data-screen-label="28 Buttons">
+  <span class="eyebrow">Buttons &amp; UI</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">Square <em class="em-purple">corners.</em> Direct verbs.</h2>
+  <div class="stretch" style="margin-top:56px; display:flex; flex-direction:column; gap:48px;">
+    <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+      <button style="font:600 22px/1 var(--font-sans); padding:22px 36px; border:0; background:var(--tha-navy); color:var(--tha-lime); border-radius:0; cursor:pointer; display:inline-flex; align-items:center; gap:14px;">See the work <span style="font-size:24px;">→</span></button>
+      <button style="font:600 22px/1 var(--font-sans); padding:22px 36px; border:0; background:var(--tha-lime); color:var(--tha-navy); border-radius:0; cursor:pointer;">Tell us your story</button>
+      <button style="font:600 22px/1 var(--font-sans); padding:22px 36px; background:transparent; color:var(--tha-navy); border:2px solid var(--tha-navy); border-radius:0; cursor:pointer;">Read the case study</button>
+      <span style="font:600 22px/1 var(--font-sans); color:var(--tha-purple); border-bottom:2px solid var(--tha-purple); padding-bottom:6px;">Full narrative →</span>
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:32px; align-items:end;">
+      <div>
+        <label style="font:600 14px/1 var(--font-sans); display:block; margin-bottom:10px;">Full name</label>
+        <input placeholder="Jane Doe" style="width:100%; padding:18px 22px; border:1px solid var(--border-2); border-radius:6px; font:400 22px/1.2 var(--font-sans); background:#fff;"/>
+      </div>
+      <div>
+        <label style="font:600 14px/1 var(--font-sans); display:block; margin-bottom:10px;">Work email</label>
+        <input placeholder="jane@company.com" style="width:100%; padding:18px 22px; border:2px solid var(--tha-navy); border-radius:6px; font:400 22px/1.2 var(--font-sans); background:#fff; outline:0;"/>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <span class="pill filled">Earned</span><span class="pill">Digital</span><span class="pill">AI</span>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
+      <div style="border:1px solid var(--border-2); padding:36px; background:#fff;">
+        <span class="mono" style="color:var(--tha-teal);">CASE STUDY</span>
+        <h3 style="font:700 36px/1.15 var(--font-sans); letter-spacing:-.02em; margin:18px 0 12px;">From stealth to <em class="em-purple">front page</em> in six weeks.</h3>
+        <p class="body-md" style="font-size:20px; margin:0;">Enterprise AI &middot; 38 tier-1 placements</p>
+      </div>
+      <div style="background:var(--tha-navy); color:var(--tha-paper); padding:36px;">
+        <span class="mono" style="color:var(--tha-lime);">SERVICE</span>
+        <h3 style="font:700 36px/1.15 var(--font-sans); letter-spacing:-.02em; margin:18px 0 12px;">Earned media, <em class="em-lime">actually</em> earned.</h3>
+        <p class="body-md on-dark" style="font-size:20px; margin:0;">Pitches that land. Narratives that travel.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">28 &middot; UI</div>
+</section>
+
+
+<!-- 29 — SPACING & GRID -->
+<section class="bg-paper" data-screen-label="29 Spacing">
+  <span class="eyebrow">Spacing &amp; grid</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:18ch;">More <em class="em-purple">air.</em> Always more air.</h2>
+  <div class="stretch" style="margin-top:48px; display:grid; grid-template-columns: 1.2fr 1fr; gap:64px;">
+    <div>
+      <div class="mono" style="color:var(--tha-violet);">SPACING SCALE &middot; 4PX BASE</div>
+      <div style="margin-top:18px; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-2</code><span class="mono" style="color:var(--fg-2);">8</span><div style="height:12px; background:var(--tha-navy); width:8px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-4</code><span class="mono" style="color:var(--fg-2);">16</span><div style="height:12px; background:var(--tha-navy); width:16px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-6</code><span class="mono" style="color:var(--fg-2);">24</span><div style="height:12px; background:var(--tha-navy); width:24px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-8</code><span class="mono" style="color:var(--fg-2);">32</span><div style="height:12px; background:var(--tha-navy); width:32px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-12</code><span class="mono" style="color:var(--fg-2);">48</span><div style="height:12px; background:var(--tha-navy); width:48px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-16</code><span class="mono" style="color:var(--fg-2);">64</span><div style="height:12px; background:var(--tha-navy); width:64px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-20</code><span class="mono" style="color:var(--fg-2);">80</span><div style="height:12px; background:var(--tha-navy); width:80px;"></div></div>
+        <div style="display:grid; grid-template-columns: 100px 100px 1fr; gap:24px; align-items:center;"><code class="mono">s-24</code><span class="mono" style="color:var(--fg-2);">96</span><div style="height:12px; background:var(--tha-navy); width:96px;"></div></div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div>
+        <div class="mono" style="color:var(--tha-purple);">RHYTHM</div>
+        <p style="font:500 24px/1.4 var(--font-sans); margin-top:8px;"><span class="mono" style="font-size:28px; color:var(--tha-navy);">24 / 48 / 96</span> — gutters, block padding, section padding.</p>
+      </div>
+      <div style="height:1px; background:var(--border-2);"></div>
+      <div>
+        <div class="mono" style="color:var(--tha-purple);">SECTIONS</div>
+        <p style="font:500 24px/1.4 var(--font-sans); margin-top:8px;">Minimum <em class="em-purple">80px</em> vertical padding. Hero blocks at <em class="em-purple">128px</em>.</p>
+      </div>
+      <div style="height:1px; background:var(--border-2);"></div>
+      <div>
+        <div class="mono" style="color:var(--tha-purple);">RADIUS &amp; GRID</div>
+        <p style="font:500 24px/1.4 var(--font-sans); margin-top:8px;"><em class="em-purple">Square by default.</em> 0px buttons, 6px inputs, pill on tags. 12 cols, asymmetric, biased to 7–8.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">29 &middot; spacing</div>
+</section>
+
+
+<!-- 30 — IMAGERY -->
+<section class="bg-paper" data-screen-label="30 Imagery">
+  <span class="eyebrow">Imagery direction</span>
+  <h2 class="h-medium" style="margin-top:24px; max-width:20ch;">Candid, natural, <em class="em-purple">human-first.</em></h2>
+  <div class="stretch" style="margin-top:40px; display:grid; grid-template-columns: 2fr 1fr; gap:48px; align-items:stretch;">
+    <!-- Real photography (curated Unsplash stand-ins matching the direction — swap with campaign assets) -->
+    <div style="display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap:20px; min-height:0;">
+      <figure style="position:relative; margin:0; overflow:hidden; min-height:0;">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Team in candid conversation around a table" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"/>
+        <figcaption class="mono" style="position:absolute; left:0; bottom:0; background:var(--tha-navy); color:var(--tha-paper); font-size:13px; line-height:1.2; white-space:nowrap; padding:9px 14px;">HERO &middot; CANDID TEAM</figcaption>
+      </figure>
+      <figure style="position:relative; margin:0; overflow:hidden; min-height:0;">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80" alt="Portrait of a professional, natural light" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"/>
+        <figcaption class="mono" style="position:absolute; left:0; bottom:0; background:var(--tha-navy); color:var(--tha-paper); font-size:13px; line-height:1.2; white-space:nowrap; padding:9px 14px;">SPOKESPERSON &middot; PORTRAIT</figcaption>
+      </figure>
+      <figure style="position:relative; margin:0; overflow:hidden; min-height:0;">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Real office workspace with depth" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"/>
+        <figcaption class="mono" style="position:absolute; left:0; bottom:0; background:var(--tha-navy); color:var(--tha-paper); font-size:13px; line-height:1.2; white-space:nowrap; padding:9px 14px;">ENVIRONMENT &middot; OFFICE</figcaption>
+      </figure>
+      <figure style="position:relative; margin:0; overflow:hidden; min-height:0;">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Over-the-shoulder view of people using a product on screen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"/>
+        <figcaption class="mono" style="position:absolute; left:0; bottom:0; background:var(--tha-navy); color:var(--tha-paper); font-size:13px; line-height:1.2; white-space:nowrap; padding:9px 14px;">PRODUCT &middot; IN CONTEXT</figcaption>
+      </figure>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <div>
+        <div class="mono" style="color:var(--fg-accent);">DO</div>
+        <ul style="font:400 20px/1.45 var(--font-sans); color:var(--fg-1); margin:10px 0 0; padding-left:24px;">
+          <li>Natural light, business-casual.</li>
+          <li>Diverse, collaborative, human.</li>
+          <li>Warm color grade.</li>
+          <li>One intentional image per layout.</li>
+        </ul>
+      </div>
+      <div style="height:1px; background:var(--border-2);"></div>
+      <div>
+        <div class="mono" style="color:var(--tha-purple);">DON'T</div>
+        <ul style="font:400 20px/1.45 var(--font-sans); color:var(--fg-2); margin:10px 0 0; padding-left:24px;">
+          <li>Stock photo carousels.</li>
+          <li>Suits and ties.</li>
+          <li>3D chrome meshes.</li>
+          <li>Motion blur, lens flares.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">30 &middot; imagery</div>
+</section>
+
+<!-- 30b — MEDIA PLACEHOLDERS: anatomy (label · hint · prompt · drop-to-fill) -->
+<section class="bg-paper" data-screen-label="30b Placeholder anatomy">
+  <span class="eyebrow">Media placeholders</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:22ch;">Anatomy of a <em class="em-purple">placeholder.</em></h2>
+  <p class="body-lg" style="margin-top:14px; font-size:22px; max-width:62em; color:var(--fg-2);">
+    When the image can't be placed yet, the slide still art-directs it. Three lines do the work &mdash; and the frame itself accepts a dropped file.
+  </p>
+  <div class="stretch" style="margin-top:40px; display:grid; grid-template-columns: 1.5fr 1fr; gap:64px; align-items:stretch; min-height:0;">
+    <div class="tha-placeholder" data-slot="img-30b-demo" style="aspect-ratio:auto; padding:48px; gap:14px;">
+      <svg class="tha-placeholder__icon" style="width:52px;height:52px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><circle cx="8.5" cy="9.5" r="1.7"></circle><path d="M5 18l5-5 3.5 3.5L17 13l2.5 2.5"></path></svg>
+      <div class="tha-placeholder__label" style="font-size:26px;">Keynote moment &middot; 16:9 &middot; generate 1920&times;1080px</div>
+      <div class="tha-placeholder__hint" style="font-size:18px; max-width:40ch;">The founder on stage, mid-gesture, audience soft in the foreground. Warm grade, no lectern.</div>
+      <div class="tha-placeholder__prompt" style="font-size:14px; max-width:52ch;">Candid conference photo, founder on stage mid-gesture, audience heads soft-focus in foreground, warm natural stage light, business-casual, documentary style, no lectern, no lens flare. 16:9.</div>
+    </div>
+    <div style="display:flex; flex-direction:column; justify-content:center; gap:0;">
+      <div style="padding:26px 0; border-top:1.5px solid var(--tha-navy);">
+        <span class="mono" style="font-size:16px; color:var(--tha-purple);">__LABEL</span>
+        <p style="font:500 24px/1.4 var(--font-sans); color:var(--tha-navy); margin:10px 0 0;">What it is &mdash; subject and ratio. For the person scanning the deck.</p>
+      </div>
+      <div style="padding:26px 0; border-top:1px solid var(--border-2);">
+        <span class="mono" style="font-size:16px; color:var(--tha-purple);">__HINT</span>
+        <p style="font:500 24px/1.4 var(--font-sans); color:var(--tha-navy); margin:10px 0 0;">Art direction for the <em class="em-purple">human</em> sourcing the shot.</p>
+      </div>
+      <div style="padding:26px 0; border-top:1px solid var(--border-2);">
+        <span class="mono" style="font-size:16px; color:var(--tha-purple);">__PROMPT</span>
+        <p style="font:500 24px/1.4 var(--font-sans); color:var(--tha-navy); margin:10px 0 0;">A paste-ready seed for an image generator. Click it to copy.</p>
+      </div>
+      <div style="padding:26px 0; border-top:1px solid var(--border-2); border-bottom:1.5px solid var(--tha-navy);">
+        <span class="mono" style="font-size:16px; color:var(--fg-accent);">DATA-SLOT</span>
+        <p style="font:500 24px/1.4 var(--font-sans); color:var(--tha-navy); margin:10px 0 0;">Drag the real image onto the frame to fill it. It sticks. Hover &rarr; &#10005; to clear.</p>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">30b &middot; placeholders</div>
+</section>
+
+<!-- 30c — LAYOUT: full-bleed image + navy overlay + headline -->
+<section data-screen-label="30c Layout full-bleed" style="padding:0; background:var(--tha-navy-800);">
+  <div class="tha-placeholder on-dark" data-slot="img-30c-fullbleed" style="position:absolute; inset:0; aspect-ratio:auto; border:0; padding:0; justify-content:flex-end; align-items:flex-end;">
+    <div style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:flex-end; gap:10px; padding:0 120px 130px 0; text-align:right;">
+      <div class="tha-placeholder__label" style="font-size:22px; color:var(--tha-paper);">Full-bleed hero &middot; 16:9 &middot; generate 1920&times;1080px</div>
+      <div class="tha-placeholder__hint" style="font-size:16px; max-width:38ch; color:var(--tha-navy-300);">One intentional image, edge to edge. The 60&ndash;75% navy overlay guarantees the type.</div>
+      <div class="tha-placeholder__prompt" style="font-size:13px; max-width:48ch;">Cinematic wide shot, engineering team reviewing work on a glass wall, dusk light through office windows, warm grade, candid, documentary, dark tones that hold white type. 16:9.</div>
+    </div>
+  </div>
+  <div style="position:absolute; inset:0; background:rgba(24,45,67,.66); pointer-events:none;"></div>
+  <div style="position:absolute; left:120px; top:120px; right:120px; bottom:120px; display:flex; flex-direction:column; pointer-events:none;">
+    <span class="eyebrow on-dark">Layout &middot; full-bleed image</span>
+    <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+      <p style="font:700 116px/1.02 var(--font-sans); letter-spacing:-.03em; color:var(--tha-paper); margin:0; max-width:13ch;">The picture is the <em class="em-lime">argument.</em></p>
+      <p class="body-lg on-dark" style="margin-top:36px; font-size:24px; color:var(--tha-navy-200); max-width:30em;">Headline on the overlay, never on the raw image. One slide, one image, one idea.</p>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt="" style="z-index:2;"/>
+  <div class="chrome-page on-dark" style="z-index:2;">30c &middot; layout</div>
+</section>
+
+<!-- 30d — LAYOUT: split 50/50 — text left, image right -->
+<section class="bg-paper" data-screen-label="30d Layout split" style="padding:0;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; height:100%;">
+    <div style="padding:120px 80px 120px 120px; display:flex; flex-direction:column;">
+      <span class="eyebrow">Layout &middot; split 50/50</span>
+      <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+        <h2 style="font:700 84px/1.04 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy); margin:0; max-width:12ch;">Half the slide works for the <em class="em-purple">eye.</em></h2>
+        <p class="body-lg" style="margin-top:32px; font-size:24px; max-width:24em;">Text owns the left, the image owns the right &mdash; flush to three edges, no frame. Swap sides freely; never shrink the image to a thumbnail.</p>
+        <div style="margin-top:48px;">
+          <span style="display:inline-block; background:var(--tha-navy); color:var(--tha-lime); font:700 20px/1 var(--font-sans); letter-spacing:.02em; padding:20px 32px;">See the work</span>
+        </div>
+      </div>
+    </div>
+    <div class="tha-placeholder" data-slot="img-30d-split" style="aspect-ratio:auto; border-width:0 0 0 1.5px; padding:48px; gap:12px;">
+      <svg class="tha-placeholder__icon" style="width:48px;height:48px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><circle cx="8.5" cy="9.5" r="1.7"></circle><path d="M5 18l5-5 3.5 3.5L17 13l2.5 2.5"></path></svg>
+      <div class="tha-placeholder__label" style="font-size:24px;">Workshop &middot; 4:5 &middot; generate 1080&times;1350px</div>
+      <div class="tha-placeholder__hint" style="font-size:17px; max-width:36ch;">Two people at a whiteboard, mid-argument about a story arc. Candid, warm.</div>
+      <div class="tha-placeholder__prompt" style="font-size:13px; max-width:46ch;">Candid photo, two colleagues at a whiteboard sketching a story arc, natural daylight, business-casual, warm color grade, eye-level, documentary style. Portrait crop 8:9.</div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page" style="z-index:2;">30d &middot; layout</div>
+</section>
+
+<!-- 30e — LAYOUT: portrait + pull quote -->
+<section class="bg-paper" data-screen-label="30e Layout portrait quote">
+  <span class="eyebrow">Layout &middot; portrait + pull quote</span>
+  <div class="stretch" style="margin-top:40px; display:grid; grid-template-columns: 1fr 1.6fr; gap:80px; align-items:center; min-height:0;">
+    <div class="tha-placeholder tha-placeholder--4x5" data-slot="img-30e-portrait" style="padding:40px; gap:12px; max-height:100%;">
+      <svg class="tha-placeholder__icon" style="width:44px;height:44px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c1.4-3.4 3.9-5 7-5s5.6 1.6 7 5"></path></svg>
+      <div class="tha-placeholder__label" style="font-size:22px;">Portrait &middot; 4:5 &middot; generate 1080&times;1350px</div>
+      <div class="tha-placeholder__hint" style="font-size:16px; max-width:30ch;">B&amp;W for gravitas. The client, not a model.</div>
+      <div class="tha-placeholder__prompt" style="font-size:13px; max-width:38ch;">Black-and-white editorial portrait, CTO seated by a window, soft directional light, direct gaze, honest skin texture, no retouching gloss. 4:5.</div>
+    </div>
+    <div>
+      <p style="font:400 italic 64px/1.2 var(--font-serif); color:var(--tha-navy); margin:0; max-width:20ch;">&ldquo;They didn't make us louder. They made us <span style="background:var(--tha-lime); padding:0 .12em;">worth quoting</span>.&rdquo;</p>
+      <div style="margin-top:48px; display:flex; align-items:center; gap:20px;">
+        <div style="width:48px; height:1.5px; background:var(--tha-navy);"></div>
+        <div>
+          <div style="font:700 24px/1.2 var(--font-sans); color:var(--tha-navy);">Mira Chen</div>
+          <div class="mono" style="font-size:15px; color:var(--fg-3); margin-top:6px;">CTO &middot; SERIES-C INFRASTRUCTURE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">30e &middot; layout</div>
+</section>
+
+<!-- 30f — LAYOUT: case-study montage — image grid + stat block -->
+<section class="bg-paper" data-screen-label="30f Layout montage">
+  <span class="eyebrow">Layout &middot; case-study montage</span>
+  <h2 class="h-medium" style="margin-top:20px; max-width:22ch; font-size:64px;">One story, <em class="em-purple">three</em> frames.</h2>
+  <div class="stretch" style="margin-top:36px; display:grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap:20px; min-height:0;">
+    <div class="tha-placeholder" data-slot="img-30f-lead" style="grid-row:span 2; aspect-ratio:auto; padding:36px; gap:12px;">
+      <svg class="tha-placeholder__icon" style="width:44px;height:44px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><circle cx="8.5" cy="9.5" r="1.7"></circle><path d="M5 18l5-5 3.5 3.5L17 13l2.5 2.5"></path></svg>
+      <div class="tha-placeholder__label" style="font-size:22px;">Lead &middot; 3:4 &middot; generate 1080&times;1440px</div>
+      <div class="tha-placeholder__hint" style="font-size:16px; max-width:30ch;">The launch, live. Tall crop.</div>
+      <div class="tha-placeholder__prompt" style="font-size:13px; max-width:36ch;">Documentary photo, product launch event in progress, presenter and screen visible, warm ambient light, candid crowd energy. Tall crop 3:4.</div>
+    </div>
+    <div class="tha-placeholder" data-slot="img-30f-detail" style="aspect-ratio:auto; padding:28px; gap:10px;">
+      <div class="tha-placeholder__label" style="font-size:20px;">Detail &middot; 4:3 &middot; generate 1440&times;1080px</div>
+      <div class="tha-placeholder__hint" style="font-size:15px; max-width:26ch;">Hands, screens, ink. Close.</div>
+      <div class="tha-placeholder__prompt" style="font-size:12px; max-width:34ch;">Close-up, hands annotating a printed media plan, pen and laptop, shallow depth, warm daylight. 4:3.</div>
+    </div>
+    <div class="tha-placeholder" data-slot="img-30f-press" style="aspect-ratio:auto; padding:28px; gap:10px;">
+      <div class="tha-placeholder__label" style="font-size:20px;">Proof &middot; 4:3 &middot; generate 1440&times;1080px</div>
+      <div class="tha-placeholder__hint" style="font-size:15px; max-width:26ch;">The headline in print or on screen.</div>
+      <div class="tha-placeholder__prompt" style="font-size:12px; max-width:34ch;">Photo of a tier-1 business publication open to a feature story, on a desk, natural light, warm grade. 4:3.</div>
+    </div>
+    <div style="grid-column:span 2; background:var(--tha-navy); padding:36px 44px; display:flex; align-items:center; gap:56px;">
+      <div>
+        <div style="font:800 92px/1 var(--font-sans); letter-spacing:-.03em; color:var(--tha-lime);">38.2M</div>
+        <div class="mono" style="font-size:15px; color:var(--tha-navy-300); margin-top:10px;">EARNED REACH &middot; 90 DAYS</div>
+      </div>
+      <p style="font:500 26px/1.4 var(--font-sans); color:var(--tha-paper); margin:0; max-width:18em;">Images carry the proof; the navy block carries the <em class="em-lime">number.</em></p>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">30f &middot; layout</div>
+</section>
+
+
+<!-- 31 — DEMO: Annotated thought -->
+<section class="bg-paper" data-screen-label="31 Demo annotated">
+  <span class="eyebrow">Demonstration &middot; annotations in headline</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; position:relative;">
+    <p style="font:700 96px/1.1 var(--font-sans); letter-spacing:-.025em; color:var(--tha-navy); margin:0; max-width:14ch; position:relative;">
+      We exist to help leaders and brands turn
+      <span class="scribble-wrap" style="white-space:nowrap;">
+        opinion
+        <svg style="position:absolute; left:-4%; top:-12%; width:108%; height:124%; overflow:visible;" viewBox="0 0 300 80" preserveAspectRatio="none">
+          <ellipse cx="150" cy="40" rx="142" ry="32" fill="none" stroke="#CB65FF" stroke-width="6" stroke-linecap="round" transform="rotate(-3 150 40)"/>
+        </svg>
+      </span>
+      into
+      <em class="em-purple" style="font-size:96px; position:relative; display:inline-block;">
+        Techfluence.
+        <svg style="position:absolute; left:0; bottom:-.15em; width:100%; height:.35em; overflow:visible;" viewBox="0 0 400 30" preserveAspectRatio="none">
+          <path d="M 8 22 Q 100 4, 200 18 T 392 12" stroke="#D2EB00" stroke-width="9" fill="none" stroke-linecap="round"/>
+        </svg>
+      </em>
+    </p>
+    <svg style="position:absolute; right:80px; top:80px; width:200px; height:160px;" viewBox="0 0 240 200">
+      <path d="M 30 30 Q 130 20, 200 110 L 188 90 M 200 110 L 178 116" stroke="#CB65FF" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p style="position:absolute; right:80px; top:24px; font:400 italic 26px/1.3 var(--font-serif); color:var(--tha-purple); max-width:16ch; text-align:right;">
+      the noun we want<br/>everyone to repeat
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">31 &middot; demo</div>
+</section>
+
+
+<!-- ============================================================
+     PART 6 · IN PRACTICE
+     ============================================================ -->
+
+<!-- 32 — SECTION 6 -->
+<section class="bg-paper" data-screen-label="32 Part 06">
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <span class="mono" style="color:var(--tha-purple); font-size:24px; margin-bottom:32px;">PART 06</span>
+    <h1 class="h-section"><em class="em-purple">In practice.</em></h1>
+    <p class="body-lg" style="margin-top:48px; font-size:32px; color:var(--fg-2); max-width:28em;">
+      Putting it together. The rules above, applied to slides we'd actually present.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">32 &middot; section</div>
+</section>
+
+
+<!-- 33 — DEMO: WHAT / HOW / WHY -->
+<section class="bg-paper" data-screen-label="33 Demo framework">
+  <span class="eyebrow">Demonstration &middot; framework layout</span>
+  <h2 class="h-medium" style="margin-top:16px; max-width:18ch;">Start with <em class="em-purple">why.</em></h2>
+  <div class="stretch" style="display:grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; gap:0; align-items:center; padding:48px 0;">
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <span class="mono" style="color:var(--tha-violet)">what</span>
+      <p class="h-small" style="font-size:40px; max-width:14ch;">Premium tech<br/>communications<br/>agency.</p>
+      <span class="body-sm" style="margin-top:4px;">The outcome.</span>
+    </div>
+    <div style="text-align:center; font:300 100px/1 var(--font-sans); color:var(--tha-navy-300);">+</div>
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <span class="mono" style="color:var(--tha-teal);">how</span>
+      <p class="h-small" style="font-size:40px; max-width:14ch;">Turn opinion<br/>into <em class="em-purple">influence.</em></p>
+      <span class="body-sm" style="margin-top:4px;">The process.</span>
+    </div>
+    <div style="text-align:center; font:300 100px/1 var(--font-sans); color:var(--tha-navy-300);">=</div>
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <span class="mono" style="color:var(--tha-purple)">why</span>
+      <p class="h-small" style="font-size:40px; max-width:14ch;">The agency of<br/><em class="em-purple">Techfluence.</em></p>
+      <span class="body-sm" style="margin-top:4px;">The purpose.</span>
+    </div>
+  </div>
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">33 &middot; demo</div>
+</section>
+
+
+<!-- 34 — DEMO: Concept reveal -->
+<section class="bg-purple" data-screen-label="34 Demo concept reveal">
+  <span class="eyebrow on-dark" style="color:var(--tha-aqua)">Demonstration &middot; bold concept reveal</span>
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center;">
+    <h1 class="display on-dark" style="font-size:280px; letter-spacing:-.04em; line-height:.9;">
+      Tech<em class="em-lime">fluence.</em>
+    </h1>
+    <p class="body-lg on-dark" style="margin-top:48px; max-width:28em; font-size:34px; color:var(--tha-aqua);">
+      <em class="em-aqua">noun.</em> The compounded influence a tech brand earns when its opinions shape markets, policies, and the AI answers that follow.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page on-dark" style="color:var(--tha-aqua);">34 &middot; demo</div>
+</section>
+
+
+<!-- 35 — DEMO: Brand system stack -->
+<section class="bg-paper" data-screen-label="35 Demo brand system" style="padding: 80px var(--slide-pad) 100px;">
+  <span class="eyebrow">Demonstration &middot; the brand system at a glance</span>
+  <h2 class="h-medium" style="margin-top:12px; max-width:18ch; font-size:64px;">Hoffman's <em class="em-purple">brand system.</em> Layered.</h2>
+  <p class="body-md" style="font-size:18px; margin-top:10px; color:var(--fg-2); max-width:60em;">
+    The full system on one page. Each layer answers a question &mdash; <em class="em-purple">why</em>, <em class="em-purple">how</em>, <em class="em-purple">what</em>, then how it scales into capabilities, products, and where it plays. Boxes earn their color; rules separate layers.
+  </p>
+
+  <div class="stretch" style="margin-top:18px; display:flex; flex-direction:column; gap:8px;">
+    <!-- WHY · Purpose -->
+    <div style="display:grid; grid-template-columns: 180px 1fr; gap:24px; padding:16px 22px; background:var(--tha-navy); color:var(--tha-paper); align-items:center;">
+      <div>
+        <div class="mono" style="color:var(--tha-lime); font-size:13px;">WHY</div>
+        <div style="font:700 18px/1 var(--font-sans); margin-top:4px;">Purpose</div>
+      </div>
+      <div style="font:600 22px/1.3 var(--font-sans);">We help leaders and brands turn opinion into <em class="em-lime">Techfluence.</em></div>
+    </div>
+    <!-- HOW · Positioning -->
+    <div style="display:grid; grid-template-columns: 180px 1fr; gap:24px; padding:16px 22px; background:var(--tha-purple); color:var(--tha-paper); align-items:center;">
+      <div>
+        <div class="mono" style="color:var(--tha-aqua); font-size:13px;">HOW</div>
+        <div style="font:700 18px/1 var(--font-sans); margin-top:4px;">Positioning</div>
+      </div>
+      <div style="font:600 20px/1.3 var(--font-sans);">We speak <em class="em-aqua">tech</em> &mdash; the edge for turning complex ideas into opinions that shape markets.</div>
+    </div>
+    <!-- WHAT · Products -->
+    <div style="display:grid; grid-template-columns: 180px 1fr; gap:24px; padding:16px 22px; background:var(--tha-teal); color:var(--tha-paper); align-items:center;">
+      <div>
+        <div class="mono" style="color:var(--tha-aqua); font-size:13px;">WHAT</div>
+        <div style="font:700 18px/1 var(--font-sans); margin-top:4px;">Products</div>
+      </div>
+      <div style="font:600 20px/1.3 var(--font-sans);">The integrated comms agency of <em class="em-aqua">Techfluence.</em></div>
+    </div>
+    <!-- Capabilities -->
+    <div style="display:grid; grid-template-columns: 180px 1fr; gap:24px; padding:16px 22px; background:#fff; border:1px solid var(--border-2); align-items:center;">
+      <div>
+        <div class="mono" style="color:var(--tha-violet); font-size:13px;">CORE</div>
+        <div style="font:700 18px/1 var(--font-sans); margin-top:4px;">Capabilities</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="pill" style="font-size:13px; padding:8px 14px;">Communications</span>
+        <span class="pill" style="font-size:13px; padding:8px 14px;">Digital + AI</span>
+        <span class="pill" style="font-size:13px; padding:8px 14px;">Campaign Studio</span>
+        <span class="pill" style="font-size:13px; padding:8px 14px;">Branding</span>
+        <span class="pill" style="font-size:13px; padding:8px 14px;">Content marketing</span>
+        <span class="pill" style="font-size:13px; padding:8px 14px;">TA &amp; EB</span>
+      </div>
+    </div>
+    <!-- Solutions & Proof points -->
+    <div style="display:grid; grid-template-columns: 180px 1fr; gap:24px; padding:16px 22px; background:var(--tha-navy-050); border-left:6px solid var(--tha-lime); align-items:center;">
+      <div>
+        <div class="mono" style="color:var(--fg-accent); font-size:13px;">PROOF</div>
+        <div style="font:700 18px/1 var(--font-sans); margin-top:4px; color:var(--tha-navy);">Solutions &amp; Products</div>
+      </div>
+      <div style="font:500 17px/1.4 var(--font-sans); color:var(--tha-navy);">
+        IMPACT &middot; Techplomacy &middot; Momentum Maker &middot; Perception Painter &middot; Buzz Builder &middot; Engagement Engine &middot; Conversion Catalyst &middot; Awareness Accelerator &middot; Hive Jive &middot; Brand Intelligence &middot; Creative Codex &middot; Periodic Table of Storytelling
+      </div>
+    </div>
+    <!-- Playground · audience + verticals -->
+    <div style="display:grid; grid-template-columns: 180px 1fr 1fr; gap:24px; padding:16px 22px; align-items:center;">
+      <div>
+        <div class="mono" style="color:var(--tha-teal); font-size:13px;">WHERE</div>
+        <div style="font:700 18px/1 var(--font-sans); margin-top:4px;">Playground</div>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--fg-2); font-size:11px;">AUDIENCE</div>
+        <div style="font:600 17px/1.3 var(--font-sans); margin-top:4px; color:var(--tha-navy);">(Aspiring) <em class="em-purple">Techfluencers</em></div>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--fg-2); font-size:11px;">VERTICALS</div>
+        <div style="font:600 17px/1.3 var(--font-sans); margin-top:4px; color:var(--tha-navy);">10 tech verticals &middot; specific client ecosystems</div>
+      </div>
+    </div>
+    <!-- Philosophy + Ethos + Mindset row -->
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px; margin-top:6px;">
+      <div style="padding:14px 18px; background:var(--tha-lime); color:var(--tha-navy);">
+        <div class="mono" style="font-size:11px;">PHILOSOPHY</div>
+        <div style="font:600 18px/1.2 var(--font-sans); margin-top:4px;">The story is <em>always</em> there.</div>
+      </div>
+      <div style="padding:14px 18px; background:var(--tha-violet); color:var(--tha-navy);">
+        <div class="mono" style="font-size:11px;">ETHOS</div>
+        <div style="font:600 18px/1.2 var(--font-sans); margin-top:4px;">We are Geeks at <em>heart.</em></div>
+      </div>
+      <div style="padding:14px 18px; background:var(--tha-aqua); color:var(--tha-navy);">
+        <div class="mono" style="font-size:11px;">MINDSET</div>
+        <div style="font:600 18px/1.2 var(--font-sans); margin-top:4px;">Tech-curious. <em>Tech-fluent.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <img src="../assets/logo-horizontal-navy-lime.svg" class="chrome-logo" alt=""/>
+  <div class="chrome-page">35 &middot; demo</div>
+</section>
+
+
+<!-- 36 — CLOSING -->
+<section class="bg-navy" data-screen-label="36 Closing">
+  <!-- Use 2: the line is the background layer of this dark field — edge-locked to all four edges (the SVG artboard is 1920×1080, so the sharp ends sit exactly on the slide edges), behind content -->
+  <img src="../assets/storyline-line-lime.svg" alt="" style="position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none;"/>
+
+  <div class="stretch" style="display:flex; flex-direction:column; justify-content:center; align-items:flex-start; position:relative; z-index:1; max-width:700px;">
+    <span class="eyebrow on-dark"><span class="dot"></span>One last thing</span>
+    <p style="font:700 116px/1 var(--font-sans); letter-spacing:-.025em; color:var(--tha-paper); margin:32px 0 0;">
+      The story is <em class="em-lime">always</em> there.
+    </p>
+    <p class="body-md on-dark" style="margin-top:48px; font-size:22px; color:var(--tha-navy-300); max-width:32em;">
+      Brand guidelines v2 &middot; 2026 &middot; The Hoffman Agency. For questions, additions or asset requests, contact brand@hoffman.com.
+    </p>
+  </div>
+  <img src="../assets/logo-horizontal-white.svg" class="chrome-logo" alt="" style="z-index:2;"/>
+  <div class="chrome-page on-dark" style="z-index:2;">36 &middot; close</div>
+</section>
+
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+<script>
+/* Drop-to-fill placeholders + click-to-copy prompts.
+   Any .tha-placeholder[data-slot] accepts a dragged (or clicked-to-browse)
+   image; it's downscaled, stored in localStorage and restored on reload.
+   Hover a filled frame → ✕ to clear. Clicking a __prompt copies its text. */
+(function(){
+  var KEY='tha-brand-deck-slots-v1';
+  var store={}; try{ store=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){} }
+  function clearBtn(el){
+    var x=el.querySelector(':scope > .tha-placeholder__clear');
+    if(x) return x;
+    x=document.createElement('button'); x.type='button'; x.className='tha-placeholder__clear'; x.textContent='\u2715'; x.title='Remove image';
+    x.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      delete store[el.dataset.slot]; save();
+      el.classList.remove('is-filled'); el.style.backgroundImage=''; x.remove();
+    });
+    el.appendChild(x); return x;
+  }
+  function apply(el, data){
+    el.classList.add('is-filled');
+    el.style.backgroundImage='url("'+data+'")';
+    clearBtn(el);
+  }
+  function ingest(el, file){
+    if(!file || !/^image\/(png|jpeg|webp|avif)$/.test(file.type)) return;
+    var url=URL.createObjectURL(file), img=new Image();
+    img.onload=function(){
+      var MAX=1280, s=Math.min(1, MAX/Math.max(img.width,img.height));
+      var c=document.createElement('canvas');
+      c.width=Math.max(1,Math.round(img.width*s)); c.height=Math.max(1,Math.round(img.height*s));
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      var data=c.toDataURL('image/webp',0.82);
+      store[el.dataset.slot]=data; save(); apply(el,data);
+      URL.revokeObjectURL(url);
+    };
+    img.src=url;
+  }
+  document.querySelectorAll('.tha-placeholder[data-slot]').forEach(function(el){
+    if(store[el.dataset.slot]) apply(el, store[el.dataset.slot]);
+    el.addEventListener('dragover', function(e){ e.preventDefault(); el.classList.add('is-over'); });
+    el.addEventListener('dragleave', function(){ el.classList.remove('is-over'); });
+    el.addEventListener('drop', function(e){
+      e.preventDefault(); el.classList.remove('is-over');
+      ingest(el, e.dataTransfer.files && e.dataTransfer.files[0]);
+    });
+    el.addEventListener('dblclick', function(){
+      if(el.classList.contains('is-filled')) return;
+      var inp=document.createElement('input'); inp.type='file'; inp.accept='image/png,image/jpeg,image/webp,image/avif';
+      inp.addEventListener('change', function(){ ingest(el, inp.files && inp.files[0]); });
+      inp.click();
+    });
+  });
+  document.querySelectorAll('.tha-placeholder__prompt').forEach(function(p){
+    p.title='Click to copy prompt';
+    p.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      var t=(p.dataset.prompt||p.textContent||'').trim();
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+      p.classList.add('is-copied');
+      setTimeout(function(){ p.classList.remove('is-copied'); }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
