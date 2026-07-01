@@ -35,6 +35,7 @@ colors:
   # Neutrals
   neutral:      "#FAFAF7"   # Paper — primary surface (warm off-white)
   neutral-strong: "#FFFFFF" # Elevated surface
+  neutral-sand: "#F1EFE7"   # Warm sand — the raised surface when the PAGE is pure white
   neutral-muted: "#F3F2ED"  # Stone tint
   ink:          "#0E1C2B"   # Body text on light
   ink-muted:    "#35526F"   # Secondary text
@@ -44,6 +45,7 @@ colors:
   success:      "#147A4B"   # Darkened for WCAG AA (white text contrast ≥ 4.5:1)
   warning:      "#E08A00"
   danger:       "#C43D3D"
+  info:         "#145F7B"   # = teal — informational (used rarely)
 
   # Borders
   border:       "#C8D2DD"   # Hairline divider (navy-200)
@@ -146,6 +148,21 @@ spacing:
   4xl: 80px
   5xl: 96px
   6xl: 128px
+
+motion:
+  # Primitive tokens (in colors_and_type.css). Named-intent choreography is still backlog.
+  ease-out:    "cubic-bezier(0.2, 0.8, 0.2, 1)"
+  ease-in-out: "cubic-bezier(0.65, 0, 0.35, 1)"
+  dur-fast:    140ms
+  dur:         220ms
+  dur-slow:    420ms
+
+shadows:
+  # Navy-tinted only, never grey (see Elevation & Depth).
+  shadow-1:     "0 1px 0 rgba(24,45,67,0.08)"
+  shadow-2:     "0 4px 14px -4px rgba(24,45,67,0.12), 0 1px 0 rgba(24,45,67,0.06)"
+  shadow-3:     "0 18px 40px -18px rgba(24,45,67,0.28), 0 2px 0 rgba(24,45,67,0.06)"
+  shadow-press: "inset 0 2px 0 rgba(14,28,43,0.18)"
 
 components:
   # ---------- Buttons ----------
@@ -333,6 +350,8 @@ The palette has **two primaries doing structural work** and **four secondaries u
 - **Quaternary (`{colors.quaternary}` — Cyan)** and **quinary (`{colors.quinary}` — Teal)** are the cool accent pair. Teal makes a credible alternate section background; cyan reads well on teal and vice versa. Every secondary is a viable **surface**, not just an accent — see `preview/brand-color-pairings.html`.
 - **Neutral (`{colors.neutral}` — Paper)** is the default surface — a warm off-white, never `#FFFFFF`. Pure white reads clinical against this palette.
 
+**Two-surface model (pick one per surface, don't mix).** Elevation comes from a *page vs. raised* pairing, not from shadow: (a) the **default** — page is warm **Paper** (`{colors.neutral}`), raised cards are pure **White** (`{colors.neutral-strong}`); or (b) the **white theme** (`.tha-theme-white`) — page is pure **White**, raised cards are warm **Sand** (`{colors.neutral-sand}` #F1EFE7). Never sit a paper card on a paper page — the ~1.5% delta is too faint to read as elevation. See `preview/brand-surfaces.html`.
+
 **Rules.** No gradients — a "gradient" is two colors split hard. **Any two brand colors may be combined as surface + type — across the warm/cool pairs included — wherever the pair clears WCAG** (≥ 4.5 for body, ≥ 3 for large/bold; check `preview/brand-color-pairings.html`). The old "never cross the pairs" rule is retired: contrast is the gate, not pairing. Lead a layout with one dominant secondary "mood", then add a second color as accent/type. **Color as surface:** every brand color can be a section background as a bold color block — pair lime/cyan surfaces with navy type, navy/purple/teal surfaces with white or a light accent. The 2-color (navy + lime) logo sits on navy, lime, or paper only; on any secondary-color background, use the 1-color white logo.
 
 ## Typography
@@ -386,6 +405,7 @@ Most cards are flat on paper with a hairline border or no border at all — sepa
 - **`shadow-1`** — `0 1px 0 rgba(24,45,67,0.08)` — barely-there hairline shadow.
 - **`shadow-2`** — `0 4px 14px -4px rgba(24,45,67,0.12), 0 1px 0 rgba(24,45,67,0.06)` — default elevated card.
 - **`shadow-3`** — `0 18px 40px -18px rgba(24,45,67,0.28), 0 2px 0 rgba(24,45,67,0.06)` — floating menu or modal.
+- **`shadow-press`** — `inset 0 2px 0 rgba(14,28,43,0.18)` — the inset a button/control takes on `:active`.
 
 No glows, no inner glows, no coloured shadows.
 
@@ -422,6 +442,20 @@ Still banned: **raw unicode emoji** as icons/bullets (platform-inconsistent — 
 
 **Fluent emoji (decks).** For the heavy emoji-led *visual storytelling* in decks we use the open-source **Microsoft Fluent Emoji** set (static + animated) via the `<fluent-emoji>` injector at `assets/emoji/fluent-emoji.js` — loaded automatically by the deck and keynote templates. Use it by name: `<fluent-emoji name="rocket"></fluent-emoji>` (inline, rides the baseline), `variant="animated"` for motion, or `size="120"` to use one as a graphic. It resolves a **local copy first** (curated set in `assets/emoji/`, works offline) and falls back to the jsDelivr CDN for the full library — see the **Brand → Fluent emoji picker** card (`preview/fluent-emoji-gallery.html`) to browse and copy tags. This is distinct from the `.tha-emoji` unicode-glyph-in-a-word move (still used for a single charged word in running copy); Fluent emoji cover the bigger storytelling beats, animated moments, **and double as the system's pictorial symbol/icon vocabulary** (see Iconography above). Static art © microsoft/fluentui-emoji, animated © Tarikul-Islam-Anik/Animated-Fluent-Emojis (both MIT).
 
+## Component library & templates
+
+`DESIGN.md` defines the tokens and rules; two collections *apply* them, and both are indexed here so nothing built is invisible to this file.
+
+**Website UI kit** (`ui_kits/website/`) — 15 production React components, compiled into `_ds_bundle.js` and exposed on `window.HoffmanAgencyDesignSystem_d10f7f`: `Button`, `Nav`, `Hero`, `Services`, `StatsStrip`, `CaseStudyGrid`, `QuoteBlock`, `CTABand`, `Footer`, `Eyebrow`, `Em`, `Circle`, `Scribble`, `PaletteStrip`, `StorylineDivider`. These are **marketing-site** components; the app-UI primitive catalog (form controls, feedback, data-display) is still backlog — see Reserved · Tier 1.
+
+**Templates** (`templates/`) — starting points a consuming project copies:
+- `deck/` — the **48-layout** presentation library (codes L01–L51). Slide medium — governed by `CLAUDE.md` + `LAYOUTS.md`, not the web rules above.
+- `keynote/` — editorial long-form keynote.
+- `one-pager/` — print, US Letter.
+- `social-tile/` — square social post.
+
+Live spec/preview cards for every token group and component live in `preview/*.html` (surfaced in the Design System tab).
+
 ## Do's and Don'ts
 
 **Do.**
@@ -452,7 +486,7 @@ The following areas are **acknowledged but not yet defined**. Placeholders are k
 
 ### Tier 1 · Product / UI extensions
 
-- [ ] **Component library beyond the basics** — form controls (checkbox, radio, toggle, select, textarea, date picker, file upload, slider), navigation (tabs, breadcrumbs, pagination, sidebar, mobile menu), feedback (toast, alert banner, modal, tooltip, popover), data display (table, list, avatar, badge, divider), disclosure (accordion, drawer, menu), progress (bar, spinner, skeleton).
+- [ ] **App-UI component library** *(the marketing/website kit in `ui_kits/website/` already ships — see "Component library & templates"; still missing is the product-UI catalog below)* — form controls (checkbox, radio, toggle, select, textarea, date picker, file upload, slider), navigation (tabs, breadcrumbs, pagination, sidebar, mobile menu), feedback (toast, alert banner, modal, tooltip, popover), data display (table, list, avatar, badge, divider), disclosure (accordion, drawer, menu), progress (bar, spinner, skeleton).
 - [ ] **Interaction states catalog** — formal spec for `default · hover · focus · active · selected · disabled · loading · error · success` across every interactive component.
 - [ ] **Accessibility (WCAG) commitments** — focus indicators, keyboard navigation, screen reader support, `prefers-reduced-motion`, color contrast minimums codified per token pair, touch target minimum (44 × 44 px).
 - [ ] **Responsive breakpoints** — `sm / md / lg / xl / 2xl` named breakpoints with px values.
@@ -461,12 +495,12 @@ The following areas are **acknowledged but not yet defined**. Placeholders are k
 
 ### Tier 2 · Communications outputs
 
-- [ ] **Marketing motion system** — easing curves (entrance, exit, decision, drama), duration tiers, choreography rules.
+- [ ] **Marketing motion _choreography_** *(primitive tokens already ship — `{motion.ease-out}`, `ease-in-out`, `dur-fast/dur/dur-slow` in `colors_and_type.css`)* — still undefined: named easing intents (entrance, exit, decision, drama), duration tiers mapped to intent, and choreography/stagger rules.
 - [ ] **Data visualization palette + rules** — chart palettes (sequential, divergent, categorical), grid, labels, "no chart junk" guidance. Used in case-study stats.
 - [ ] **Forms anatomy** — label, helper, required indicator, error message, validation states, character count, autocomplete, success confirmation.
 - [ ] **Empty / error / loading state patterns** — empty data, no search results, 404 / 500 / network error, skeleton vs. spinner vs. progress.
 - [ ] **Imagery / illustration library** — rules exist; a curated DAM of approved photos does not. Plus: a rule on whether bespoke illustration is allowed at all.
-- [ ] **Templates for non-deck collateral** — email (newsletter, transactional, signature), business card, letterhead, social post templates (LinkedIn carousel, IG square, story), document templates (proposal, case study, report cover), staff portfolio template, video bumpers + end cards.
+- [ ] **Collateral templates** *(shipped: `templates/deck/` 48-layout deck, `templates/keynote/` editorial, `templates/one-pager/` print Letter, `templates/social-tile/` square — see "Component library & templates")* — still undefined: email (newsletter, transactional, signature), business card, letterhead, other social formats (LinkedIn carousel, IG story/portrait), document templates (proposal, case study, report cover), staff portfolio template, video bumpers + end cards.
 
 ### Tier 3 · Governance & operations
 
@@ -479,3 +513,4 @@ The following areas are **acknowledged but not yet defined**. Placeholders are k
 ---
 
 When any of these get defined, move the item out of this list and into the appropriate canonical section (or a new top-level section if it's broad enough — e.g. `## Motion`, `## Accessibility`).
+
