@@ -547,7 +547,9 @@ try { (() => {
         img.src = colorPlain;
         return;
       }
+      // All fallbacks exhausted — hide rather than show a browser broken-image glyph.
       img.onerror = null;
+      el.style.display = 'none';
     };
     img.src = primary;
     el.style.display = 'inline-flex';
