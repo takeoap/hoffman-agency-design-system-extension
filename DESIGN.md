@@ -346,7 +346,7 @@ Two decision rules sit **above** the tokens:
 - **Presenter** — presented live. ≤1 idea, ≤15 words/slide, image-led; **the detail lives in speaker notes.**
 - **Document** — a stand-alone leave-behind / read-ahead. Denser, hierarchical, short bullets allowed, a fuller argument per slide; still no paragraphs.
 - Never mix the two in one deck. Both modes keep the full Hoffman visual system (fill-the-frame, slide type scale, whole palette, 72px, imagery) — **mode changes *depth*, not appearance.**
-- **The agent infers the mode from context, states its assumption, and asks only if genuinely ambiguous.** `templates/keynote/` ships both modes behind a **Mode** tweak as the reference example. See `CLAUDE.md §12`. (One-pagers and social tiles are inherently Document-mode.)
+- **The agent infers the mode from context, states its assumption, and asks only if genuinely ambiguous.** The 48-layout `templates/deck/` library carries the **Mode** tweak (Presenter/Document) as the reference mechanism, and the worked full-deck demonstration of the whole system is `slides/Hoffman Brand Guidelines.html`. See `CLAUDE.md §12`. (One-pagers and social tiles are inherently Document-mode.)
 
 ## Colors
 
@@ -461,8 +461,7 @@ Still banned: **raw unicode emoji** as icons/bullets (platform-inconsistent — 
 **Website UI kit** (`ui_kits/website/`) — 15 production React components, compiled into `_ds_bundle.js` and exposed on `window.HoffmanAgencyDesignSystem_d10f7f`: `Button`, `Nav`, `Hero`, `Services`, `StatsStrip`, `CaseStudyGrid`, `QuoteBlock`, `CTABand`, `Footer`, `Eyebrow`, `Em`, `Circle`, `Scribble`, `PaletteStrip`, `StorylineDivider`. These are **marketing-site** components; the app-UI primitive catalog (form controls, feedback, data-display) is still backlog — see Reserved · Tier 1.
 
 **Templates** (`templates/`) — starting points a consuming project copies:
-- `deck/` — the **48-layout** presentation library (codes L01–L51). Slide medium — governed by `CLAUDE.md` + `LAYOUTS.md`, not the web rules above.
-- `keynote/` — editorial long-form keynote.
+- `deck/` — the **48-layout** presentation library (codes L01–L51) — the ONE deck template; carries the Presenter/Document **Mode** toggle + the balloon cover. Slide medium — governed by `CLAUDE.md` + `LAYOUTS.md`, not the web rules above.
 - `one-pager/` — print, US Letter.
 - `social-tile/` — square social post.
 
@@ -512,7 +511,7 @@ The following areas are **acknowledged but not yet defined**. Placeholders are k
 - [ ] **Forms anatomy** — label, helper, required indicator, error message, validation states, character count, autocomplete, success confirmation.
 - [ ] **Empty / error / loading state patterns** — empty data, no search results, 404 / 500 / network error, skeleton vs. spinner vs. progress.
 - [ ] **Imagery / illustration library** — rules exist; a curated DAM of approved photos does not. Plus: a rule on whether bespoke illustration is allowed at all.
-- [ ] **Collateral templates** *(shipped: `templates/deck/` 48-layout deck, `templates/keynote/` editorial, `templates/one-pager/` print Letter, `templates/social-tile/` square — see "Component library & templates")* — still undefined: email (newsletter, transactional, signature), business card, letterhead, other social formats (LinkedIn carousel, IG story/portrait), document templates (proposal, case study, report cover), staff portfolio template, video bumpers + end cards.
+- [ ] **Collateral templates** *(shipped: `templates/deck/` 48-layout deck with Presenter/Document modes, `templates/one-pager/` print Letter, `templates/social-tile/` square — see "Component library & templates")* — still undefined: email (newsletter, transactional, signature), business card, letterhead, other social formats (LinkedIn carousel, IG story/portrait), document templates (proposal, case study, report cover), staff portfolio template, video bumpers + end cards.
 
 ### Tier 3 · Governance & operations
 

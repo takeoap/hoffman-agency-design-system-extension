@@ -60,7 +60,7 @@ The headline is the slide's one job — make it a line with a point of view, not
 
 ### Presenter vs Document mode (choose before layouts)
 
-Choose the deck's **mode** first — it sets how much goes on every slide. **Presenter** (presented live) = ≤1 idea, ≤15 words/slide, image-led, the detail in **speaker notes**; **Document** (leave-behind that stands alone) = denser, hierarchical, short bullets allowed, a fuller argument per slide. **XOR — never mix the two in one deck.** Both still fill the frame and use the Hoffman scale/palette; mode changes *depth*, not appearance. Infer the mode from context and state the assumption; ask only if genuinely ambiguous. Full rule: `CLAUDE.md §12` (Power Design rule 20); the reference example is `templates/keynote/` (Mode tweak).
+Choose the deck's **mode** first — it sets how much goes on every slide. **Presenter** (presented live) = ≤1 idea, ≤15 words/slide, image-led, the detail in **speaker notes**; **Document** (leave-behind that stands alone) = denser, hierarchical, short bullets allowed, a fuller argument per slide. **XOR — never mix the two in one deck.** Both still fill the frame and use the Hoffman scale/palette; mode changes *depth*, not appearance. Infer the mode from context and state the assumption; ask only if genuinely ambiguous. Full rule: `CLAUDE.md §12` (Power Design rule 20); the deck library (`templates/deck/`) carries the **Mode** tweak, and the full worked demonstration is the brand-guidelines deck (`slides/Hoffman Brand Guidelines.html`).
 
 ### The Hoffman signatures (use, don't overuse)
 

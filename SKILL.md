@@ -23,7 +23,7 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - **Voice patterns**: stretched letters (`hellllllo 2026`), the ladder (word-scale steps across lines), strikethrough humor (`~~doubling~~ tripling down`), and lowercase first words as casual signal. Smart, Human, Energetic, Distilled, Bold, Creative, Authentic. Short lines, no jargon, no "leverage". Emojis allowed sparingly with copy (max 3 per page). See CONTENT FUNDAMENTALS in README.
 - **Layout posture (web)**: asymmetric, square-cornered, bold type as hero, sparse decorative imagery, generous negative space.
 - **⚠ MEDIUM SPLIT — web vs. slides**: This system serves two media with different layout physics. **Web / social** (webpages, UI kit, tiles) follows `DESIGN.md` + `colors_and_type.css` — web type scale (16px body), generous whitespace, sparse imagery. **Slides / office docs** (1920×1080 decks) follow `CLAUDE.md` + `LAYOUTS.md` and **OVERRIDE the web rules**: a dedicated slide type scale as FLOORS, biased high (20–24px labels · 30–36px body / default 32 · 40–52px subhead · 64–80px title · 120–132px statement/divider · 176px+ cover · ~240px closing word — never the old 28px "safe" body), "fill the frame" (no dead whitespace), and **imagery by default on every slide**. Color, fonts, the italic-word move, the Storyline motif, annotations, and voice are brand-wide and apply to both. When building a deck, never inherit web body sizes, web max-widths, or "sparse imagery."
-- **⚡ DECK MODE — Presenter XOR Document**: every deck is exactly one mode. **Presenter** (live) = ≤1 idea, ≤15 words/slide, image-led, detail in **speaker notes**; **Document** (leave-behind, stands alone) = denser, hierarchical, short bullets allowed. Never mix the two. Infer the mode from context, state the assumption, ask only if genuinely ambiguous. Both modes keep the full Hoffman visual system (fill-the-frame, slide scale, whole palette) — mode changes *depth*, not appearance. `templates/keynote/` ships both behind a **Mode** tweak. See `CLAUDE.md §12`.
+- **⚡ DECK MODE — Presenter XOR Document**: every deck is exactly one mode. **Presenter** (live) = ≤1 idea, ≤15 words/slide, image-led, detail in **speaker notes**; **Document** (leave-behind, stands alone) = denser, hierarchical, short bullets allowed. Never mix the two. Infer the mode from context, state the assumption, ask only if genuinely ambiguous. Both modes keep the full Hoffman visual system (fill-the-frame, slide scale, whole palette) — mode changes *depth*, not appearance. The `templates/deck/` library carries the **Mode** tweak; the full worked demo of the system is `slides/Hoffman Brand Guidelines.html`. See `CLAUDE.md §12`.
 
 ## Files
 
@@ -35,7 +35,7 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - `colors_and_type.css` — CSS custom properties + base element styles
 - `assets/` — logos, marks, Storyline squiggle, `emoji/` (Fluent injector), `annotations/`
 - `preview/` — design-system cards (for reference)
-- `templates/` — reusable DC starting points (`deck`, `keynote`, `one-pager`, `social-tile`)
+- `templates/` — reusable DC starting points (`deck`, `one-pager`, `social-tile`)
 - `ui_kits/website/` — website UI kit (`index.html` + JSX components)
 
 > **🔒 `references/` is confidential** — the owner's private source material. **Never** export, bundle, download, publish, or copy it into any deliverable (downloads, zips, standalone/inline builds, PPTX/PDF, handoffs, public URLs). Read it for context only.

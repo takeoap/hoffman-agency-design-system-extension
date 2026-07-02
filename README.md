@@ -63,8 +63,7 @@ preview/                · Design System tab — one @dsCard per token/brand gro
   fluent-emoji-gallery.html  · browse + click-to-copy the Fluent emoji set
 
 templates/              · reusable DC starting points consuming projects copy (each <slug>/<Slug>.dc.html + ds-base.js)
-  deck/                 · Deck.dc.html — the 48-layout presentation library (L01–L51) (+ deck-stage.js, ds-base.js, support.js)
-  keynote/              · Keynote.dc.html — editorial keynote
+  deck/                 · Deck.dc.html — the 48-layout presentation library (L01–L51); the ONE deck template — carries the Presenter/Document Mode toggle + the balloon cover (+ deck-stage.js, ds-base.js, support.js)
   one-pager/            · OnePager.dc.html — print, Letter
   social-tile/          · SocialTile.dc.html — square social
 
