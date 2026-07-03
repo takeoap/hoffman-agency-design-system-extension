@@ -6,6 +6,12 @@ Self-hosted brand typefaces for The Hoffman Agency. Drop-in for any project that
 
 ## What's in this folder
 
+This folder self-hosts the two primary brand families. `colors_and_type.css`
+also imports JetBrains Mono, M PLUS 2, and Noto Sans from Google Fonts for
+utility and multilingual support. If a deck, document, or client handoff must
+render fully offline with mono or CJK text, self-host those families too and
+replace the `@import` in `colors_and_type.css`.
+
 ### Poppins — sans-serif workhorse
 
 Loaded via `@font-face` in `colors_and_type.css`. Full family: 9 weights × 2 styles (upright + italic), shipped as static `.ttf` files from the official Google Fonts distribution.

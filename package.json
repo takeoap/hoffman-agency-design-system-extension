@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "validate": "node tools/validate-design-system.js",
+    "test": "npm run validate"
+  }
+}

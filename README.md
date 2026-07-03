@@ -25,8 +25,12 @@ SKILL.md                · agent-skill manifest
 CHECKLIST.md            · pre-ship visual consistency checklist
 PROMPTS.md              · AI generation prompt templates
 POWER-DESIGN-PRINCIPLES.md · portable craft-rules layer (reference, try, don't stick) + the Presenter/Document deck-mode rule
+CONTRIBUTING.md         · repo maintenance rules: what to edit, how to validate, and how to add cards/templates
+CHANGELOG.md            · dated record of repo maintenance and system changes
+package.json            · dependency-free validation entrypoint (`npm run validate`)
 colors_and_type.css     · all color + type tokens as CSS variables (the compiled token source)
-_ds_bundle.js · _ds_manifest.json · _adherence.oxlintrc.json   · COMPILER-GENERATED — never hand-edit
+_ds_bundle.js · _ds_manifest.json · _adherence.oxlintrc.json   · COMPILER-GENERATED — do not hand-edit unless mechanically syncing an export when the compiler is unavailable
+tools/validate-design-system.js · static catalog + manifest consistency checks
 
 docs/                   · portable exports + demos — self-contained, NOT part of the compiled system
   portable-brand-brief-social.md      · paste-into-Lovart brand brief for social tiles
@@ -49,10 +53,11 @@ assets/
   annotations/                      · 76 hand-drawn marks across 6 categories
     underline·circle·arrow·tick·cross·accent   · 13·15·14·11·11·12
 
-fonts/                  · self-hosted. Poppins (full 100–900 weight + italic TTFs, all @font-face-registered)
+fonts/                  · self-hosted brand fonts. Poppins (full 100–900 weight + italic TTFs, all @font-face-registered)
   Poppins-*.ttf                     · 18 roman+italic weight files
   LibreBaskerville-VariableFont_wght.ttf · LibreBaskerville-Italic-VariableFont_wght.ttf  (italic used in practice)
   README.md                         · font installation + Google Fonts equivalents
+  NOTE: JetBrains Mono, M PLUS 2 and Noto Sans are currently loaded from Google Fonts in `colors_and_type.css`; self-host those too before shipping a fully offline multilingual/mono deliverable.
 
 preview/                · Design System tab — one @dsCard per token/brand group (loads ../colors_and_type.css + _card.css)
   colors-*.html         · primary, secondary, navy scale, lime scale, semantic
@@ -78,7 +83,7 @@ ui_kits/website/        · marketing-site UI kit — index.html + JSX components
   Button · Em · Eyebrow · Circle · PaletteStrip · Scribble · README.md
   (15 components exposed — StorylineDivider ships from QuoteBlock.jsx, so there are 14 files.)
 
-references/             · 🔒 CONFIDENTIAL — owner's private source material. NEVER export, bundle, download, publish, or copy into any deliverable. Read-for-context only
+references/             · 🔒 CONFIDENTIAL — owner's private source material, optional in distributable clones. NEVER export, bundle, download, publish, or copy into any deliverable. Read-for-context only
   agency-profile.md      · the agency's positioning, services & voice brief (source for DESIGN/README)
   2026-strategy-deck.pdf · deck-layout-and-visual-storytelling.pdf
   deck-layout-preferences.md · deck-layout-recipes-portable.md   · the porting briefs (now baked into CLAUDE/LAYOUTS)
@@ -86,6 +91,16 @@ references/             · 🔒 CONFIDENTIAL — owner's private source material
 
 uploads/                · scratch — transient user uploads (review screenshots etc.); safe to clear
 ```
+
+## Validation
+
+Run the dependency-free catalog check before shipping repo changes:
+
+```bash
+npm run validate
+```
+
+It verifies component source paths, manifest card/template paths, `@dsCard` and `@template` metadata, website-kit README file references, the deck layout count, and the live guidelines deck slide count. The generated files should normally come from the design-system compiler; if the compiler is unavailable and a generated export must be synced manually, keep the change mechanical and run validation afterwards.
 
 ---
 

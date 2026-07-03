@@ -43,7 +43,8 @@ A short list to run through before shipping any branded surface — slide, socia
 
 ## Imagery & placeholders
 
-- [ ] Imagery the AI can't place is a **labelled** `.tha-placeholder` (icon + `__label` + art-direction `__hint`) — never a bare grey box
+- [ ] Imagery the AI can't place is a **labelled** `.tha-placeholder` (icon + `__label` + art-direction `__hint` + generator-ready `__prompt`) — never a bare grey box
+- [ ] Photo placeholder labels use the required format: `Type · Aspect · generate W×Hpx` (for example, `Portrait · 4:5 · generate 1080×1350px`)
 - [ ] Placeholder ratio matches the real asset (`--16x9` / `--1x1` / `--4x5` / `--icon`, etc.); `.on-dark` on navy
 
 ## Emoji typography
